@@ -1,0 +1,1105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CEPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ECT_PAIS">
+          <Key>
+            <PropertyRef Name="PAI_SG" />
+          </Key>
+          <Property Name="PAI_SG" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="PAI_SG_ALTERNATIVA" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="PAI_NO_PORTUGUES" Type="nvarchar" MaxLength="72" Nullable="false" />
+          <Property Name="PAI_NO_INGLES" Type="nvarchar" MaxLength="72" Nullable="false" />
+          <Property Name="PAI_NO_FRANCES" Type="nvarchar" MaxLength="72" Nullable="false" />
+          <Property Name="PAI_ABREVIATURA" Type="nvarchar" MaxLength="36" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOG_BAIRRO">
+          <Key>
+            <PropertyRef Name="BAI_NU" />
+          </Key>
+          <Property Name="BAI_NU" Type="int" Nullable="false" />
+          <Property Name="UFE_SG" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="LOC_NU" Type="int" Nullable="false" />
+          <Property Name="BAI_NO" Type="nvarchar" MaxLength="72" Nullable="false" />
+          <Property Name="BAI_NO_ABREV" Type="nvarchar" MaxLength="36" />
+        </EntityType>
+        <EntityType Name="LOG_CPC">
+          <Key>
+            <PropertyRef Name="CPC_NU" />
+          </Key>
+          <Property Name="CPC_NU" Type="int" Nullable="false" />
+          <Property Name="UFE_SG" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="LOC_NU" Type="int" Nullable="false" />
+          <Property Name="CPC_NO" Type="nvarchar" MaxLength="172" Nullable="false" />
+          <Property Name="CPC_ENDERECO" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CEP" Type="nvarchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOG_FAIXA_BAIRRO">
+          <Key>
+            <PropertyRef Name="BAI_NU" />
+            <PropertyRef Name="FCB_CEP_INI" />
+          </Key>
+          <Property Name="BAI_NU" Type="int" Nullable="false" />
+          <Property Name="FCB_CEP_INI" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="FCB_CEP_FIM" Type="nvarchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOG_FAIXA_CPC">
+          <Key>
+            <PropertyRef Name="CPC_NU" />
+            <PropertyRef Name="CPC_INICIAL" />
+          </Key>
+          <Property Name="CPC_NU" Type="int" Nullable="false" />
+          <Property Name="CPC_INICIAL" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="CPC_FINAL" Type="nvarchar" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOG_FAIXA_LOCALIDADE">
+          <Key>
+            <PropertyRef Name="LOC_NU" />
+            <PropertyRef Name="LOC_CEP_INI" />
+          </Key>
+          <Property Name="LOC_NU" Type="int" Nullable="false" />
+          <Property Name="LOC_CEP_INI" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="LOC_CEP_FIM" Type="nvarchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOG_FAIXA_UF">
+          <Key>
+            <PropertyRef Name="UFE_SG" />
+            <PropertyRef Name="UFE_CEP_INI" />
+          </Key>
+          <Property Name="UFE_SG" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="UFE_CEP_INI" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="UFE_CEP_FIM" Type="nvarchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOG_FAIXA_UOP">
+          <Key>
+            <PropertyRef Name="UOP_NU" />
+            <PropertyRef Name="FNC_INICIAL" />
+          </Key>
+          <Property Name="UOP_NU" Type="int" Nullable="false" />
+          <Property Name="FNC_INICIAL" Type="int" Nullable="false" />
+          <Property Name="FNC_FINAL" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOG_GRANDE_USUARIO">
+          <Key>
+            <PropertyRef Name="GRU_NU" />
+          </Key>
+          <Property Name="GRU_NU" Type="int" Nullable="false" />
+          <Property Name="UFE_SG" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="LOC_NU" Type="int" Nullable="false" />
+          <Property Name="BAI_NU" Type="int" Nullable="false" />
+          <Property Name="LOG_NU" Type="int" />
+          <Property Name="GRU_NO" Type="nvarchar" MaxLength="72" Nullable="false" />
+          <Property Name="GRU_ENDERECO" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CEP" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="GRU_NO_ABREV" Type="nvarchar" MaxLength="36" />
+        </EntityType>
+        <EntityType Name="LOG_LOCALIDADE">
+          <Key>
+            <PropertyRef Name="LOC_NU" />
+          </Key>
+          <Property Name="LOC_NU" Type="int" Nullable="false" />
+          <Property Name="UFE_SG" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="LOC_NO" Type="nvarchar" MaxLength="72" />
+          <Property Name="CEP" Type="varchar" MaxLength="8" />
+          <Property Name="LOC_IN_SIT" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="LOC_IN_TIPO" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="LOC_NU_SUB" Type="int" />
+          <Property Name="LOC_NO_ABREV" Type="nvarchar" MaxLength="36" />
+          <Property Name="MUN_NU" Type="int" />
+        </EntityType>
+        <EntityType Name="LOG_LOGRADOURO">
+          <Key>
+            <PropertyRef Name="LOG_NU" />
+          </Key>
+          <Property Name="LOG_NU" Type="int" Nullable="false" />
+          <Property Name="UFE_SG" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="LOC_NU" Type="int" Nullable="false" />
+          <Property Name="BAI_NU_INI" Type="int" Nullable="false" />
+          <Property Name="BAI_NU_FIM" Type="int" />
+          <Property Name="LOG_NO" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LOG_COMPLEMENTO" Type="nvarchar" MaxLength="100" />
+          <Property Name="CEP" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="TLO_TX" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="LOG_STA_TLO" Type="nvarchar" MaxLength="1" />
+          <Property Name="LOG_NO_ABREV" Type="nvarchar" MaxLength="36" />
+        </EntityType>
+        <EntityType Name="LOG_NUM_SEC">
+          <Key>
+            <PropertyRef Name="LOG_NU" />
+          </Key>
+          <Property Name="LOG_NU" Type="int" Nullable="false" />
+          <Property Name="SEC_NU_INI" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="SEC_NU_FIM" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="SEC_IN_LADO" Type="nvarchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOG_TIPO_LOGRADOURO">
+          <Key>
+            <PropertyRef Name="TLO_NU" />
+          </Key>
+          <Property Name="TLO_NU" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TLO_TX" Type="nvarchar" MaxLength="36" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOG_UNID_OPER">
+          <Key>
+            <PropertyRef Name="UOP_NU" />
+          </Key>
+          <Property Name="UOP_NU" Type="int" Nullable="false" />
+          <Property Name="UFE_SG" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="LOC_NU" Type="int" Nullable="false" />
+          <Property Name="BAI_NU" Type="int" Nullable="false" />
+          <Property Name="LOG_NU" Type="int" />
+          <Property Name="UOP_NO" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UOP_ENDERECO" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CEP" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="UOP_IN_CP" Type="nvarchar" MaxLength="1" />
+          <Property Name="UOP_NO_ABREV" Type="nvarchar" MaxLength="36" />
+        </EntityType>
+        <EntityType Name="LOG_VAR_BAI">
+          <Key>
+            <PropertyRef Name="BAI_NU" />
+            <PropertyRef Name="VDB_NU" />
+          </Key>
+          <Property Name="BAI_NU" Type="int" Nullable="false" />
+          <Property Name="VDB_NU" Type="int" Nullable="false" />
+          <Property Name="VDB_TX" Type="nvarchar" MaxLength="72" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOG_VAR_LOC">
+          <Key>
+            <PropertyRef Name="LOC_NU" />
+            <PropertyRef Name="VAL_NU" />
+          </Key>
+          <Property Name="LOC_NU" Type="int" Nullable="false" />
+          <Property Name="VAL_NU" Type="int" Nullable="false" />
+          <Property Name="VAL_TX" Type="nvarchar" MaxLength="72" />
+        </EntityType>
+        <EntityType Name="LOG_VAR_LOG">
+          <Key>
+            <PropertyRef Name="LOG_NU" />
+            <PropertyRef Name="VLO_NU" />
+          </Key>
+          <Property Name="LOG_NU" Type="int" Nullable="false" />
+          <Property Name="VLO_NU" Type="int" Nullable="false" />
+          <Property Name="TLO_TX" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="VLO_TX" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_LOG_BAIRRO_LOG_LOCALIDADE">
+          <End Role="LOG_LOCALIDADE" Type="Self.LOG_LOCALIDADE" Multiplicity="1" />
+          <End Role="LOG_BAIRRO" Type="Self.LOG_BAIRRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOCALIDADE">
+              <PropertyRef Name="LOC_NU" />
+            </Principal>
+            <Dependent Role="LOG_BAIRRO">
+              <PropertyRef Name="LOC_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_CPC_LOG_LOCALIDADE">
+          <End Role="LOG_LOCALIDADE" Type="Self.LOG_LOCALIDADE" Multiplicity="1" />
+          <End Role="LOG_CPC" Type="Self.LOG_CPC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOCALIDADE">
+              <PropertyRef Name="LOC_NU" />
+            </Principal>
+            <Dependent Role="LOG_CPC">
+              <PropertyRef Name="LOC_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_FAIXA_BAIRRO_LOG_BAIRRO">
+          <End Role="LOG_BAIRRO" Type="Self.LOG_BAIRRO" Multiplicity="1" />
+          <End Role="LOG_FAIXA_BAIRRO" Type="Self.LOG_FAIXA_BAIRRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_BAIRRO">
+              <PropertyRef Name="BAI_NU" />
+            </Principal>
+            <Dependent Role="LOG_FAIXA_BAIRRO">
+              <PropertyRef Name="BAI_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_FAIXA_CPC_LOG_CPC">
+          <End Role="LOG_CPC" Type="Self.LOG_CPC" Multiplicity="1" />
+          <End Role="LOG_FAIXA_CPC" Type="Self.LOG_FAIXA_CPC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_CPC">
+              <PropertyRef Name="CPC_NU" />
+            </Principal>
+            <Dependent Role="LOG_FAIXA_CPC">
+              <PropertyRef Name="CPC_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_FAIXA_LOCALIDADE_LOG_LOCALIDADE">
+          <End Role="LOG_LOCALIDADE" Type="Self.LOG_LOCALIDADE" Multiplicity="1" />
+          <End Role="LOG_FAIXA_LOCALIDADE" Type="Self.LOG_FAIXA_LOCALIDADE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOCALIDADE">
+              <PropertyRef Name="LOC_NU" />
+            </Principal>
+            <Dependent Role="LOG_FAIXA_LOCALIDADE">
+              <PropertyRef Name="LOC_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_FAIXA_UOP_LOG_UNID_OPER">
+          <End Role="LOG_UNID_OPER" Type="Self.LOG_UNID_OPER" Multiplicity="1" />
+          <End Role="LOG_FAIXA_UOP" Type="Self.LOG_FAIXA_UOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_UNID_OPER">
+              <PropertyRef Name="UOP_NU" />
+            </Principal>
+            <Dependent Role="LOG_FAIXA_UOP">
+              <PropertyRef Name="UOP_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_GRANDE_USUARIO_LOG_LOGRADOURO">
+          <End Role="LOG_LOGRADOURO" Type="Self.LOG_LOGRADOURO" Multiplicity="1" />
+          <End Role="LOG_GRANDE_USUARIO" Type="Self.LOG_GRANDE_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOGRADOURO">
+              <PropertyRef Name="LOG_NU" />
+            </Principal>
+            <Dependent Role="LOG_GRANDE_USUARIO">
+              <PropertyRef Name="LOC_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_LOGRADOURO_LOG_LOCALIDADE">
+          <End Role="LOG_LOCALIDADE" Type="Self.LOG_LOCALIDADE" Multiplicity="1" />
+          <End Role="LOG_LOGRADOURO" Type="Self.LOG_LOGRADOURO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOCALIDADE">
+              <PropertyRef Name="LOC_NU" />
+            </Principal>
+            <Dependent Role="LOG_LOGRADOURO">
+              <PropertyRef Name="LOC_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_NUM_SEC_LOG_LOGRADOURO">
+          <End Role="LOG_LOGRADOURO" Type="Self.LOG_LOGRADOURO" Multiplicity="1" />
+          <End Role="LOG_NUM_SEC" Type="Self.LOG_NUM_SEC" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOGRADOURO">
+              <PropertyRef Name="LOG_NU" />
+            </Principal>
+            <Dependent Role="LOG_NUM_SEC">
+              <PropertyRef Name="LOG_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_NUM_SEC_LOG_LOGRADOURO2">
+          <End Role="LOG_LOGRADOURO" Type="Self.LOG_LOGRADOURO" Multiplicity="1" />
+          <End Role="LOG_NUM_SEC" Type="Self.LOG_NUM_SEC" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOGRADOURO">
+              <PropertyRef Name="LOG_NU" />
+            </Principal>
+            <Dependent Role="LOG_NUM_SEC">
+              <PropertyRef Name="LOG_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_UNID_OPER_LOG_LOCALIDADE">
+          <End Role="LOG_LOCALIDADE" Type="Self.LOG_LOCALIDADE" Multiplicity="1" />
+          <End Role="LOG_UNID_OPER" Type="Self.LOG_UNID_OPER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOCALIDADE">
+              <PropertyRef Name="LOC_NU" />
+            </Principal>
+            <Dependent Role="LOG_UNID_OPER">
+              <PropertyRef Name="LOC_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_VAR_BAI_LOG_BAIRRO">
+          <End Role="LOG_BAIRRO" Type="Self.LOG_BAIRRO" Multiplicity="1" />
+          <End Role="LOG_VAR_BAI" Type="Self.LOG_VAR_BAI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_BAIRRO">
+              <PropertyRef Name="BAI_NU" />
+            </Principal>
+            <Dependent Role="LOG_VAR_BAI">
+              <PropertyRef Name="BAI_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_VAR_LOC_LOG_LOCALIDADE">
+          <End Role="LOG_LOCALIDADE" Type="Self.LOG_LOCALIDADE" Multiplicity="1" />
+          <End Role="LOG_VAR_LOC" Type="Self.LOG_VAR_LOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOCALIDADE">
+              <PropertyRef Name="LOC_NU" />
+            </Principal>
+            <Dependent Role="LOG_VAR_LOC">
+              <PropertyRef Name="LOC_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_VAR_LOG_LOG_LOGRADOURO">
+          <End Role="LOG_LOGRADOURO" Type="Self.LOG_LOGRADOURO" Multiplicity="1" />
+          <End Role="LOG_VAR_LOG" Type="Self.LOG_VAR_LOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOGRADOURO">
+              <PropertyRef Name="LOG_NU" />
+            </Principal>
+            <Dependent Role="LOG_VAR_LOG">
+              <PropertyRef Name="LOG_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CEPModelStoreContainer">
+          <EntitySet Name="ECT_PAIS" EntityType="Self.ECT_PAIS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOG_BAIRRO" EntityType="Self.LOG_BAIRRO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOG_CPC" EntityType="Self.LOG_CPC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOG_FAIXA_BAIRRO" EntityType="Self.LOG_FAIXA_BAIRRO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOG_FAIXA_CPC" EntityType="Self.LOG_FAIXA_CPC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOG_FAIXA_LOCALIDADE" EntityType="Self.LOG_FAIXA_LOCALIDADE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOG_FAIXA_UF" EntityType="Self.LOG_FAIXA_UF" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOG_FAIXA_UOP" EntityType="Self.LOG_FAIXA_UOP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOG_GRANDE_USUARIO" EntityType="Self.LOG_GRANDE_USUARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOG_LOCALIDADE" EntityType="Self.LOG_LOCALIDADE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOG_LOGRADOURO" EntityType="Self.LOG_LOGRADOURO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOG_NUM_SEC" EntityType="Self.LOG_NUM_SEC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOG_TIPO_LOGRADOURO" EntityType="Self.LOG_TIPO_LOGRADOURO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOG_UNID_OPER" EntityType="Self.LOG_UNID_OPER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOG_VAR_BAI" EntityType="Self.LOG_VAR_BAI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOG_VAR_LOC" EntityType="Self.LOG_VAR_LOC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOG_VAR_LOG" EntityType="Self.LOG_VAR_LOG" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_LOG_BAIRRO_LOG_LOCALIDADE" Association="Self.FK_LOG_BAIRRO_LOG_LOCALIDADE">
+            <End Role="LOG_LOCALIDADE" EntitySet="LOG_LOCALIDADE" />
+            <End Role="LOG_BAIRRO" EntitySet="LOG_BAIRRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_CPC_LOG_LOCALIDADE" Association="Self.FK_LOG_CPC_LOG_LOCALIDADE">
+            <End Role="LOG_LOCALIDADE" EntitySet="LOG_LOCALIDADE" />
+            <End Role="LOG_CPC" EntitySet="LOG_CPC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_FAIXA_BAIRRO_LOG_BAIRRO" Association="Self.FK_LOG_FAIXA_BAIRRO_LOG_BAIRRO">
+            <End Role="LOG_BAIRRO" EntitySet="LOG_BAIRRO" />
+            <End Role="LOG_FAIXA_BAIRRO" EntitySet="LOG_FAIXA_BAIRRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_FAIXA_CPC_LOG_CPC" Association="Self.FK_LOG_FAIXA_CPC_LOG_CPC">
+            <End Role="LOG_CPC" EntitySet="LOG_CPC" />
+            <End Role="LOG_FAIXA_CPC" EntitySet="LOG_FAIXA_CPC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_FAIXA_LOCALIDADE_LOG_LOCALIDADE" Association="Self.FK_LOG_FAIXA_LOCALIDADE_LOG_LOCALIDADE">
+            <End Role="LOG_LOCALIDADE" EntitySet="LOG_LOCALIDADE" />
+            <End Role="LOG_FAIXA_LOCALIDADE" EntitySet="LOG_FAIXA_LOCALIDADE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_FAIXA_UOP_LOG_UNID_OPER" Association="Self.FK_LOG_FAIXA_UOP_LOG_UNID_OPER">
+            <End Role="LOG_UNID_OPER" EntitySet="LOG_UNID_OPER" />
+            <End Role="LOG_FAIXA_UOP" EntitySet="LOG_FAIXA_UOP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_GRANDE_USUARIO_LOG_LOGRADOURO" Association="Self.FK_LOG_GRANDE_USUARIO_LOG_LOGRADOURO">
+            <End Role="LOG_LOGRADOURO" EntitySet="LOG_LOGRADOURO" />
+            <End Role="LOG_GRANDE_USUARIO" EntitySet="LOG_GRANDE_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_LOGRADOURO_LOG_LOCALIDADE" Association="Self.FK_LOG_LOGRADOURO_LOG_LOCALIDADE">
+            <End Role="LOG_LOCALIDADE" EntitySet="LOG_LOCALIDADE" />
+            <End Role="LOG_LOGRADOURO" EntitySet="LOG_LOGRADOURO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_NUM_SEC_LOG_LOGRADOURO" Association="Self.FK_LOG_NUM_SEC_LOG_LOGRADOURO">
+            <End Role="LOG_LOGRADOURO" EntitySet="LOG_LOGRADOURO" />
+            <End Role="LOG_NUM_SEC" EntitySet="LOG_NUM_SEC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_NUM_SEC_LOG_LOGRADOURO2" Association="Self.FK_LOG_NUM_SEC_LOG_LOGRADOURO2">
+            <End Role="LOG_LOGRADOURO" EntitySet="LOG_LOGRADOURO" />
+            <End Role="LOG_NUM_SEC" EntitySet="LOG_NUM_SEC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_UNID_OPER_LOG_LOCALIDADE" Association="Self.FK_LOG_UNID_OPER_LOG_LOCALIDADE">
+            <End Role="LOG_LOCALIDADE" EntitySet="LOG_LOCALIDADE" />
+            <End Role="LOG_UNID_OPER" EntitySet="LOG_UNID_OPER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_VAR_BAI_LOG_BAIRRO" Association="Self.FK_LOG_VAR_BAI_LOG_BAIRRO">
+            <End Role="LOG_BAIRRO" EntitySet="LOG_BAIRRO" />
+            <End Role="LOG_VAR_BAI" EntitySet="LOG_VAR_BAI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_VAR_LOC_LOG_LOCALIDADE" Association="Self.FK_LOG_VAR_LOC_LOG_LOCALIDADE">
+            <End Role="LOG_LOCALIDADE" EntitySet="LOG_LOCALIDADE" />
+            <End Role="LOG_VAR_LOC" EntitySet="LOG_VAR_LOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_VAR_LOG_LOG_LOGRADOURO" Association="Self.FK_LOG_VAR_LOG_LOG_LOGRADOURO">
+            <End Role="LOG_LOGRADOURO" EntitySet="LOG_LOGRADOURO" />
+            <End Role="LOG_VAR_LOG" EntitySet="LOG_VAR_LOG" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CEPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ECT_PAIS">
+          <Key>
+            <PropertyRef Name="PAI_SG" />
+          </Key>
+          <Property Name="PAI_SG" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PAI_SG_ALTERNATIVA" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PAI_NO_PORTUGUES" Type="String" MaxLength="72" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PAI_NO_INGLES" Type="String" MaxLength="72" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PAI_NO_FRANCES" Type="String" MaxLength="72" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PAI_ABREVIATURA" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOG_BAIRRO">
+          <Key>
+            <PropertyRef Name="BAI_NU" />
+          </Key>
+          <Property Name="BAI_NU" Type="Int32" Nullable="false" />
+          <Property Name="UFE_SG" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LOC_NU" Type="Int32" Nullable="false" />
+          <Property Name="BAI_NO" Type="String" MaxLength="72" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BAI_NO_ABREV" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LOG_LOCALIDADE" Relationship="Self.FK_LOG_BAIRRO_LOG_LOCALIDADE" FromRole="LOG_BAIRRO" ToRole="LOG_LOCALIDADE" />
+          <NavigationProperty Name="LOG_FAIXA_BAIRRO" Relationship="Self.FK_LOG_FAIXA_BAIRRO_LOG_BAIRRO" FromRole="LOG_BAIRRO" ToRole="LOG_FAIXA_BAIRRO" />
+          <NavigationProperty Name="LOG_VAR_BAI" Relationship="Self.FK_LOG_VAR_BAI_LOG_BAIRRO" FromRole="LOG_BAIRRO" ToRole="LOG_VAR_BAI" />
+        </EntityType>
+        <EntityType Name="LOG_CPC">
+          <Key>
+            <PropertyRef Name="CPC_NU" />
+          </Key>
+          <Property Name="CPC_NU" Type="Int32" Nullable="false" />
+          <Property Name="UFE_SG" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LOC_NU" Type="Int32" Nullable="false" />
+          <Property Name="CPC_NO" Type="String" MaxLength="172" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CPC_ENDERECO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CEP" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LOG_LOCALIDADE" Relationship="Self.FK_LOG_CPC_LOG_LOCALIDADE" FromRole="LOG_CPC" ToRole="LOG_LOCALIDADE" />
+          <NavigationProperty Name="LOG_FAIXA_CPC" Relationship="Self.FK_LOG_FAIXA_CPC_LOG_CPC" FromRole="LOG_CPC" ToRole="LOG_FAIXA_CPC" />
+        </EntityType>
+        <EntityType Name="LOG_FAIXA_BAIRRO">
+          <Key>
+            <PropertyRef Name="BAI_NU" />
+            <PropertyRef Name="FCB_CEP_INI" />
+          </Key>
+          <Property Name="BAI_NU" Type="Int32" Nullable="false" />
+          <Property Name="FCB_CEP_INI" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FCB_CEP_FIM" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LOG_BAIRRO" Relationship="Self.FK_LOG_FAIXA_BAIRRO_LOG_BAIRRO" FromRole="LOG_FAIXA_BAIRRO" ToRole="LOG_BAIRRO" />
+        </EntityType>
+        <EntityType Name="LOG_FAIXA_CPC">
+          <Key>
+            <PropertyRef Name="CPC_NU" />
+            <PropertyRef Name="CPC_INICIAL" />
+          </Key>
+          <Property Name="CPC_NU" Type="Int32" Nullable="false" />
+          <Property Name="CPC_INICIAL" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CPC_FINAL" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LOG_CPC" Relationship="Self.FK_LOG_FAIXA_CPC_LOG_CPC" FromRole="LOG_FAIXA_CPC" ToRole="LOG_CPC" />
+        </EntityType>
+        <EntityType Name="LOG_FAIXA_LOCALIDADE">
+          <Key>
+            <PropertyRef Name="LOC_NU" />
+            <PropertyRef Name="LOC_CEP_INI" />
+          </Key>
+          <Property Name="LOC_NU" Type="Int32" Nullable="false" />
+          <Property Name="LOC_CEP_INI" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LOC_CEP_FIM" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LOG_LOCALIDADE" Relationship="Self.FK_LOG_FAIXA_LOCALIDADE_LOG_LOCALIDADE" FromRole="LOG_FAIXA_LOCALIDADE" ToRole="LOG_LOCALIDADE" />
+        </EntityType>
+        <EntityType Name="LOG_FAIXA_UF">
+          <Key>
+            <PropertyRef Name="UFE_SG" />
+            <PropertyRef Name="UFE_CEP_INI" />
+          </Key>
+          <Property Name="UFE_SG" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UFE_CEP_INI" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UFE_CEP_FIM" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOG_FAIXA_UOP">
+          <Key>
+            <PropertyRef Name="UOP_NU" />
+            <PropertyRef Name="FNC_INICIAL" />
+          </Key>
+          <Property Name="UOP_NU" Type="Int32" Nullable="false" />
+          <Property Name="FNC_INICIAL" Type="Int32" Nullable="false" />
+          <Property Name="FNC_FINAL" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LOG_UNID_OPER" Relationship="Self.FK_LOG_FAIXA_UOP_LOG_UNID_OPER" FromRole="LOG_FAIXA_UOP" ToRole="LOG_UNID_OPER" />
+        </EntityType>
+        <EntityType Name="LOG_GRANDE_USUARIO">
+          <Key>
+            <PropertyRef Name="GRU_NU" />
+          </Key>
+          <Property Name="GRU_NU" Type="Int32" Nullable="false" />
+          <Property Name="UFE_SG" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LOC_NU" Type="Int32" Nullable="false" />
+          <Property Name="BAI_NU" Type="Int32" Nullable="false" />
+          <Property Name="LOG_NU" Type="Int32" />
+          <Property Name="GRU_NO" Type="String" MaxLength="72" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GRU_ENDERECO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CEP" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GRU_NO_ABREV" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LOG_LOGRADOURO" Relationship="Self.FK_LOG_GRANDE_USUARIO_LOG_LOGRADOURO" FromRole="LOG_GRANDE_USUARIO" ToRole="LOG_LOGRADOURO" />
+        </EntityType>
+        <EntityType Name="LOG_LOCALIDADE">
+          <Key>
+            <PropertyRef Name="LOC_NU" />
+          </Key>
+          <Property Name="LOC_NU" Type="Int32" Nullable="false" />
+          <Property Name="UFE_SG" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LOC_NO" Type="String" MaxLength="72" FixedLength="false" Unicode="true" />
+          <Property Name="CEP" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="LOC_IN_SIT" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LOC_IN_TIPO" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LOC_NU_SUB" Type="Int32" />
+          <Property Name="LOC_NO_ABREV" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="MUN_NU" Type="Int32" />
+          <NavigationProperty Name="LOG_BAIRRO" Relationship="Self.FK_LOG_BAIRRO_LOG_LOCALIDADE" FromRole="LOG_LOCALIDADE" ToRole="LOG_BAIRRO" />
+          <NavigationProperty Name="LOG_CPC" Relationship="Self.FK_LOG_CPC_LOG_LOCALIDADE" FromRole="LOG_LOCALIDADE" ToRole="LOG_CPC" />
+          <NavigationProperty Name="LOG_FAIXA_LOCALIDADE" Relationship="Self.FK_LOG_FAIXA_LOCALIDADE_LOG_LOCALIDADE" FromRole="LOG_LOCALIDADE" ToRole="LOG_FAIXA_LOCALIDADE" />
+          <NavigationProperty Name="LOG_LOGRADOURO" Relationship="Self.FK_LOG_LOGRADOURO_LOG_LOCALIDADE" FromRole="LOG_LOCALIDADE" ToRole="LOG_LOGRADOURO" />
+          <NavigationProperty Name="LOG_UNID_OPER" Relationship="Self.FK_LOG_UNID_OPER_LOG_LOCALIDADE" FromRole="LOG_LOCALIDADE" ToRole="LOG_UNID_OPER" />
+          <NavigationProperty Name="LOG_VAR_LOC" Relationship="Self.FK_LOG_VAR_LOC_LOG_LOCALIDADE" FromRole="LOG_LOCALIDADE" ToRole="LOG_VAR_LOC" />
+        </EntityType>
+        <EntityType Name="LOG_LOGRADOURO">
+          <Key>
+            <PropertyRef Name="LOG_NU" />
+          </Key>
+          <Property Name="LOG_NU" Type="Int32" Nullable="false" />
+          <Property Name="UFE_SG" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LOC_NU" Type="Int32" Nullable="false" />
+          <Property Name="BAI_NU_INI" Type="Int32" Nullable="false" />
+          <Property Name="BAI_NU_FIM" Type="Int32" />
+          <Property Name="LOG_NO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LOG_COMPLEMENTO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CEP" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TLO_TX" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LOG_STA_TLO" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="LOG_NO_ABREV" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LOG_GRANDE_USUARIO" Relationship="Self.FK_LOG_GRANDE_USUARIO_LOG_LOGRADOURO" FromRole="LOG_LOGRADOURO" ToRole="LOG_GRANDE_USUARIO" />
+          <NavigationProperty Name="LOG_LOCALIDADE" Relationship="Self.FK_LOG_LOGRADOURO_LOG_LOCALIDADE" FromRole="LOG_LOGRADOURO" ToRole="LOG_LOCALIDADE" />
+          <NavigationProperty Name="LOG_NUM_SEC" Relationship="Self.FK_LOG_NUM_SEC_LOG_LOGRADOURO" FromRole="LOG_LOGRADOURO" ToRole="LOG_NUM_SEC" />
+          <NavigationProperty Name="LOG_NUM_SEC1" Relationship="Self.FK_LOG_NUM_SEC_LOG_LOGRADOURO2" FromRole="LOG_LOGRADOURO" ToRole="LOG_NUM_SEC" />
+          <NavigationProperty Name="LOG_VAR_LOG" Relationship="Self.FK_LOG_VAR_LOG_LOG_LOGRADOURO" FromRole="LOG_LOGRADOURO" ToRole="LOG_VAR_LOG" />
+        </EntityType>
+        <EntityType Name="LOG_NUM_SEC">
+          <Key>
+            <PropertyRef Name="LOG_NU" />
+          </Key>
+          <Property Name="LOG_NU" Type="Int32" Nullable="false" />
+          <Property Name="SEC_NU_INI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SEC_NU_FIM" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SEC_IN_LADO" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LOG_LOGRADOURO" Relationship="Self.FK_LOG_NUM_SEC_LOG_LOGRADOURO" FromRole="LOG_NUM_SEC" ToRole="LOG_LOGRADOURO" />
+          <NavigationProperty Name="LOG_LOGRADOURO1" Relationship="Self.FK_LOG_NUM_SEC_LOG_LOGRADOURO2" FromRole="LOG_NUM_SEC" ToRole="LOG_LOGRADOURO" />
+        </EntityType>
+        <EntityType Name="LOG_TIPO_LOGRADOURO">
+          <Key>
+            <PropertyRef Name="TLO_NU" />
+          </Key>
+          <Property Name="TLO_NU" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TLO_TX" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOG_UNID_OPER">
+          <Key>
+            <PropertyRef Name="UOP_NU" />
+          </Key>
+          <Property Name="UOP_NU" Type="Int32" Nullable="false" />
+          <Property Name="UFE_SG" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LOC_NU" Type="Int32" Nullable="false" />
+          <Property Name="BAI_NU" Type="Int32" Nullable="false" />
+          <Property Name="LOG_NU" Type="Int32" />
+          <Property Name="UOP_NO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UOP_ENDERECO" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CEP" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UOP_IN_CP" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="UOP_NO_ABREV" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LOG_FAIXA_UOP" Relationship="Self.FK_LOG_FAIXA_UOP_LOG_UNID_OPER" FromRole="LOG_UNID_OPER" ToRole="LOG_FAIXA_UOP" />
+          <NavigationProperty Name="LOG_LOCALIDADE" Relationship="Self.FK_LOG_UNID_OPER_LOG_LOCALIDADE" FromRole="LOG_UNID_OPER" ToRole="LOG_LOCALIDADE" />
+        </EntityType>
+        <EntityType Name="LOG_VAR_BAI">
+          <Key>
+            <PropertyRef Name="BAI_NU" />
+            <PropertyRef Name="VDB_NU" />
+          </Key>
+          <Property Name="BAI_NU" Type="Int32" Nullable="false" />
+          <Property Name="VDB_NU" Type="Int32" Nullable="false" />
+          <Property Name="VDB_TX" Type="String" MaxLength="72" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LOG_BAIRRO" Relationship="Self.FK_LOG_VAR_BAI_LOG_BAIRRO" FromRole="LOG_VAR_BAI" ToRole="LOG_BAIRRO" />
+        </EntityType>
+        <EntityType Name="LOG_VAR_LOC">
+          <Key>
+            <PropertyRef Name="LOC_NU" />
+            <PropertyRef Name="VAL_NU" />
+          </Key>
+          <Property Name="LOC_NU" Type="Int32" Nullable="false" />
+          <Property Name="VAL_NU" Type="Int32" Nullable="false" />
+          <Property Name="VAL_TX" Type="String" MaxLength="72" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LOG_LOCALIDADE" Relationship="Self.FK_LOG_VAR_LOC_LOG_LOCALIDADE" FromRole="LOG_VAR_LOC" ToRole="LOG_LOCALIDADE" />
+        </EntityType>
+        <EntityType Name="LOG_VAR_LOG">
+          <Key>
+            <PropertyRef Name="LOG_NU" />
+            <PropertyRef Name="VLO_NU" />
+          </Key>
+          <Property Name="LOG_NU" Type="Int32" Nullable="false" />
+          <Property Name="VLO_NU" Type="Int32" Nullable="false" />
+          <Property Name="TLO_TX" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VLO_TX" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LOG_LOGRADOURO" Relationship="Self.FK_LOG_VAR_LOG_LOG_LOGRADOURO" FromRole="LOG_VAR_LOG" ToRole="LOG_LOGRADOURO" />
+        </EntityType>
+        <Association Name="FK_LOG_BAIRRO_LOG_LOCALIDADE">
+          <End Role="LOG_LOCALIDADE" Type="Self.LOG_LOCALIDADE" Multiplicity="1" />
+          <End Role="LOG_BAIRRO" Type="Self.LOG_BAIRRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOCALIDADE">
+              <PropertyRef Name="LOC_NU" />
+            </Principal>
+            <Dependent Role="LOG_BAIRRO">
+              <PropertyRef Name="LOC_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_FAIXA_BAIRRO_LOG_BAIRRO">
+          <End Role="LOG_BAIRRO" Type="Self.LOG_BAIRRO" Multiplicity="1" />
+          <End Role="LOG_FAIXA_BAIRRO" Type="Self.LOG_FAIXA_BAIRRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_BAIRRO">
+              <PropertyRef Name="BAI_NU" />
+            </Principal>
+            <Dependent Role="LOG_FAIXA_BAIRRO">
+              <PropertyRef Name="BAI_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_VAR_BAI_LOG_BAIRRO">
+          <End Role="LOG_BAIRRO" Type="Self.LOG_BAIRRO" Multiplicity="1" />
+          <End Role="LOG_VAR_BAI" Type="Self.LOG_VAR_BAI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_BAIRRO">
+              <PropertyRef Name="BAI_NU" />
+            </Principal>
+            <Dependent Role="LOG_VAR_BAI">
+              <PropertyRef Name="BAI_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_CPC_LOG_LOCALIDADE">
+          <End Role="LOG_LOCALIDADE" Type="Self.LOG_LOCALIDADE" Multiplicity="1" />
+          <End Role="LOG_CPC" Type="Self.LOG_CPC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOCALIDADE">
+              <PropertyRef Name="LOC_NU" />
+            </Principal>
+            <Dependent Role="LOG_CPC">
+              <PropertyRef Name="LOC_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_FAIXA_CPC_LOG_CPC">
+          <End Role="LOG_CPC" Type="Self.LOG_CPC" Multiplicity="1" />
+          <End Role="LOG_FAIXA_CPC" Type="Self.LOG_FAIXA_CPC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_CPC">
+              <PropertyRef Name="CPC_NU" />
+            </Principal>
+            <Dependent Role="LOG_FAIXA_CPC">
+              <PropertyRef Name="CPC_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_FAIXA_LOCALIDADE_LOG_LOCALIDADE">
+          <End Role="LOG_LOCALIDADE" Type="Self.LOG_LOCALIDADE" Multiplicity="1" />
+          <End Role="LOG_FAIXA_LOCALIDADE" Type="Self.LOG_FAIXA_LOCALIDADE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOCALIDADE">
+              <PropertyRef Name="LOC_NU" />
+            </Principal>
+            <Dependent Role="LOG_FAIXA_LOCALIDADE">
+              <PropertyRef Name="LOC_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_FAIXA_UOP_LOG_UNID_OPER">
+          <End Role="LOG_UNID_OPER" Type="Self.LOG_UNID_OPER" Multiplicity="1" />
+          <End Role="LOG_FAIXA_UOP" Type="Self.LOG_FAIXA_UOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_UNID_OPER">
+              <PropertyRef Name="UOP_NU" />
+            </Principal>
+            <Dependent Role="LOG_FAIXA_UOP">
+              <PropertyRef Name="UOP_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_GRANDE_USUARIO_LOG_LOGRADOURO">
+          <End Role="LOG_LOGRADOURO" Type="Self.LOG_LOGRADOURO" Multiplicity="1" />
+          <End Role="LOG_GRANDE_USUARIO" Type="Self.LOG_GRANDE_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOGRADOURO">
+              <PropertyRef Name="LOG_NU" />
+            </Principal>
+            <Dependent Role="LOG_GRANDE_USUARIO">
+              <PropertyRef Name="LOC_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_LOGRADOURO_LOG_LOCALIDADE">
+          <End Role="LOG_LOCALIDADE" Type="Self.LOG_LOCALIDADE" Multiplicity="1" />
+          <End Role="LOG_LOGRADOURO" Type="Self.LOG_LOGRADOURO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOCALIDADE">
+              <PropertyRef Name="LOC_NU" />
+            </Principal>
+            <Dependent Role="LOG_LOGRADOURO">
+              <PropertyRef Name="LOC_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_UNID_OPER_LOG_LOCALIDADE">
+          <End Role="LOG_LOCALIDADE" Type="Self.LOG_LOCALIDADE" Multiplicity="1" />
+          <End Role="LOG_UNID_OPER" Type="Self.LOG_UNID_OPER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOCALIDADE">
+              <PropertyRef Name="LOC_NU" />
+            </Principal>
+            <Dependent Role="LOG_UNID_OPER">
+              <PropertyRef Name="LOC_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_VAR_LOC_LOG_LOCALIDADE">
+          <End Role="LOG_LOCALIDADE" Type="Self.LOG_LOCALIDADE" Multiplicity="1" />
+          <End Role="LOG_VAR_LOC" Type="Self.LOG_VAR_LOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOCALIDADE">
+              <PropertyRef Name="LOC_NU" />
+            </Principal>
+            <Dependent Role="LOG_VAR_LOC">
+              <PropertyRef Name="LOC_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_NUM_SEC_LOG_LOGRADOURO">
+          <End Role="LOG_LOGRADOURO" Type="Self.LOG_LOGRADOURO" Multiplicity="1" />
+          <End Role="LOG_NUM_SEC" Type="Self.LOG_NUM_SEC" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOGRADOURO">
+              <PropertyRef Name="LOG_NU" />
+            </Principal>
+            <Dependent Role="LOG_NUM_SEC">
+              <PropertyRef Name="LOG_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_NUM_SEC_LOG_LOGRADOURO2">
+          <End Role="LOG_LOGRADOURO" Type="Self.LOG_LOGRADOURO" Multiplicity="1" />
+          <End Role="LOG_NUM_SEC" Type="Self.LOG_NUM_SEC" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOGRADOURO">
+              <PropertyRef Name="LOG_NU" />
+            </Principal>
+            <Dependent Role="LOG_NUM_SEC">
+              <PropertyRef Name="LOG_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_VAR_LOG_LOG_LOGRADOURO">
+          <End Role="LOG_LOGRADOURO" Type="Self.LOG_LOGRADOURO" Multiplicity="1" />
+          <End Role="LOG_VAR_LOG" Type="Self.LOG_VAR_LOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOG_LOGRADOURO">
+              <PropertyRef Name="LOG_NU" />
+            </Principal>
+            <Dependent Role="LOG_VAR_LOG">
+              <PropertyRef Name="LOG_NU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CEPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ECT_PAIS" EntityType="Self.ECT_PAIS" />
+          <EntitySet Name="LOG_BAIRRO" EntityType="Self.LOG_BAIRRO" />
+          <EntitySet Name="LOG_CPC" EntityType="Self.LOG_CPC" />
+          <EntitySet Name="LOG_FAIXA_BAIRRO" EntityType="Self.LOG_FAIXA_BAIRRO" />
+          <EntitySet Name="LOG_FAIXA_CPC" EntityType="Self.LOG_FAIXA_CPC" />
+          <EntitySet Name="LOG_FAIXA_LOCALIDADE" EntityType="Self.LOG_FAIXA_LOCALIDADE" />
+          <EntitySet Name="LOG_FAIXA_UF" EntityType="Self.LOG_FAIXA_UF" />
+          <EntitySet Name="LOG_FAIXA_UOP" EntityType="Self.LOG_FAIXA_UOP" />
+          <EntitySet Name="LOG_GRANDE_USUARIO" EntityType="Self.LOG_GRANDE_USUARIO" />
+          <EntitySet Name="LOG_LOCALIDADE" EntityType="Self.LOG_LOCALIDADE" />
+          <EntitySet Name="LOG_LOGRADOURO" EntityType="Self.LOG_LOGRADOURO" />
+          <EntitySet Name="LOG_NUM_SEC" EntityType="Self.LOG_NUM_SEC" />
+          <EntitySet Name="LOG_TIPO_LOGRADOURO" EntityType="Self.LOG_TIPO_LOGRADOURO" />
+          <EntitySet Name="LOG_UNID_OPER" EntityType="Self.LOG_UNID_OPER" />
+          <EntitySet Name="LOG_VAR_BAI" EntityType="Self.LOG_VAR_BAI" />
+          <EntitySet Name="LOG_VAR_LOC" EntityType="Self.LOG_VAR_LOC" />
+          <EntitySet Name="LOG_VAR_LOG" EntityType="Self.LOG_VAR_LOG" />
+          <AssociationSet Name="FK_LOG_BAIRRO_LOG_LOCALIDADE" Association="Self.FK_LOG_BAIRRO_LOG_LOCALIDADE">
+            <End Role="LOG_LOCALIDADE" EntitySet="LOG_LOCALIDADE" />
+            <End Role="LOG_BAIRRO" EntitySet="LOG_BAIRRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_FAIXA_BAIRRO_LOG_BAIRRO" Association="Self.FK_LOG_FAIXA_BAIRRO_LOG_BAIRRO">
+            <End Role="LOG_BAIRRO" EntitySet="LOG_BAIRRO" />
+            <End Role="LOG_FAIXA_BAIRRO" EntitySet="LOG_FAIXA_BAIRRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_VAR_BAI_LOG_BAIRRO" Association="Self.FK_LOG_VAR_BAI_LOG_BAIRRO">
+            <End Role="LOG_BAIRRO" EntitySet="LOG_BAIRRO" />
+            <End Role="LOG_VAR_BAI" EntitySet="LOG_VAR_BAI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_CPC_LOG_LOCALIDADE" Association="Self.FK_LOG_CPC_LOG_LOCALIDADE">
+            <End Role="LOG_LOCALIDADE" EntitySet="LOG_LOCALIDADE" />
+            <End Role="LOG_CPC" EntitySet="LOG_CPC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_FAIXA_CPC_LOG_CPC" Association="Self.FK_LOG_FAIXA_CPC_LOG_CPC">
+            <End Role="LOG_CPC" EntitySet="LOG_CPC" />
+            <End Role="LOG_FAIXA_CPC" EntitySet="LOG_FAIXA_CPC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_FAIXA_LOCALIDADE_LOG_LOCALIDADE" Association="Self.FK_LOG_FAIXA_LOCALIDADE_LOG_LOCALIDADE">
+            <End Role="LOG_LOCALIDADE" EntitySet="LOG_LOCALIDADE" />
+            <End Role="LOG_FAIXA_LOCALIDADE" EntitySet="LOG_FAIXA_LOCALIDADE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_FAIXA_UOP_LOG_UNID_OPER" Association="Self.FK_LOG_FAIXA_UOP_LOG_UNID_OPER">
+            <End Role="LOG_UNID_OPER" EntitySet="LOG_UNID_OPER" />
+            <End Role="LOG_FAIXA_UOP" EntitySet="LOG_FAIXA_UOP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_GRANDE_USUARIO_LOG_LOGRADOURO" Association="Self.FK_LOG_GRANDE_USUARIO_LOG_LOGRADOURO">
+            <End Role="LOG_LOGRADOURO" EntitySet="LOG_LOGRADOURO" />
+            <End Role="LOG_GRANDE_USUARIO" EntitySet="LOG_GRANDE_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_LOGRADOURO_LOG_LOCALIDADE" Association="Self.FK_LOG_LOGRADOURO_LOG_LOCALIDADE">
+            <End Role="LOG_LOCALIDADE" EntitySet="LOG_LOCALIDADE" />
+            <End Role="LOG_LOGRADOURO" EntitySet="LOG_LOGRADOURO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_UNID_OPER_LOG_LOCALIDADE" Association="Self.FK_LOG_UNID_OPER_LOG_LOCALIDADE">
+            <End Role="LOG_LOCALIDADE" EntitySet="LOG_LOCALIDADE" />
+            <End Role="LOG_UNID_OPER" EntitySet="LOG_UNID_OPER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_VAR_LOC_LOG_LOCALIDADE" Association="Self.FK_LOG_VAR_LOC_LOG_LOCALIDADE">
+            <End Role="LOG_LOCALIDADE" EntitySet="LOG_LOCALIDADE" />
+            <End Role="LOG_VAR_LOC" EntitySet="LOG_VAR_LOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_NUM_SEC_LOG_LOGRADOURO" Association="Self.FK_LOG_NUM_SEC_LOG_LOGRADOURO">
+            <End Role="LOG_LOGRADOURO" EntitySet="LOG_LOGRADOURO" />
+            <End Role="LOG_NUM_SEC" EntitySet="LOG_NUM_SEC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_NUM_SEC_LOG_LOGRADOURO2" Association="Self.FK_LOG_NUM_SEC_LOG_LOGRADOURO2">
+            <End Role="LOG_LOGRADOURO" EntitySet="LOG_LOGRADOURO" />
+            <End Role="LOG_NUM_SEC" EntitySet="LOG_NUM_SEC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_VAR_LOG_LOG_LOGRADOURO" Association="Self.FK_LOG_VAR_LOG_LOG_LOGRADOURO">
+            <End Role="LOG_LOGRADOURO" EntitySet="LOG_LOGRADOURO" />
+            <End Role="LOG_VAR_LOG" EntitySet="LOG_VAR_LOG" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CEPModelStoreContainer" CdmEntityContainer="CEPEntities">
+          <EntitySetMapping Name="ECT_PAIS">
+            <EntityTypeMapping TypeName="CEPModel.ECT_PAIS">
+              <MappingFragment StoreEntitySet="ECT_PAIS">
+                <ScalarProperty Name="PAI_SG" ColumnName="PAI_SG" />
+                <ScalarProperty Name="PAI_SG_ALTERNATIVA" ColumnName="PAI_SG_ALTERNATIVA" />
+                <ScalarProperty Name="PAI_NO_PORTUGUES" ColumnName="PAI_NO_PORTUGUES" />
+                <ScalarProperty Name="PAI_NO_INGLES" ColumnName="PAI_NO_INGLES" />
+                <ScalarProperty Name="PAI_NO_FRANCES" ColumnName="PAI_NO_FRANCES" />
+                <ScalarProperty Name="PAI_ABREVIATURA" ColumnName="PAI_ABREVIATURA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOG_BAIRRO">
+            <EntityTypeMapping TypeName="CEPModel.LOG_BAIRRO">
+              <MappingFragment StoreEntitySet="LOG_BAIRRO">
+                <ScalarProperty Name="BAI_NU" ColumnName="BAI_NU" />
+                <ScalarProperty Name="UFE_SG" ColumnName="UFE_SG" />
+                <ScalarProperty Name="LOC_NU" ColumnName="LOC_NU" />
+                <ScalarProperty Name="BAI_NO" ColumnName="BAI_NO" />
+                <ScalarProperty Name="BAI_NO_ABREV" ColumnName="BAI_NO_ABREV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOG_CPC">
+            <EntityTypeMapping TypeName="CEPModel.LOG_CPC">
+              <MappingFragment StoreEntitySet="LOG_CPC">
+                <ScalarProperty Name="CPC_NU" ColumnName="CPC_NU" />
+                <ScalarProperty Name="UFE_SG" ColumnName="UFE_SG" />
+                <ScalarProperty Name="LOC_NU" ColumnName="LOC_NU" />
+                <ScalarProperty Name="CPC_NO" ColumnName="CPC_NO" />
+                <ScalarProperty Name="CPC_ENDERECO" ColumnName="CPC_ENDERECO" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOG_FAIXA_BAIRRO">
+            <EntityTypeMapping TypeName="CEPModel.LOG_FAIXA_BAIRRO">
+              <MappingFragment StoreEntitySet="LOG_FAIXA_BAIRRO">
+                <ScalarProperty Name="BAI_NU" ColumnName="BAI_NU" />
+                <ScalarProperty Name="FCB_CEP_INI" ColumnName="FCB_CEP_INI" />
+                <ScalarProperty Name="FCB_CEP_FIM" ColumnName="FCB_CEP_FIM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOG_FAIXA_CPC">
+            <EntityTypeMapping TypeName="CEPModel.LOG_FAIXA_CPC">
+              <MappingFragment StoreEntitySet="LOG_FAIXA_CPC">
+                <ScalarProperty Name="CPC_NU" ColumnName="CPC_NU" />
+                <ScalarProperty Name="CPC_INICIAL" ColumnName="CPC_INICIAL" />
+                <ScalarProperty Name="CPC_FINAL" ColumnName="CPC_FINAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOG_FAIXA_LOCALIDADE">
+            <EntityTypeMapping TypeName="CEPModel.LOG_FAIXA_LOCALIDADE">
+              <MappingFragment StoreEntitySet="LOG_FAIXA_LOCALIDADE">
+                <ScalarProperty Name="LOC_NU" ColumnName="LOC_NU" />
+                <ScalarProperty Name="LOC_CEP_INI" ColumnName="LOC_CEP_INI" />
+                <ScalarProperty Name="LOC_CEP_FIM" ColumnName="LOC_CEP_FIM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOG_FAIXA_UF">
+            <EntityTypeMapping TypeName="CEPModel.LOG_FAIXA_UF">
+              <MappingFragment StoreEntitySet="LOG_FAIXA_UF">
+                <ScalarProperty Name="UFE_SG" ColumnName="UFE_SG" />
+                <ScalarProperty Name="UFE_CEP_INI" ColumnName="UFE_CEP_INI" />
+                <ScalarProperty Name="UFE_CEP_FIM" ColumnName="UFE_CEP_FIM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOG_FAIXA_UOP">
+            <EntityTypeMapping TypeName="CEPModel.LOG_FAIXA_UOP">
+              <MappingFragment StoreEntitySet="LOG_FAIXA_UOP">
+                <ScalarProperty Name="UOP_NU" ColumnName="UOP_NU" />
+                <ScalarProperty Name="FNC_INICIAL" ColumnName="FNC_INICIAL" />
+                <ScalarProperty Name="FNC_FINAL" ColumnName="FNC_FINAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOG_GRANDE_USUARIO">
+            <EntityTypeMapping TypeName="CEPModel.LOG_GRANDE_USUARIO">
+              <MappingFragment StoreEntitySet="LOG_GRANDE_USUARIO">
+                <ScalarProperty Name="GRU_NU" ColumnName="GRU_NU" />
+                <ScalarProperty Name="UFE_SG" ColumnName="UFE_SG" />
+                <ScalarProperty Name="LOC_NU" ColumnName="LOC_NU" />
+                <ScalarProperty Name="BAI_NU" ColumnName="BAI_NU" />
+                <ScalarProperty Name="LOG_NU" ColumnName="LOG_NU" />
+                <ScalarProperty Name="GRU_NO" ColumnName="GRU_NO" />
+                <ScalarProperty Name="GRU_ENDERECO" ColumnName="GRU_ENDERECO" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+                <ScalarProperty Name="GRU_NO_ABREV" ColumnName="GRU_NO_ABREV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOG_LOCALIDADE">
+            <EntityTypeMapping TypeName="CEPModel.LOG_LOCALIDADE">
+              <MappingFragment StoreEntitySet="LOG_LOCALIDADE">
+                <ScalarProperty Name="LOC_NU" ColumnName="LOC_NU" />
+                <ScalarProperty Name="UFE_SG" ColumnName="UFE_SG" />
+                <ScalarProperty Name="LOC_NO" ColumnName="LOC_NO" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+                <ScalarProperty Name="LOC_IN_SIT" ColumnName="LOC_IN_SIT" />
+                <ScalarProperty Name="LOC_IN_TIPO" ColumnName="LOC_IN_TIPO" />
+                <ScalarProperty Name="LOC_NU_SUB" ColumnName="LOC_NU_SUB" />
+                <ScalarProperty Name="LOC_NO_ABREV" ColumnName="LOC_NO_ABREV" />
+                <ScalarProperty Name="MUN_NU" ColumnName="MUN_NU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOG_LOGRADOURO">
+            <EntityTypeMapping TypeName="CEPModel.LOG_LOGRADOURO">
+              <MappingFragment StoreEntitySet="LOG_LOGRADOURO">
+                <ScalarProperty Name="LOG_NU" ColumnName="LOG_NU" />
+                <ScalarProperty Name="UFE_SG" ColumnName="UFE_SG" />
+                <ScalarProperty Name="LOC_NU" ColumnName="LOC_NU" />
+                <ScalarProperty Name="BAI_NU_INI" ColumnName="BAI_NU_INI" />
+                <ScalarProperty Name="BAI_NU_FIM" ColumnName="BAI_NU_FIM" />
+                <ScalarProperty Name="LOG_NO" ColumnName="LOG_NO" />
+                <ScalarProperty Name="LOG_COMPLEMENTO" ColumnName="LOG_COMPLEMENTO" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+                <ScalarProperty Name="TLO_TX" ColumnName="TLO_TX" />
+                <ScalarProperty Name="LOG_STA_TLO" ColumnName="LOG_STA_TLO" />
+                <ScalarProperty Name="LOG_NO_ABREV" ColumnName="LOG_NO_ABREV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOG_NUM_SEC">
+            <EntityTypeMapping TypeName="CEPModel.LOG_NUM_SEC">
+              <MappingFragment StoreEntitySet="LOG_NUM_SEC">
+                <ScalarProperty Name="LOG_NU" ColumnName="LOG_NU" />
+                <ScalarProperty Name="SEC_NU_INI" ColumnName="SEC_NU_INI" />
+                <ScalarProperty Name="SEC_NU_FIM" ColumnName="SEC_NU_FIM" />
+                <ScalarProperty Name="SEC_IN_LADO" ColumnName="SEC_IN_LADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOG_TIPO_LOGRADOURO">
+            <EntityTypeMapping TypeName="CEPModel.LOG_TIPO_LOGRADOURO">
+              <MappingFragment StoreEntitySet="LOG_TIPO_LOGRADOURO">
+                <ScalarProperty Name="TLO_NU" ColumnName="TLO_NU" />
+                <ScalarProperty Name="TLO_TX" ColumnName="TLO_TX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOG_UNID_OPER">
+            <EntityTypeMapping TypeName="CEPModel.LOG_UNID_OPER">
+              <MappingFragment StoreEntitySet="LOG_UNID_OPER">
+                <ScalarProperty Name="UOP_NU" ColumnName="UOP_NU" />
+                <ScalarProperty Name="UFE_SG" ColumnName="UFE_SG" />
+                <ScalarProperty Name="LOC_NU" ColumnName="LOC_NU" />
+                <ScalarProperty Name="BAI_NU" ColumnName="BAI_NU" />
+                <ScalarProperty Name="LOG_NU" ColumnName="LOG_NU" />
+                <ScalarProperty Name="UOP_NO" ColumnName="UOP_NO" />
+                <ScalarProperty Name="UOP_ENDERECO" ColumnName="UOP_ENDERECO" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+                <ScalarProperty Name="UOP_IN_CP" ColumnName="UOP_IN_CP" />
+                <ScalarProperty Name="UOP_NO_ABREV" ColumnName="UOP_NO_ABREV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOG_VAR_BAI">
+            <EntityTypeMapping TypeName="CEPModel.LOG_VAR_BAI">
+              <MappingFragment StoreEntitySet="LOG_VAR_BAI">
+                <ScalarProperty Name="BAI_NU" ColumnName="BAI_NU" />
+                <ScalarProperty Name="VDB_NU" ColumnName="VDB_NU" />
+                <ScalarProperty Name="VDB_TX" ColumnName="VDB_TX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOG_VAR_LOC">
+            <EntityTypeMapping TypeName="CEPModel.LOG_VAR_LOC">
+              <MappingFragment StoreEntitySet="LOG_VAR_LOC">
+                <ScalarProperty Name="LOC_NU" ColumnName="LOC_NU" />
+                <ScalarProperty Name="VAL_NU" ColumnName="VAL_NU" />
+                <ScalarProperty Name="VAL_TX" ColumnName="VAL_TX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOG_VAR_LOG">
+            <EntityTypeMapping TypeName="CEPModel.LOG_VAR_LOG">
+              <MappingFragment StoreEntitySet="LOG_VAR_LOG">
+                <ScalarProperty Name="LOG_NU" ColumnName="LOG_NU" />
+                <ScalarProperty Name="VLO_NU" ColumnName="VLO_NU" />
+                <ScalarProperty Name="TLO_TX" ColumnName="TLO_TX" />
+                <ScalarProperty Name="VLO_TX" ColumnName="VLO_TX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

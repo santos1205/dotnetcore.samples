@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C8E4EDFC-9673-4E5E-A31C-5DA5BB97C43A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BaseAccess</RootNamespace>
+    <AssemblyName>BaseAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Acao.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Banco.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CEPDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CEPDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CEPDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CEPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CEPDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CEPDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="CicloFaturamento.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contato.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DadosCobranca.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dependente.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ECT_PAIS.cs">
+      <DependentUpon>CEPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Endereco.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\AcaoEnum.cs" />
+    <Compile Include="Enums\PagamentoStatusEnum.cs" />
+    <Compile Include="Enums\StatusHistoricoEventoEnum.cs" />
+    <Compile Include="Enums\TipoPlanoEnum.cs" />
+    <Compile Include="Especialidade.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstadoCivil.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Faturamento.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormaPagamento.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fSplit_Result.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HistoricoEvento.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LayoutTemplate.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Leads.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Log.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_BAIRRO.cs">
+      <DependentUpon>CEPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_CPC.cs">
+      <DependentUpon>CEPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_FAIXA_BAIRRO.cs">
+      <DependentUpon>CEPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_FAIXA_CPC.cs">
+      <DependentUpon>CEPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_FAIXA_LOCALIDADE.cs">
+      <DependentUpon>CEPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_FAIXA_UF.cs">
+      <DependentUpon>CEPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_FAIXA_UOP.cs">
+      <DependentUpon>CEPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_GRANDE_USUARIO.cs">
+      <DependentUpon>CEPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_LOCALIDADE.cs">
+      <DependentUpon>CEPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_LOGRADOURO.cs">
+      <DependentUpon>CEPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_NUM_SEC.cs">
+      <DependentUpon>CEPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_TIPO_LOGRADOURO.cs">
+      <DependentUpon>CEPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_UNID_OPER.cs">
+      <DependentUpon>CEPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_VAR_BAI.cs">
+      <DependentUpon>CEPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_VAR_LOC.cs">
+      <DependentUpon>CEPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_VAR_LOG.cs">
+      <DependentUpon>CEPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MelhorDiaPagamento.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NivelAcesso.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pagamento.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Parentesco.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Plano.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PlanoFaixaEtaria.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PlanoSegurado.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Prc_consolidado_faturamento_Result.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Prc_consolidado_pagamento_Result.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Prc_Consolidado_Premio_Result.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Prc_consolidado_segurado_Result.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Prc_detalhado_segurado_Result.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Profissao.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReajusteFaixaEtaria.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RepositorioImportacao.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Segurado.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Seguradora.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\AcaoService.cs" />
+    <Compile Include="Services\BancoService.cs" />
+    <Compile Include="Services\DependenteService.cs" />
+    <Compile Include="Services\EnderecoService.cs" />
+    <Compile Include="Services\EspecialidadeService.cs" />
+    <Compile Include="Services\EstadoCivilService.cs" />
+    <Compile Include="Services\FaturamentoService.cs" />
+    <Compile Include="Services\GerencialService.cs" />
+    <Compile Include="Services\LeadService.cs" />
+    <Compile Include="Services\LogService.cs" />
+    <Compile Include="Services\MudancaFaixaService.cs" />
+    <Compile Include="Services\PagamentoService.cs" />
+    <Compile Include="Services\PlanoService.cs" />
+    <Compile Include="Services\MelhorDiaPagamentoServices.cs" />
+    <Compile Include="Services\ProfissaoService.cs" />
+    <Compile Include="Services\SeguradoraService.cs" />
+    <Compile Include="Services\SeguradoService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\TemplateService.cs" />
+    <Compile Include="Services\UsuarioService.cs" />
+    <Compile Include="SindicatoMedicoDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SindicatoMedicoDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SindicatoMedicoDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SindicatoMedicoDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SindicatoMedicoDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="StatusPagamento.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Template.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoPlano.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tipo_parentesco.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tmpRepositorio.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.cs">
+      <DependentUpon>SindicatoMedicoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VModels\AcaoVM.cs" />
+    <Compile Include="VModels\ArquivoBoletoVM.cs" />
+    <Compile Include="VModels\BancoVM.cs" />
+    <Compile Include="VModels\ContatoVM.cs" />
+    <Compile Include="VModels\DependenteVM.cs" />
+    <Compile Include="VModels\EnderecoVM.cs" />
+    <Compile Include="VModels\GerencialConsolidadoVM.cs" />
+    <Compile Include="VModels\GerencialGraficoVM.cs" />
+    <Compile Include="VModels\GerencialValoresVM.cs" />
+    <Compile Include="VModels\RepositorioImportacaoVM.cs" />
+    <Compile Include="VModels\EspecialidadeVM.cs" />
+    <Compile Include="VModels\EstadoCivilVM.cs" />
+    <Compile Include="VModels\HistoricoEventoVM.cs" />
+    <Compile Include="VModels\LayoutVM.cs" />
+    <Compile Include="VModels\LeadVM.cs" />
+    <Compile Include="VModels\LogVM.cs" />
+    <Compile Include="VModels\MelhorDiaPagVM.cs" />
+    <Compile Include="VModels\PagamentoVM.cs" />
+    <Compile Include="VModels\PlanoSeguradoVM.cs" />
+    <Compile Include="VModels\PlanoVM.cs" />
+    <Compile Include="VModels\ProfissaoVM.cs" />
+    <Compile Include="VModels\SeguradoraVM.cs" />
+    <Compile Include="VModels\SeguradoReajusteVM.cs" />
+    <Compile Include="VModels\SeguradoVM.cs" />
+    <Compile Include="VModels\TemplateVM.cs" />
+    <Compile Include="VModels\UsuarioVM.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="CEPDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CEPDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="CEPDB.edmx.diagram">
+      <DependentUpon>CEPDB.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <EntityDeploy Include="SindicatoMedicoDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SindicatoMedicoDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="SindicatoMedicoDB.edmx.diagram">
+      <DependentUpon>SindicatoMedicoDB.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CEPDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CEPDB.edmx</DependentUpon>
+      <LastGenOutput>CEPDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CEPDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CEPDB.edmx</DependentUpon>
+      <LastGenOutput>CEPDB.cs</LastGenOutput>
+    </Content>
+    <Content Include="SindicatoMedicoDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SindicatoMedicoDB.edmx</DependentUpon>
+      <LastGenOutput>SindicatoMedicoDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SindicatoMedicoDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SindicatoMedicoDB.edmx</DependentUpon>
+      <LastGenOutput>SindicatoMedicoDB.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{c7630e1a-7170-4c5a-bb2a-bed4c9f2960a}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

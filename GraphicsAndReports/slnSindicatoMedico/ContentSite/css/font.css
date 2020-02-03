@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,700,800');
+
+body,h1,h2,h3,h4,h5,h6,p,a,ul,pre{
+	font-family: 'Open Sans', sans-serif;
+}
+body{
+	font-size:14px;
+	line-height:24px;
+}
+h1,.h1-like{
+	font-size:120px;
+	line-height:120px;
+	font-weight:700;
+	text-transform:uppercase;
+	letter-spacing:0.06em;
+}
+h1 small,.h1-like small{
+	font-size:48px;
+	font-weight:300;
+}
+h2,.h2-like{
+	font-size:80px;
+	line-height:96px;
+	font-weight:700;
+	text-transform:uppercase;
+	letter-spacing:0.06em;
+}
+h3,.h3-like{
+	font-size:53px;
+	line-height:60px;
+	font-weight:700;
+}
+h4,.h4-like{
+	font-size:22px;
+	line-height:33px;
+	font-weight:700;
+	text-transform:uppercase;
+	letter-spacing:0.06em;
+}
+h5,.h5-like{
+	font-size:16px;
+	line-height:22px;
+	font-weight:700;
+}
+h6,.h6-like{
+	font-size:14px;
+	line-height:24px;
+	font-weight:700;
+	text-transform:uppercase;
+	letter-spacing:0.1em;
+}
+p,.p-like{
+	font-size:14px;
+	line-height:25px;
+}
+p.lead{
+	font-size:19px;
+	line-height:37px;
+	font-weight:300;
+	letter-spacing:0.02em;
+}
+blockquote{
+	font-size:17px;
+	line-height:25px;
+}

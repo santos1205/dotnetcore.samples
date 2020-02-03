@@ -1,0 +1,50 @@
+	/*
+  	megaicon icon font: megaicon
+  	Creation date: 30/04/2017 20:45
+  	*/
+
+@font-face {
+  font-family: "megaicon";
+  src: url("./megaicon.eot");
+  src: url("./megaicon.eot?#iefix") format("embedded-opentype"),
+       url("./megaicon.woff") format("woff"),
+       url("./megaicon.ttf") format("truetype"),
+       url("./megaicon.svg#megaicon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "megaicon";
+    src: url("./megaicon.svg#megaicon") format("svg");
+  }
+}
+
+[class^="megaicon-"]:before, [class*=" megaicon-"]:before,
+[class^="megaicon-"]:after, [class*=" megaicon-"]:after {
+  font-family: megaicon;
+  font-size: inherit;
+  line-height: 1;
+  font-style: normal;
+}
+
+.megaicon-home:before { content: "\f100"; }
+.megaicon-phone-call:before { content: "\f101"; }
+.megaicon-arrows:before { content: "\f102"; }
+.megaicon-time-left:before { content: "\f103"; }
+.megaicon-add-circular-outlined-button:before { content: "\f104"; }
+.megaicon-quotes:before { content: "\f105"; }
+.megaicon-location-pin:before { content: "\f106"; }
+.megaicon-office:before { content: "\f107"; }
+.megaicon-technology-2:before { content: "\f108"; }
+.megaicon-science:before { content: "\f109"; }
+.megaicon-travel:before { content: "\f10a"; }
+.megaicon-ship:before { content: "\f10b"; }
+.megaicon-box:before { content: "\f10c"; }
+.megaicon-electric-tower:before { content: "\f10d"; }
+.megaicon-water:before { content: "\f10e"; }
+.megaicon-solar-energy:before { content: "\f10f"; }
+.megaicon-technology-1:before { content: "\f110"; }
+.megaicon-heart:before { content: "\f111"; }
+.megaicon-technology:before { content: "\f112"; }

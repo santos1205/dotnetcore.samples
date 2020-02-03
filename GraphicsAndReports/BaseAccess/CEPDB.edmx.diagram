@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4b427fec8d6d40c5bef86d4b053862ee" Name="Diagram1">
+        <EntityTypeShape EntityType="CEPModel.ECT_PAIS" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CEPModel.LOG_BAIRRO" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="CEPModel.LOG_CPC" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CEPModel.LOG_FAIXA_BAIRRO" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CEPModel.LOG_FAIXA_CPC" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CEPModel.LOG_FAIXA_LOCALIDADE" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CEPModel.LOG_FAIXA_UF" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CEPModel.LOG_FAIXA_UOP" Width="1.5" PointX="5.25" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CEPModel.LOG_GRANDE_USUARIO" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="CEPModel.LOG_LOCALIDADE" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CEPModel.LOG_LOGRADOURO" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CEPModel.LOG_NUM_SEC" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CEPModel.LOG_TIPO_LOGRADOURO" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CEPModel.LOG_UNID_OPER" Width="1.5" PointX="3" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CEPModel.LOG_VAR_BAI" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CEPModel.LOG_VAR_LOC" Width="1.5" PointX="3" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CEPModel.LOG_VAR_LOG" Width="1.5" PointX="5.25" PointY="19.625" IsExpanded="true" />
+        <AssociationConnector Association="CEPModel.FK_LOG_BAIRRO_LOG_LOCALIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="CEPModel.FK_LOG_FAIXA_BAIRRO_LOG_BAIRRO" ManuallyRouted="false" />
+        <AssociationConnector Association="CEPModel.FK_LOG_VAR_BAI_LOG_BAIRRO" ManuallyRouted="false" />
+        <AssociationConnector Association="CEPModel.FK_LOG_CPC_LOG_LOCALIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="CEPModel.FK_LOG_FAIXA_CPC_LOG_CPC" ManuallyRouted="false" />
+        <AssociationConnector Association="CEPModel.FK_LOG_FAIXA_LOCALIDADE_LOG_LOCALIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="CEPModel.FK_LOG_FAIXA_UOP_LOG_UNID_OPER" ManuallyRouted="false" />
+        <AssociationConnector Association="CEPModel.FK_LOG_GRANDE_USUARIO_LOG_LOGRADOURO" ManuallyRouted="false" />
+        <AssociationConnector Association="CEPModel.FK_LOG_LOGRADOURO_LOG_LOCALIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="CEPModel.FK_LOG_UNID_OPER_LOG_LOCALIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="CEPModel.FK_LOG_VAR_LOC_LOG_LOCALIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="CEPModel.FK_LOG_NUM_SEC_LOG_LOGRADOURO" ManuallyRouted="false" />
+        <AssociationConnector Association="CEPModel.FK_LOG_NUM_SEC_LOG_LOGRADOURO2" ManuallyRouted="false" />
+        <AssociationConnector Association="CEPModel.FK_LOG_VAR_LOG_LOG_LOGRADOURO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

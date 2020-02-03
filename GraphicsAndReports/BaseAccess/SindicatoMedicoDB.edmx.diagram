@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7df785d85c1f4a5a96de9b1857855c3f" Name="Diagram1">
+        <EntityTypeShape EntityType="SindicatoMedicoModel.Acao" Width="1.5" PointX="3.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.Banco" Width="1.5" PointX="5.25" PointY="41.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.CicloFaturamento" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.Contato" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.DadosCobranca" Width="1.5" PointX="7.5" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.Dependente" Width="1.5" PointX="5.25" PointY="45.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.Endereco" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.Especialidade" Width="1.5" PointX="3" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.EstadoCivil" Width="1.5" PointX="3" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.Faturamento" Width="1.5" PointX="3" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.FormaPagamento" Width="1.5" PointX="3" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.HistoricoEvento" Width="1.5" PointX="8" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.LayoutTemplate" Width="1.5" PointX="8" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.Leads" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.Log" Width="1.5" PointX="6" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.MelhorDiaPagamento" Width="1.5" PointX="3" PointY="37.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.NivelAcesso" Width="1.5" PointX="1.5" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.Pagamento" Width="1.5" PointX="10.5" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.Parentesco" Width="1.5" PointX="0.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.Plano" Width="1.5" PointX="3.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.PlanoFaixaEtaria" Width="1.5" PointX="6" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.PlanoSegurado" Width="1.5" PointX="6" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.Profissao" Width="1.5" PointX="3" PointY="39.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.ReajusteFaixaEtaria" Width="1.5" PointX="6" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.RepositorioImportacao" Width="1.5" PointX="8" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.Segurado" Width="1.5" PointX="5.25" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.Seguradora" Width="1.5" PointX="3" PointY="42.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.StatusPagamento" Width="1.5" PointX="8.25" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.Template" Width="1.5" PointX="5.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.Tipo_parentesco" Width="1.5" PointX="3" PointY="47.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.TipoPlano" Width="1.5" PointX="1.5" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.tmpRepositorio" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SindicatoMedicoModel.Usuario" Width="1.5" PointX="3.75" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Log_Acao" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_DadosCobranca_Banco" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Contato_Parentesco" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_DadosCobranca_Segurado" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Dependente_EstadoCivil" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Dependente_Profissao" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Dependente_Tipo_parentesco" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Endereco_Parentesco" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Segurado_Especialidade" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Segurado_EstadoCivil" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Tipo_Parentesco" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Segurado_FormaPagamento" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_HistoricoEvento_Template" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_HistoricoEvento_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Template" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Log_Parentesco" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Log_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Segurado_Melhor_Dia_Pagamento" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_dbo_Usuario_dbo_NivelAcesso_usr_nvl_id" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Pagamento_Plano" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Pagamento_Segurado" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Pagamento_StatusPagamento" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_PlanoSegurado_Parentesco" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_ReajusteFaixaEtaria_Parentesco" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Segurado_Parentesco1" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Tipo_parentesco_Parentesco" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Plano" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_PlanosFaixaEtaria_Planos" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_ReajusteFaixaEtaria_Plano" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_TipoPlano" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Segurado_Profissao" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_RepositorioImportacao_Template" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Segurado_Seguradora" ManuallyRouted="false" />
+        <AssociationConnector Association="SindicatoMedicoModel.FK_Segurado_Tipo_parentesco1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

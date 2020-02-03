@@ -1,0 +1,2679 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SindicatoMedicoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Acao">
+          <Key>
+            <PropertyRef Name="aco_id" />
+          </Key>
+          <Property Name="aco_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aco_nome" Type="varchar" MaxLength="155" Nullable="false" />
+          <Property Name="aco_descricao" Type="varchar" MaxLength="50" />
+          <Property Name="aco_ativo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Banco">
+          <Key>
+            <PropertyRef Name="ban_id" />
+          </Key>
+          <Property Name="ban_id" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="ban_descricao" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ban_ativo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CicloFaturamento">
+          <Key>
+            <PropertyRef Name="cft_id" />
+          </Key>
+          <Property Name="cft_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cft_dia_inicial" Type="tinyint" Nullable="false" />
+          <Property Name="cft_dia_final" Type="tinyint" Nullable="false" />
+          <Property Name="cft_dia_faturamento" Type="tinyint" Nullable="false" />
+          <Property Name="cft_dia_reajuste" Type="tinyint" Nullable="false" />
+          <Property Name="cft_timestamp" Type="datetime" Nullable="false" />
+          <Property Name="cft_ativo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contato">
+          <Key>
+            <PropertyRef Name="cnt_id" />
+          </Key>
+          <Property Name="cnt_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cnt_cpf" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="cnt_par_id" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="cnt_ddd" Type="char" MaxLength="3" />
+          <Property Name="cnt_fone" Type="char" MaxLength="9" />
+          <Property Name="cnt_celular" Type="char" MaxLength="9" />
+          <Property Name="cnt_ativo" Type="bit" Nullable="false" />
+          <Property Name="cnt_ddd_celular" Type="char" MaxLength="3" />
+          <Property Name="cnt_seg_id" Type="int" />
+          <Property Name="cnt_dep_id" Type="int" />
+        </EntityType>
+        <EntityType Name="DadosCobranca">
+          <Key>
+            <PropertyRef Name="dco_id" />
+          </Key>
+          <Property Name="dco_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dco_seg_id" Type="int" Nullable="false" />
+          <Property Name="dco_agencia" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="dco_conta" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="dco_ban_id" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dependente">
+          <Key>
+            <PropertyRef Name="dep_id" />
+          </Key>
+          <Property Name="dep_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dep_cpf_titular" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="dep_nome" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="dep_cpf" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="dep_par_id" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="dep_tpa_id" Type="int" Nullable="false" />
+          <Property Name="dep_pla_id" Type="int" Nullable="false" />
+          <Property Name="dep_data_nascimento" Type="date" Nullable="false" />
+          <Property Name="dep_valor_faixa" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="dep_email" Type="varchar" MaxLength="255" />
+          <Property Name="dep_dt_cadastro" Type="date" />
+          <Property Name="dep_dt_atualizacao" Type="date" />
+          <Property Name="dep_prf_id" Type="int" />
+          <Property Name="dep_civ_id" Type="int" />
+          <Property Name="dep_dt_filiacao" Type="date" />
+          <Property Name="dep_sexo" Type="char" MaxLength="1" />
+          <Property Name="dep_nacionalidade" Type="varchar" MaxLength="100" />
+          <Property Name="dep_pispasep" Type="char" MaxLength="11" />
+          <Property Name="dep_cns" Type="varchar" MaxLength="50" />
+          <Property Name="dep_dn" Type="varchar" MaxLength="11" />
+          <Property Name="dep_inicio_vigencia" Type="date" />
+          <Property Name="dep_fim_vigencia" Type="date" />
+          <Property Name="dep_nome_mae" Type="varchar" MaxLength="100" />
+          <Property Name="dep_ativo" Type="bit" Nullable="false" />
+          <Property Name="dep_numero_carteira" Type="varchar" MaxLength="20" />
+          <Property Name="dep_valor_odonto" Type="numeric" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="Endereco">
+          <Key>
+            <PropertyRef Name="end_id" />
+          </Key>
+          <Property Name="end_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="end_par_id" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="end_cpf" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="end_endereco" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="end_bairro" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="end_cidade" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="end_complemento" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="end_estado" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="end_cep" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="end_ativo" Type="bit" Nullable="false" />
+          <Property Name="end_seg_id" Type="int" />
+          <Property Name="end_dep_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Especialidade">
+          <Key>
+            <PropertyRef Name="esp_id" />
+          </Key>
+          <Property Name="esp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="esp_descricao" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstadoCivil">
+          <Key>
+            <PropertyRef Name="civ_id" />
+          </Key>
+          <Property Name="civ_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="civ_descricao" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Faturamento">
+          <Key>
+            <PropertyRef Name="fat_id" />
+          </Key>
+          <Property Name="fat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fat_referencia" Type="char" MaxLength="6" />
+          <Property Name="fat_valor_faturamento" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="fat_par_id" Type="char" MaxLength="1" />
+          <Property Name="fat_pla_tpp_id" Type="smallint" />
+          <Property Name="fat_quantidade" Type="int" />
+        </EntityType>
+        <EntityType Name="FormaPagamento">
+          <Key>
+            <PropertyRef Name="for_id" />
+          </Key>
+          <Property Name="for_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="for_descricao" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="for_ativo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HistoricoEvento">
+          <Key>
+            <PropertyRef Name="hev_id" />
+          </Key>
+          <Property Name="hev_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hev_DataEvento" Type="datetime" Nullable="false" />
+          <Property Name="hev_NomeArquivo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="hev_tpl_id" Type="int" Nullable="false" />
+          <Property Name="hev_StatusEvento" Type="smallint" Nullable="false" />
+          <Property Name="hev_usr_id" Type="int" Nullable="false" />
+          <Property Name="hev_MesReferencia" Type="char" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LayoutTemplate">
+          <Key>
+            <PropertyRef Name="lay_id" />
+          </Key>
+          <Property Name="lay_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lay_tpl_id" Type="int" Nullable="false" />
+          <Property Name="lay_posicao_campo" Type="smallint" Nullable="false" />
+          <Property Name="lay_nome_campo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="lay_tamanho_campo" Type="smallint" Nullable="false" />
+          <Property Name="lay_formato_campo" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="lay_obrigatoriedade" Type="bit" Nullable="false" />
+          <Property Name="lay_ativo" Type="bit" Nullable="false" />
+          <Property Name="lay_timestamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Leads">
+          <Key>
+            <PropertyRef Name="led_id" />
+          </Key>
+          <Property Name="led_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="led_nome" Type="nvarchar" MaxLength="100" />
+          <Property Name="led_crm" Type="nchar" MaxLength="10" />
+          <Property Name="led_telefone" Type="nchar" MaxLength="11" />
+          <Property Name="led_celular" Type="nchar" MaxLength="11" />
+          <Property Name="led_email" Type="nvarchar" MaxLength="50" />
+          <Property Name="led_timestamp" Type="datetime" Nullable="false" />
+          <Property Name="led_ativo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="log_id" />
+          </Key>
+          <Property Name="log_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="log_aco_id" Type="int" Nullable="false" />
+          <Property Name="log_data" Type="datetime" Nullable="false" />
+          <Property Name="log_usr_id" Type="int" Nullable="false" />
+          <Property Name="log_cpf" Type="varchar" MaxLength="11" />
+          <Property Name="log_par_id" Type="char" MaxLength="1" />
+          <Property Name="log_ativo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MelhorDiaPagamento">
+          <Key>
+            <PropertyRef Name="mdp_id" />
+          </Key>
+          <Property Name="mdp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mdp_dia" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NivelAcesso">
+          <Key>
+            <PropertyRef Name="nvl_id" />
+          </Key>
+          <Property Name="nvl_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nvl_descricao" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="nvl_dt_cadastro" Type="datetime" Nullable="false" />
+          <Property Name="nvl_bolAtivo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pagamento">
+          <Key>
+            <PropertyRef Name="pag_id" />
+          </Key>
+          <Property Name="pag_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pag_seg_id" Type="int" Nullable="false" />
+          <Property Name="pag_data_vencimento" Type="date" Nullable="false" />
+          <Property Name="pag_valor_vencimento" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="pag_identificacao" Type="varchar" MaxLength="50" />
+          <Property Name="pag_valor_recebido" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="pag_juros" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="pag_tipo_baixa" Type="char" MaxLength="1" />
+          <Property Name="pag_spg_id" Type="int" Nullable="false" />
+          <Property Name="pag_data_baixa_pagamento" Type="datetime" />
+          <Property Name="pag_ativo" Type="bit" Nullable="false" />
+          <Property Name="pag_timestamp_baixa" Type="datetime" Nullable="false" />
+          <Property Name="pag_pla_id" Type="int" Nullable="false" />
+          <Property Name="pag_data_pagamento" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Parentesco">
+          <Key>
+            <PropertyRef Name="par_id" />
+          </Key>
+          <Property Name="par_id" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="par_nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="par_ativo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plano">
+          <Key>
+            <PropertyRef Name="pla_id" />
+          </Key>
+          <Property Name="pla_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pla_nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pla_descricao" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="pla_ativo" Type="bit" Nullable="false" />
+          <Property Name="pla_tpp_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlanoFaixaEtaria">
+          <Key>
+            <PropertyRef Name="pfe_id" />
+          </Key>
+          <Property Name="pfe_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pla_id" Type="int" Nullable="false" />
+          <Property Name="pfe_faixa_inicial" Type="int" Nullable="false" />
+          <Property Name="pfe_faixa_final" Type="int" Nullable="false" />
+          <Property Name="pfe_premio_total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="pfe_data_alteracao" Type="date" Nullable="false" />
+          <Property Name="pfe_ativo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlanoSegurado">
+          <Key>
+            <PropertyRef Name="pls_id" />
+          </Key>
+          <Property Name="pls_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pls_seg_id" Type="int" Nullable="false" />
+          <Property Name="pls_pla_id" Type="int" Nullable="false" />
+          <Property Name="pls_ativo" Type="bit" Nullable="false" />
+          <Property Name="pls_timestamp" Type="datetime" Nullable="false" />
+          <Property Name="pls_par_id" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Profissao">
+          <Key>
+            <PropertyRef Name="prf_id" />
+          </Key>
+          <Property Name="prf_id" Type="int" Nullable="false" />
+          <Property Name="prf_descricao" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReajusteFaixaEtaria">
+          <Key>
+            <PropertyRef Name="rfe_id" />
+          </Key>
+          <Property Name="rfe_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rfe_id_seg_dep" Type="int" Nullable="false" />
+          <Property Name="rfe_valor_anterior" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="rfe_valor_atualizado" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="rfe_pla_id" Type="int" Nullable="false" />
+          <Property Name="rfe_par_id" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="rfe_data_reajuste" Type="date" Nullable="false" />
+          <Property Name="rfe_ativo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RepositorioImportacao">
+          <Key>
+            <PropertyRef Name="rep_id" />
+          </Key>
+          <Property Name="rep_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rep_tpl_id" Type="int" Nullable="false" />
+          <Property Name="rep_arquivo" Type="varchar" MaxLength="8000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Segurado">
+          <Key>
+            <PropertyRef Name="seg_id" />
+          </Key>
+          <Property Name="seg_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="seg_nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="seg_cpf" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="seg_par_id" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="seg_tpa_id" Type="int" Nullable="false" />
+          <Property Name="seg_data_nascimento" Type="date" Nullable="false" />
+          <Property Name="seg_valor_faixa" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="seg_dt_cadastro" Type="date" />
+          <Property Name="seg_dt_atualiza_status" Type="date" />
+          <Property Name="seg_email" Type="varchar" MaxLength="255" />
+          <Property Name="seg_ativo" Type="bit" Nullable="false" />
+          <Property Name="seg_prf_id" Type="int" />
+          <Property Name="seg_dt_filiacao" Type="date" />
+          <Property Name="seg_sexo" Type="char" MaxLength="1" />
+          <Property Name="seg_nome_mae" Type="varchar" MaxLength="100" />
+          <Property Name="seg_nacionalidade" Type="varchar" MaxLength="100" />
+          <Property Name="seg_pispasep" Type="char" MaxLength="11" />
+          <Property Name="seg_dn" Type="varchar" MaxLength="11" />
+          <Property Name="seg_esp_id" Type="int" />
+          <Property Name="seg_cns" Type="varchar" MaxLength="50" />
+          <Property Name="seg_civ_id" Type="int" />
+          <Property Name="seg_inicio_vigencia" Type="date" />
+          <Property Name="seg_for_id" Type="int" />
+          <Property Name="seg_cia_proposta" Type="int" />
+          <Property Name="seg_cia_id" Type="int" />
+          <Property Name="esp_id" Type="int" />
+          <Property Name="seg_num_filiacao" Type="numeric" Precision="15" Scale="0" />
+          <Property Name="seg_num_proposta" Type="numeric" Precision="15" Scale="0" />
+          <Property Name="seg_crm_estado" Type="char" MaxLength="2" />
+          <Property Name="seg_mdp_id" Type="int" />
+          <Property Name="seg_numero_carteira" Type="varchar" MaxLength="20" />
+          <Property Name="seg_crm" Type="int" />
+          <Property Name="seg_valor_odonto" Type="numeric" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="Seguradora">
+          <Key>
+            <PropertyRef Name="cia_id" />
+          </Key>
+          <Property Name="cia_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cia_descricao" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusPagamento">
+          <Key>
+            <PropertyRef Name="spg_id" />
+          </Key>
+          <Property Name="spg_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="spg_nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="spg_descricao" Type="varchar" MaxLength="100" />
+          <Property Name="spg_ativo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Template">
+          <Key>
+            <PropertyRef Name="tpl_id" />
+          </Key>
+          <Property Name="tpl_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tpl_nome_template" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="tpl_tipo_acao" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="tpl_delimitador" Type="char" MaxLength="1" />
+          <Property Name="tpl_extensao" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="tpl_ativo" Type="bit" Nullable="false" />
+          <Property Name="tpl_timestamp" Type="datetime" Nullable="false" />
+          <Property Name="tpl_padrao" Type="bit" />
+        </EntityType>
+        <EntityType Name="Tipo_parentesco">
+          <Key>
+            <PropertyRef Name="tpa_id" />
+          </Key>
+          <Property Name="tpa_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tpa_par_id" Type="char" MaxLength="1" />
+          <Property Name="tpa_nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tpa_ativo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoPlano">
+          <Key>
+            <PropertyRef Name="tpp_id" />
+          </Key>
+          <Property Name="tpp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tpp_descricao" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tmpRepositorio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Nome_Segurado" Type="varchar" MaxLength="50" />
+          <Property Name="Numero_Filiacao" Type="varchar" MaxLength="10" />
+          <Property Name="Valor_Pago" Type="varchar" MaxLength="10" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="usr_id" />
+          </Key>
+          <Property Name="usr_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usr_nome" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="usr_genero" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="usr_cpf" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="usr_dt_cadastro" Type="datetime" Nullable="false" />
+          <Property Name="usr_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="usr_dt_aprovado" Type="datetime" />
+          <Property Name="usr_aprovado" Type="char" MaxLength="1" />
+          <Property Name="usr_deletado" Type="bit" Nullable="false" />
+          <Property Name="usr_senha" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="usr_nvl_id" Type="int" Nullable="false" />
+          <Property Name="usr_atualiza_senha" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Contato_Parentesco">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="1" />
+          <End Role="Contato" Type="Self.Contato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="par_id" />
+            </Principal>
+            <Dependent Role="Contato">
+              <PropertyRef Name="cnt_par_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DadosCobranca_Banco">
+          <End Role="Banco" Type="Self.Banco" Multiplicity="1" />
+          <End Role="DadosCobranca" Type="Self.DadosCobranca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banco">
+              <PropertyRef Name="ban_id" />
+            </Principal>
+            <Dependent Role="DadosCobranca">
+              <PropertyRef Name="dco_ban_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DadosCobranca_Segurado">
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="1" />
+          <End Role="DadosCobranca" Type="Self.DadosCobranca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Segurado">
+              <PropertyRef Name="seg_id" />
+            </Principal>
+            <Dependent Role="DadosCobranca">
+              <PropertyRef Name="dco_seg_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Usuario_dbo_NivelAcesso_usr_nvl_id">
+          <End Role="NivelAcesso" Type="Self.NivelAcesso" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NivelAcesso">
+              <PropertyRef Name="nvl_id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="usr_nvl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dependente_EstadoCivil">
+          <End Role="EstadoCivil" Type="Self.EstadoCivil" Multiplicity="0..1" />
+          <End Role="Dependente" Type="Self.Dependente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoCivil">
+              <PropertyRef Name="civ_id" />
+            </Principal>
+            <Dependent Role="Dependente">
+              <PropertyRef Name="dep_civ_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dependente_Profissao">
+          <End Role="Profissao" Type="Self.Profissao" Multiplicity="0..1" />
+          <End Role="Dependente" Type="Self.Dependente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profissao">
+              <PropertyRef Name="prf_id" />
+            </Principal>
+            <Dependent Role="Dependente">
+              <PropertyRef Name="dep_prf_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dependente_Tipo_parentesco">
+          <End Role="Tipo_parentesco" Type="Self.Tipo_parentesco" Multiplicity="1" />
+          <End Role="Dependente" Type="Self.Dependente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_parentesco">
+              <PropertyRef Name="tpa_id" />
+            </Principal>
+            <Dependent Role="Dependente">
+              <PropertyRef Name="dep_tpa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Endereco_Parentesco">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="1" />
+          <End Role="Endereco" Type="Self.Endereco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="par_id" />
+            </Principal>
+            <Dependent Role="Endereco">
+              <PropertyRef Name="end_par_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoricoEvento_Template">
+          <End Role="Template" Type="Self.Template" Multiplicity="1" />
+          <End Role="HistoricoEvento" Type="Self.HistoricoEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Template">
+              <PropertyRef Name="tpl_id" />
+            </Principal>
+            <Dependent Role="HistoricoEvento">
+              <PropertyRef Name="hev_tpl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoricoEvento_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="HistoricoEvento" Type="Self.HistoricoEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usr_id" />
+            </Principal>
+            <Dependent Role="HistoricoEvento">
+              <PropertyRef Name="hev_usr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_Acao">
+          <End Role="Acao" Type="Self.Acao" Multiplicity="1" />
+          <End Role="Log" Type="Self.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acao">
+              <PropertyRef Name="aco_id" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="log_aco_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_Parentesco">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="0..1" />
+          <End Role="Log" Type="Self.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="par_id" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="log_par_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Log" Type="Self.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usr_id" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="log_usr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagamento_Plano">
+          <End Role="Plano" Type="Self.Plano" Multiplicity="1" />
+          <End Role="Pagamento" Type="Self.Pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plano">
+              <PropertyRef Name="pla_id" />
+            </Principal>
+            <Dependent Role="Pagamento">
+              <PropertyRef Name="pag_pla_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagamento_Segurado">
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="1" />
+          <End Role="Pagamento" Type="Self.Pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Segurado">
+              <PropertyRef Name="seg_id" />
+            </Principal>
+            <Dependent Role="Pagamento">
+              <PropertyRef Name="pag_seg_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagamento_StatusPagamento">
+          <End Role="StatusPagamento" Type="Self.StatusPagamento" Multiplicity="1" />
+          <End Role="Pagamento" Type="Self.Pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusPagamento">
+              <PropertyRef Name="spg_id" />
+            </Principal>
+            <Dependent Role="Pagamento">
+              <PropertyRef Name="pag_spg_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plano">
+          <End Role="Plano" Type="Self.Plano" Multiplicity="1" />
+          <End Role="PlanoSegurado" Type="Self.PlanoSegurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plano">
+              <PropertyRef Name="pla_id" />
+            </Principal>
+            <Dependent Role="PlanoSegurado">
+              <PropertyRef Name="pls_pla_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanoSegurado_Parentesco">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="0..1" />
+          <End Role="PlanoSegurado" Type="Self.PlanoSegurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="par_id" />
+            </Principal>
+            <Dependent Role="PlanoSegurado">
+              <PropertyRef Name="pls_par_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanosFaixaEtaria_Planos">
+          <End Role="Plano" Type="Self.Plano" Multiplicity="1" />
+          <End Role="PlanoFaixaEtaria" Type="Self.PlanoFaixaEtaria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plano">
+              <PropertyRef Name="pla_id" />
+            </Principal>
+            <Dependent Role="PlanoFaixaEtaria">
+              <PropertyRef Name="pla_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReajusteFaixaEtaria_Parentesco">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="1" />
+          <End Role="ReajusteFaixaEtaria" Type="Self.ReajusteFaixaEtaria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="par_id" />
+            </Principal>
+            <Dependent Role="ReajusteFaixaEtaria">
+              <PropertyRef Name="rfe_par_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReajusteFaixaEtaria_Plano">
+          <End Role="Plano" Type="Self.Plano" Multiplicity="1" />
+          <End Role="ReajusteFaixaEtaria" Type="Self.ReajusteFaixaEtaria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plano">
+              <PropertyRef Name="pla_id" />
+            </Principal>
+            <Dependent Role="ReajusteFaixaEtaria">
+              <PropertyRef Name="rfe_pla_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RepositorioImportacao_Template">
+          <End Role="Template" Type="Self.Template" Multiplicity="1" />
+          <End Role="RepositorioImportacao" Type="Self.RepositorioImportacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Template">
+              <PropertyRef Name="tpl_id" />
+            </Principal>
+            <Dependent Role="RepositorioImportacao">
+              <PropertyRef Name="rep_tpl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segurado_Especialidade">
+          <End Role="Especialidade" Type="Self.Especialidade" Multiplicity="0..1" />
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialidade">
+              <PropertyRef Name="esp_id" />
+            </Principal>
+            <Dependent Role="Segurado">
+              <PropertyRef Name="seg_esp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segurado_EstadoCivil">
+          <End Role="EstadoCivil" Type="Self.EstadoCivil" Multiplicity="0..1" />
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoCivil">
+              <PropertyRef Name="civ_id" />
+            </Principal>
+            <Dependent Role="Segurado">
+              <PropertyRef Name="seg_civ_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segurado_FormaPagamento">
+          <End Role="FormaPagamento" Type="Self.FormaPagamento" Multiplicity="0..1" />
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormaPagamento">
+              <PropertyRef Name="for_id" />
+            </Principal>
+            <Dependent Role="Segurado">
+              <PropertyRef Name="seg_for_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segurado_Melhor_Dia_Pagamento">
+          <End Role="MelhorDiaPagamento" Type="Self.MelhorDiaPagamento" Multiplicity="0..1" />
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MelhorDiaPagamento">
+              <PropertyRef Name="mdp_id" />
+            </Principal>
+            <Dependent Role="Segurado">
+              <PropertyRef Name="seg_mdp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segurado_Parentesco1">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="1" />
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="par_id" />
+            </Principal>
+            <Dependent Role="Segurado">
+              <PropertyRef Name="seg_par_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segurado_Profissao">
+          <End Role="Profissao" Type="Self.Profissao" Multiplicity="0..1" />
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profissao">
+              <PropertyRef Name="prf_id" />
+            </Principal>
+            <Dependent Role="Segurado">
+              <PropertyRef Name="seg_prf_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segurado_Seguradora">
+          <End Role="Seguradora" Type="Self.Seguradora" Multiplicity="0..1" />
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seguradora">
+              <PropertyRef Name="cia_id" />
+            </Principal>
+            <Dependent Role="Segurado">
+              <PropertyRef Name="seg_cia_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segurado_Tipo_parentesco1">
+          <End Role="Tipo_parentesco" Type="Self.Tipo_parentesco" Multiplicity="1" />
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_parentesco">
+              <PropertyRef Name="tpa_id" />
+            </Principal>
+            <Dependent Role="Segurado">
+              <PropertyRef Name="seg_tpa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Template">
+          <End Role="Template" Type="Self.Template" Multiplicity="1" />
+          <End Role="LayoutTemplate" Type="Self.LayoutTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Template">
+              <PropertyRef Name="tpl_id" />
+            </Principal>
+            <Dependent Role="LayoutTemplate">
+              <PropertyRef Name="lay_tpl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tipo_Parentesco">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="0..1" />
+          <End Role="Faturamento" Type="Self.Faturamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="par_id" />
+            </Principal>
+            <Dependent Role="Faturamento">
+              <PropertyRef Name="fat_par_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tipo_parentesco_Parentesco">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="0..1" />
+          <End Role="Tipo_parentesco" Type="Self.Tipo_parentesco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="par_id" />
+            </Principal>
+            <Dependent Role="Tipo_parentesco">
+              <PropertyRef Name="tpa_par_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoPlano">
+          <End Role="TipoPlano" Type="Self.TipoPlano" Multiplicity="1" />
+          <End Role="Plano" Type="Self.Plano" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPlano">
+              <PropertyRef Name="tpp_id" />
+            </Principal>
+            <Dependent Role="Plano">
+              <PropertyRef Name="pla_tpp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fSplit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="string" Type="varchar(max)" Mode="In" />
+          <Parameter Name="separador" Type="char" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="id" Type="int" />
+                <Property Name="elemento" Type="varchar(max)" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="Prc_consolidado_faturamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DataIni" Type="date" Mode="In" />
+          <Parameter Name="DataFim" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Prc_consolidado_pagamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DataIni" Type="date" Mode="In" />
+          <Parameter Name="DataFim" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Prc_Consolidado_Premio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Prc_consolidado_segurado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Prc_detalhado_segurado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="StpBaixaPagamentoAutomatico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumTemplate" Type="int" Mode="In" />
+          <Parameter Name="AnoMes" Type="char" Mode="In" />
+        </Function>
+        <Function Name="StpGerarFaturamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="StpReajusteFaixaEtaria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="SindicatoMedicoModelStoreContainer">
+          <EntitySet Name="Acao" EntityType="Self.Acao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Banco" EntityType="Self.Banco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CicloFaturamento" EntityType="Self.CicloFaturamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contato" EntityType="Self.Contato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DadosCobranca" EntityType="Self.DadosCobranca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dependente" EntityType="Self.Dependente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Endereco" EntityType="Self.Endereco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Especialidade" EntityType="Self.Especialidade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoCivil" EntityType="Self.EstadoCivil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Faturamento" EntityType="Self.Faturamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormaPagamento" EntityType="Self.FormaPagamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HistoricoEvento" EntityType="Self.HistoricoEvento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LayoutTemplate" EntityType="Self.LayoutTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Leads" EntityType="Self.Leads" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MelhorDiaPagamento" EntityType="Self.MelhorDiaPagamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NivelAcesso" EntityType="Self.NivelAcesso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pagamento" EntityType="Self.Pagamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parentesco" EntityType="Self.Parentesco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plano" EntityType="Self.Plano" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanoFaixaEtaria" EntityType="Self.PlanoFaixaEtaria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanoSegurado" EntityType="Self.PlanoSegurado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profissao" EntityType="Self.Profissao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReajusteFaixaEtaria" EntityType="Self.ReajusteFaixaEtaria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RepositorioImportacao" EntityType="Self.RepositorioImportacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Segurado" EntityType="Self.Segurado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seguradora" EntityType="Self.Seguradora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusPagamento" EntityType="Self.StatusPagamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Template" EntityType="Self.Template" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_parentesco" EntityType="Self.Tipo_parentesco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoPlano" EntityType="Self.TipoPlano" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tmpRepositorio" EntityType="Self.tmpRepositorio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Contato_Parentesco" Association="Self.FK_Contato_Parentesco">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="Contato" EntitySet="Contato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DadosCobranca_Banco" Association="Self.FK_DadosCobranca_Banco">
+            <End Role="Banco" EntitySet="Banco" />
+            <End Role="DadosCobranca" EntitySet="DadosCobranca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DadosCobranca_Segurado" Association="Self.FK_DadosCobranca_Segurado">
+            <End Role="Segurado" EntitySet="Segurado" />
+            <End Role="DadosCobranca" EntitySet="DadosCobranca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Usuario_dbo_NivelAcesso_usr_nvl_id" Association="Self.FK_dbo_Usuario_dbo_NivelAcesso_usr_nvl_id">
+            <End Role="NivelAcesso" EntitySet="NivelAcesso" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dependente_EstadoCivil" Association="Self.FK_Dependente_EstadoCivil">
+            <End Role="EstadoCivil" EntitySet="EstadoCivil" />
+            <End Role="Dependente" EntitySet="Dependente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dependente_Profissao" Association="Self.FK_Dependente_Profissao">
+            <End Role="Profissao" EntitySet="Profissao" />
+            <End Role="Dependente" EntitySet="Dependente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dependente_Tipo_parentesco" Association="Self.FK_Dependente_Tipo_parentesco">
+            <End Role="Tipo_parentesco" EntitySet="Tipo_parentesco" />
+            <End Role="Dependente" EntitySet="Dependente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Endereco_Parentesco" Association="Self.FK_Endereco_Parentesco">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="Endereco" EntitySet="Endereco" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoricoEvento_Template" Association="Self.FK_HistoricoEvento_Template">
+            <End Role="Template" EntitySet="Template" />
+            <End Role="HistoricoEvento" EntitySet="HistoricoEvento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoricoEvento_Usuario" Association="Self.FK_HistoricoEvento_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="HistoricoEvento" EntitySet="HistoricoEvento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_Acao" Association="Self.FK_Log_Acao">
+            <End Role="Acao" EntitySet="Acao" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_Parentesco" Association="Self.FK_Log_Parentesco">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_Usuario" Association="Self.FK_Log_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagamento_Plano" Association="Self.FK_Pagamento_Plano">
+            <End Role="Plano" EntitySet="Plano" />
+            <End Role="Pagamento" EntitySet="Pagamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagamento_Segurado" Association="Self.FK_Pagamento_Segurado">
+            <End Role="Segurado" EntitySet="Segurado" />
+            <End Role="Pagamento" EntitySet="Pagamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagamento_StatusPagamento" Association="Self.FK_Pagamento_StatusPagamento">
+            <End Role="StatusPagamento" EntitySet="StatusPagamento" />
+            <End Role="Pagamento" EntitySet="Pagamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plano" Association="Self.FK_Plano">
+            <End Role="Plano" EntitySet="Plano" />
+            <End Role="PlanoSegurado" EntitySet="PlanoSegurado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanoSegurado_Parentesco" Association="Self.FK_PlanoSegurado_Parentesco">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="PlanoSegurado" EntitySet="PlanoSegurado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanosFaixaEtaria_Planos" Association="Self.FK_PlanosFaixaEtaria_Planos">
+            <End Role="Plano" EntitySet="Plano" />
+            <End Role="PlanoFaixaEtaria" EntitySet="PlanoFaixaEtaria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReajusteFaixaEtaria_Parentesco" Association="Self.FK_ReajusteFaixaEtaria_Parentesco">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="ReajusteFaixaEtaria" EntitySet="ReajusteFaixaEtaria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReajusteFaixaEtaria_Plano" Association="Self.FK_ReajusteFaixaEtaria_Plano">
+            <End Role="Plano" EntitySet="Plano" />
+            <End Role="ReajusteFaixaEtaria" EntitySet="ReajusteFaixaEtaria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RepositorioImportacao_Template" Association="Self.FK_RepositorioImportacao_Template">
+            <End Role="Template" EntitySet="Template" />
+            <End Role="RepositorioImportacao" EntitySet="RepositorioImportacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segurado_Especialidade" Association="Self.FK_Segurado_Especialidade">
+            <End Role="Especialidade" EntitySet="Especialidade" />
+            <End Role="Segurado" EntitySet="Segurado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segurado_EstadoCivil" Association="Self.FK_Segurado_EstadoCivil">
+            <End Role="EstadoCivil" EntitySet="EstadoCivil" />
+            <End Role="Segurado" EntitySet="Segurado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segurado_FormaPagamento" Association="Self.FK_Segurado_FormaPagamento">
+            <End Role="FormaPagamento" EntitySet="FormaPagamento" />
+            <End Role="Segurado" EntitySet="Segurado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segurado_Melhor_Dia_Pagamento" Association="Self.FK_Segurado_Melhor_Dia_Pagamento">
+            <End Role="MelhorDiaPagamento" EntitySet="MelhorDiaPagamento" />
+            <End Role="Segurado" EntitySet="Segurado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segurado_Parentesco1" Association="Self.FK_Segurado_Parentesco1">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="Segurado" EntitySet="Segurado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segurado_Profissao" Association="Self.FK_Segurado_Profissao">
+            <End Role="Profissao" EntitySet="Profissao" />
+            <End Role="Segurado" EntitySet="Segurado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segurado_Seguradora" Association="Self.FK_Segurado_Seguradora">
+            <End Role="Seguradora" EntitySet="Seguradora" />
+            <End Role="Segurado" EntitySet="Segurado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segurado_Tipo_parentesco1" Association="Self.FK_Segurado_Tipo_parentesco1">
+            <End Role="Tipo_parentesco" EntitySet="Tipo_parentesco" />
+            <End Role="Segurado" EntitySet="Segurado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Template" Association="Self.FK_Template">
+            <End Role="Template" EntitySet="Template" />
+            <End Role="LayoutTemplate" EntitySet="LayoutTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tipo_Parentesco" Association="Self.FK_Tipo_Parentesco">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="Faturamento" EntitySet="Faturamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tipo_parentesco_Parentesco" Association="Self.FK_Tipo_parentesco_Parentesco">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="Tipo_parentesco" EntitySet="Tipo_parentesco" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoPlano" Association="Self.FK_TipoPlano">
+            <End Role="TipoPlano" EntitySet="TipoPlano" />
+            <End Role="Plano" EntitySet="Plano" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SindicatoMedicoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="fSplit_Result">
+          <Property Name="id" Type="Int32" />
+          <Property Name="elemento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <EntityType Name="Acao">
+          <Key>
+            <PropertyRef Name="aco_id" />
+          </Key>
+          <Property Name="aco_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aco_nome" Type="String" MaxLength="155" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aco_descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="aco_ativo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Log" Relationship="Self.FK_Log_Acao" FromRole="Acao" ToRole="Log" />
+        </EntityType>
+        <EntityType Name="Banco">
+          <Key>
+            <PropertyRef Name="ban_id" />
+          </Key>
+          <Property Name="ban_id" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ban_descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ban_ativo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="DadosCobranca" Relationship="Self.FK_DadosCobranca_Banco" FromRole="Banco" ToRole="DadosCobranca" />
+        </EntityType>
+        <EntityType Name="CicloFaturamento">
+          <Key>
+            <PropertyRef Name="cft_id" />
+          </Key>
+          <Property Name="cft_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cft_dia_inicial" Type="Byte" Nullable="false" />
+          <Property Name="cft_dia_final" Type="Byte" Nullable="false" />
+          <Property Name="cft_dia_faturamento" Type="Byte" Nullable="false" />
+          <Property Name="cft_dia_reajuste" Type="Byte" Nullable="false" />
+          <Property Name="cft_timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cft_ativo" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contato">
+          <Key>
+            <PropertyRef Name="cnt_id" />
+          </Key>
+          <Property Name="cnt_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cnt_cpf" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cnt_par_id" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cnt_ddd" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="cnt_fone" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="cnt_celular" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="cnt_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="cnt_ddd_celular" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="cnt_seg_id" Type="Int32" />
+          <Property Name="cnt_dep_id" Type="Int32" />
+          <NavigationProperty Name="Parentesco" Relationship="Self.FK_Contato_Parentesco" FromRole="Contato" ToRole="Parentesco" />
+        </EntityType>
+        <EntityType Name="DadosCobranca">
+          <Key>
+            <PropertyRef Name="dco_id" />
+          </Key>
+          <Property Name="dco_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dco_seg_id" Type="Int32" Nullable="false" />
+          <Property Name="dco_agencia" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dco_conta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dco_ban_id" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Banco" Relationship="Self.FK_DadosCobranca_Banco" FromRole="DadosCobranca" ToRole="Banco" />
+          <NavigationProperty Name="Segurado" Relationship="Self.FK_DadosCobranca_Segurado" FromRole="DadosCobranca" ToRole="Segurado" />
+        </EntityType>
+        <EntityType Name="Dependente">
+          <Key>
+            <PropertyRef Name="dep_id" />
+          </Key>
+          <Property Name="dep_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dep_cpf_titular" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="dep_nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dep_cpf" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="dep_par_id" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="dep_tpa_id" Type="Int32" Nullable="false" />
+          <Property Name="dep_pla_id" Type="Int32" Nullable="false" />
+          <Property Name="dep_data_nascimento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dep_valor_faixa" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="dep_email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dep_dt_cadastro" Type="DateTime" Precision="0" />
+          <Property Name="dep_dt_atualizacao" Type="DateTime" Precision="0" />
+          <Property Name="dep_prf_id" Type="Int32" />
+          <Property Name="dep_civ_id" Type="Int32" />
+          <Property Name="dep_dt_filiacao" Type="DateTime" Precision="0" />
+          <Property Name="dep_sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="dep_nacionalidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dep_pispasep" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="dep_cns" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dep_dn" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="dep_inicio_vigencia" Type="DateTime" Precision="0" />
+          <Property Name="dep_fim_vigencia" Type="DateTime" Precision="0" />
+          <Property Name="dep_nome_mae" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dep_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="dep_numero_carteira" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="dep_valor_odonto" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="EstadoCivil" Relationship="Self.FK_Dependente_EstadoCivil" FromRole="Dependente" ToRole="EstadoCivil" />
+          <NavigationProperty Name="Profissao" Relationship="Self.FK_Dependente_Profissao" FromRole="Dependente" ToRole="Profissao" />
+          <NavigationProperty Name="Tipo_parentesco" Relationship="Self.FK_Dependente_Tipo_parentesco" FromRole="Dependente" ToRole="Tipo_parentesco" />
+        </EntityType>
+        <EntityType Name="Endereco">
+          <Key>
+            <PropertyRef Name="end_id" />
+          </Key>
+          <Property Name="end_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="end_par_id" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="end_cpf" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="end_endereco" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="end_bairro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="end_cidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="end_complemento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="end_estado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="end_cep" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="end_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="end_seg_id" Type="Int32" />
+          <Property Name="end_dep_id" Type="Int32" />
+          <NavigationProperty Name="Parentesco" Relationship="Self.FK_Endereco_Parentesco" FromRole="Endereco" ToRole="Parentesco" />
+        </EntityType>
+        <EntityType Name="Especialidade">
+          <Key>
+            <PropertyRef Name="esp_id" />
+          </Key>
+          <Property Name="esp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="esp_descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Segurado" Relationship="Self.FK_Segurado_Especialidade" FromRole="Especialidade" ToRole="Segurado" />
+        </EntityType>
+        <EntityType Name="EstadoCivil">
+          <Key>
+            <PropertyRef Name="civ_id" />
+          </Key>
+          <Property Name="civ_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="civ_descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Dependente" Relationship="Self.FK_Dependente_EstadoCivil" FromRole="EstadoCivil" ToRole="Dependente" />
+          <NavigationProperty Name="Segurado" Relationship="Self.FK_Segurado_EstadoCivil" FromRole="EstadoCivil" ToRole="Segurado" />
+        </EntityType>
+        <EntityType Name="Faturamento">
+          <Key>
+            <PropertyRef Name="fat_id" />
+          </Key>
+          <Property Name="fat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fat_referencia" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="fat_valor_faturamento" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="fat_par_id" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fat_pla_tpp_id" Type="Int16" />
+          <Property Name="fat_quantidade" Type="Int32" />
+          <NavigationProperty Name="Parentesco" Relationship="Self.FK_Tipo_Parentesco" FromRole="Faturamento" ToRole="Parentesco" />
+        </EntityType>
+        <EntityType Name="FormaPagamento">
+          <Key>
+            <PropertyRef Name="for_id" />
+          </Key>
+          <Property Name="for_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="for_descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="for_ativo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Segurado" Relationship="Self.FK_Segurado_FormaPagamento" FromRole="FormaPagamento" ToRole="Segurado" />
+        </EntityType>
+        <EntityType Name="HistoricoEvento">
+          <Key>
+            <PropertyRef Name="hev_id" />
+          </Key>
+          <Property Name="hev_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hev_DataEvento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="hev_NomeArquivo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hev_tpl_id" Type="Int32" Nullable="false" />
+          <Property Name="hev_StatusEvento" Type="Int16" Nullable="false" />
+          <Property Name="hev_usr_id" Type="Int32" Nullable="false" />
+          <Property Name="hev_MesReferencia" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Template" Relationship="Self.FK_HistoricoEvento_Template" FromRole="HistoricoEvento" ToRole="Template" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_HistoricoEvento_Usuario" FromRole="HistoricoEvento" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="LayoutTemplate">
+          <Key>
+            <PropertyRef Name="lay_id" />
+          </Key>
+          <Property Name="lay_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lay_tpl_id" Type="Int32" Nullable="false" />
+          <Property Name="lay_posicao_campo" Type="Int16" Nullable="false" />
+          <Property Name="lay_nome_campo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lay_tamanho_campo" Type="Int16" Nullable="false" />
+          <Property Name="lay_formato_campo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="lay_obrigatoriedade" Type="Boolean" Nullable="false" />
+          <Property Name="lay_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="lay_timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Template" Relationship="Self.FK_Template" FromRole="LayoutTemplate" ToRole="Template" />
+        </EntityType>
+        <EntityType Name="Leads">
+          <Key>
+            <PropertyRef Name="led_id" />
+          </Key>
+          <Property Name="led_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="led_nome" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="led_crm" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="led_telefone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="led_celular" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="led_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="led_timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="led_ativo" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="log_id" />
+          </Key>
+          <Property Name="log_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="log_aco_id" Type="Int32" Nullable="false" />
+          <Property Name="log_data" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="log_usr_id" Type="Int32" Nullable="false" />
+          <Property Name="log_cpf" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="log_par_id" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="log_ativo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Acao" Relationship="Self.FK_Log_Acao" FromRole="Log" ToRole="Acao" />
+          <NavigationProperty Name="Parentesco" Relationship="Self.FK_Log_Parentesco" FromRole="Log" ToRole="Parentesco" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Log_Usuario" FromRole="Log" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="MelhorDiaPagamento">
+          <Key>
+            <PropertyRef Name="mdp_id" />
+          </Key>
+          <Property Name="mdp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mdp_dia" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Segurado" Relationship="Self.FK_Segurado_Melhor_Dia_Pagamento" FromRole="MelhorDiaPagamento" ToRole="Segurado" />
+        </EntityType>
+        <EntityType Name="NivelAcesso">
+          <Key>
+            <PropertyRef Name="nvl_id" />
+          </Key>
+          <Property Name="nvl_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nvl_descricao" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nvl_dt_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="nvl_bolAtivo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_dbo_Usuario_dbo_NivelAcesso_usr_nvl_id" FromRole="NivelAcesso" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Pagamento">
+          <Key>
+            <PropertyRef Name="pag_id" />
+          </Key>
+          <Property Name="pag_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pag_seg_id" Type="Int32" Nullable="false" />
+          <Property Name="pag_data_vencimento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="pag_valor_vencimento" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="pag_identificacao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pag_valor_recebido" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="pag_juros" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="pag_tipo_baixa" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="pag_spg_id" Type="Int32" Nullable="false" />
+          <Property Name="pag_data_baixa_pagamento" Type="DateTime" Precision="3" />
+          <Property Name="pag_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="pag_timestamp_baixa" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="pag_pla_id" Type="Int32" Nullable="false" />
+          <Property Name="pag_data_pagamento" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Plano" Relationship="Self.FK_Pagamento_Plano" FromRole="Pagamento" ToRole="Plano" />
+          <NavigationProperty Name="Segurado" Relationship="Self.FK_Pagamento_Segurado" FromRole="Pagamento" ToRole="Segurado" />
+          <NavigationProperty Name="StatusPagamento" Relationship="Self.FK_Pagamento_StatusPagamento" FromRole="Pagamento" ToRole="StatusPagamento" />
+        </EntityType>
+        <EntityType Name="Parentesco">
+          <Key>
+            <PropertyRef Name="par_id" />
+          </Key>
+          <Property Name="par_id" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="par_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="par_ativo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Contato" Relationship="Self.FK_Contato_Parentesco" FromRole="Parentesco" ToRole="Contato" />
+          <NavigationProperty Name="Endereco" Relationship="Self.FK_Endereco_Parentesco" FromRole="Parentesco" ToRole="Endereco" />
+          <NavigationProperty Name="Faturamento" Relationship="Self.FK_Tipo_Parentesco" FromRole="Parentesco" ToRole="Faturamento" />
+          <NavigationProperty Name="Log" Relationship="Self.FK_Log_Parentesco" FromRole="Parentesco" ToRole="Log" />
+          <NavigationProperty Name="PlanoSegurado" Relationship="Self.FK_PlanoSegurado_Parentesco" FromRole="Parentesco" ToRole="PlanoSegurado" />
+          <NavigationProperty Name="ReajusteFaixaEtaria" Relationship="Self.FK_ReajusteFaixaEtaria_Parentesco" FromRole="Parentesco" ToRole="ReajusteFaixaEtaria" />
+          <NavigationProperty Name="Segurado" Relationship="Self.FK_Segurado_Parentesco1" FromRole="Parentesco" ToRole="Segurado" />
+          <NavigationProperty Name="Tipo_parentesco" Relationship="Self.FK_Tipo_parentesco_Parentesco" FromRole="Parentesco" ToRole="Tipo_parentesco" />
+        </EntityType>
+        <EntityType Name="Plano">
+          <Key>
+            <PropertyRef Name="pla_id" />
+          </Key>
+          <Property Name="pla_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pla_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pla_descricao" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pla_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="pla_tpp_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pagamento" Relationship="Self.FK_Pagamento_Plano" FromRole="Plano" ToRole="Pagamento" />
+          <NavigationProperty Name="PlanoSegurado" Relationship="Self.FK_Plano" FromRole="Plano" ToRole="PlanoSegurado" />
+          <NavigationProperty Name="PlanoFaixaEtaria" Relationship="Self.FK_PlanosFaixaEtaria_Planos" FromRole="Plano" ToRole="PlanoFaixaEtaria" />
+          <NavigationProperty Name="ReajusteFaixaEtaria" Relationship="Self.FK_ReajusteFaixaEtaria_Plano" FromRole="Plano" ToRole="ReajusteFaixaEtaria" />
+          <NavigationProperty Name="TipoPlano" Relationship="Self.FK_TipoPlano" FromRole="Plano" ToRole="TipoPlano" />
+        </EntityType>
+        <EntityType Name="PlanoFaixaEtaria">
+          <Key>
+            <PropertyRef Name="pfe_id" />
+          </Key>
+          <Property Name="pfe_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pla_id" Type="Int32" Nullable="false" />
+          <Property Name="pfe_faixa_inicial" Type="Int32" Nullable="false" />
+          <Property Name="pfe_faixa_final" Type="Int32" Nullable="false" />
+          <Property Name="pfe_premio_total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="pfe_data_alteracao" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="pfe_ativo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Plano" Relationship="Self.FK_PlanosFaixaEtaria_Planos" FromRole="PlanoFaixaEtaria" ToRole="Plano" />
+        </EntityType>
+        <EntityType Name="PlanoSegurado">
+          <Key>
+            <PropertyRef Name="pls_id" />
+          </Key>
+          <Property Name="pls_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pls_seg_id" Type="Int32" Nullable="false" />
+          <Property Name="pls_pla_id" Type="Int32" Nullable="false" />
+          <Property Name="pls_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="pls_timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="pls_par_id" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Parentesco" Relationship="Self.FK_PlanoSegurado_Parentesco" FromRole="PlanoSegurado" ToRole="Parentesco" />
+          <NavigationProperty Name="Plano" Relationship="Self.FK_Plano" FromRole="PlanoSegurado" ToRole="Plano" />
+        </EntityType>
+        <EntityType Name="Profissao">
+          <Key>
+            <PropertyRef Name="prf_id" />
+          </Key>
+          <Property Name="prf_id" Type="Int32" Nullable="false" />
+          <Property Name="prf_descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Dependente" Relationship="Self.FK_Dependente_Profissao" FromRole="Profissao" ToRole="Dependente" />
+          <NavigationProperty Name="Segurado" Relationship="Self.FK_Segurado_Profissao" FromRole="Profissao" ToRole="Segurado" />
+        </EntityType>
+        <EntityType Name="ReajusteFaixaEtaria">
+          <Key>
+            <PropertyRef Name="rfe_id" />
+          </Key>
+          <Property Name="rfe_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rfe_id_seg_dep" Type="Int32" Nullable="false" />
+          <Property Name="rfe_valor_anterior" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="rfe_valor_atualizado" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="rfe_pla_id" Type="Int32" Nullable="false" />
+          <Property Name="rfe_par_id" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="rfe_data_reajuste" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="rfe_ativo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Parentesco" Relationship="Self.FK_ReajusteFaixaEtaria_Parentesco" FromRole="ReajusteFaixaEtaria" ToRole="Parentesco" />
+          <NavigationProperty Name="Plano" Relationship="Self.FK_ReajusteFaixaEtaria_Plano" FromRole="ReajusteFaixaEtaria" ToRole="Plano" />
+        </EntityType>
+        <EntityType Name="RepositorioImportacao">
+          <Key>
+            <PropertyRef Name="rep_id" />
+          </Key>
+          <Property Name="rep_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rep_tpl_id" Type="Int32" Nullable="false" />
+          <Property Name="rep_arquivo" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Template" Relationship="Self.FK_RepositorioImportacao_Template" FromRole="RepositorioImportacao" ToRole="Template" />
+        </EntityType>
+        <EntityType Name="Segurado">
+          <Key>
+            <PropertyRef Name="seg_id" />
+          </Key>
+          <Property Name="seg_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="seg_nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="seg_cpf" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="seg_par_id" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="seg_tpa_id" Type="Int32" Nullable="false" />
+          <Property Name="seg_data_nascimento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="seg_valor_faixa" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="seg_dt_cadastro" Type="DateTime" Precision="0" />
+          <Property Name="seg_dt_atualiza_status" Type="DateTime" Precision="0" />
+          <Property Name="seg_email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="seg_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="seg_prf_id" Type="Int32" />
+          <Property Name="seg_dt_filiacao" Type="DateTime" Precision="0" />
+          <Property Name="seg_sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="seg_nome_mae" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="seg_nacionalidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="seg_pispasep" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="seg_dn" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="seg_esp_id" Type="Int32" />
+          <Property Name="seg_cns" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="seg_civ_id" Type="Int32" />
+          <Property Name="seg_inicio_vigencia" Type="DateTime" Precision="0" />
+          <Property Name="seg_for_id" Type="Int32" />
+          <Property Name="seg_cia_proposta" Type="Int32" />
+          <Property Name="seg_cia_id" Type="Int32" />
+          <Property Name="esp_id" Type="Int32" />
+          <Property Name="seg_num_filiacao" Type="Decimal" Precision="15" Scale="0" />
+          <Property Name="seg_num_proposta" Type="Decimal" Precision="15" Scale="0" />
+          <Property Name="seg_crm_estado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="seg_mdp_id" Type="Int32" />
+          <Property Name="seg_numero_carteira" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="seg_crm" Type="Int32" />
+          <Property Name="seg_valor_odonto" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="DadosCobranca" Relationship="Self.FK_DadosCobranca_Segurado" FromRole="Segurado" ToRole="DadosCobranca" />
+          <NavigationProperty Name="Especialidade" Relationship="Self.FK_Segurado_Especialidade" FromRole="Segurado" ToRole="Especialidade" />
+          <NavigationProperty Name="EstadoCivil" Relationship="Self.FK_Segurado_EstadoCivil" FromRole="Segurado" ToRole="EstadoCivil" />
+          <NavigationProperty Name="FormaPagamento" Relationship="Self.FK_Segurado_FormaPagamento" FromRole="Segurado" ToRole="FormaPagamento" />
+          <NavigationProperty Name="MelhorDiaPagamento" Relationship="Self.FK_Segurado_Melhor_Dia_Pagamento" FromRole="Segurado" ToRole="MelhorDiaPagamento" />
+          <NavigationProperty Name="Pagamento" Relationship="Self.FK_Pagamento_Segurado" FromRole="Segurado" ToRole="Pagamento" />
+          <NavigationProperty Name="Parentesco" Relationship="Self.FK_Segurado_Parentesco1" FromRole="Segurado" ToRole="Parentesco" />
+          <NavigationProperty Name="Profissao" Relationship="Self.FK_Segurado_Profissao" FromRole="Segurado" ToRole="Profissao" />
+          <NavigationProperty Name="Seguradora" Relationship="Self.FK_Segurado_Seguradora" FromRole="Segurado" ToRole="Seguradora" />
+          <NavigationProperty Name="Tipo_parentesco" Relationship="Self.FK_Segurado_Tipo_parentesco1" FromRole="Segurado" ToRole="Tipo_parentesco" />
+        </EntityType>
+        <EntityType Name="Seguradora">
+          <Key>
+            <PropertyRef Name="cia_id" />
+          </Key>
+          <Property Name="cia_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cia_descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Segurado" Relationship="Self.FK_Segurado_Seguradora" FromRole="Seguradora" ToRole="Segurado" />
+        </EntityType>
+        <EntityType Name="StatusPagamento">
+          <Key>
+            <PropertyRef Name="spg_id" />
+          </Key>
+          <Property Name="spg_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="spg_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="spg_descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="spg_ativo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Pagamento" Relationship="Self.FK_Pagamento_StatusPagamento" FromRole="StatusPagamento" ToRole="Pagamento" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Template">
+          <Key>
+            <PropertyRef Name="tpl_id" />
+          </Key>
+          <Property Name="tpl_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tpl_nome_template" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tpl_tipo_acao" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="tpl_delimitador" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="tpl_extensao" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tpl_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="tpl_timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tpl_padrao" Type="Boolean" />
+          <NavigationProperty Name="HistoricoEvento" Relationship="Self.FK_HistoricoEvento_Template" FromRole="Template" ToRole="HistoricoEvento" />
+          <NavigationProperty Name="LayoutTemplate" Relationship="Self.FK_Template" FromRole="Template" ToRole="LayoutTemplate" />
+          <NavigationProperty Name="RepositorioImportacao" Relationship="Self.FK_RepositorioImportacao_Template" FromRole="Template" ToRole="RepositorioImportacao" />
+        </EntityType>
+        <EntityType Name="Tipo_parentesco">
+          <Key>
+            <PropertyRef Name="tpa_id" />
+          </Key>
+          <Property Name="tpa_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tpa_par_id" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="tpa_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tpa_ativo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Dependente" Relationship="Self.FK_Dependente_Tipo_parentesco" FromRole="Tipo_parentesco" ToRole="Dependente" />
+          <NavigationProperty Name="Parentesco" Relationship="Self.FK_Tipo_parentesco_Parentesco" FromRole="Tipo_parentesco" ToRole="Parentesco" />
+          <NavigationProperty Name="Segurado" Relationship="Self.FK_Segurado_Tipo_parentesco1" FromRole="Tipo_parentesco" ToRole="Segurado" />
+        </EntityType>
+        <EntityType Name="TipoPlano">
+          <Key>
+            <PropertyRef Name="tpp_id" />
+          </Key>
+          <Property Name="tpp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tpp_descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Plano" Relationship="Self.FK_TipoPlano" FromRole="TipoPlano" ToRole="Plano" />
+        </EntityType>
+        <EntityType Name="tmpRepositorio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Nome_Segurado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Numero_Filiacao" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Valor_Pago" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="usr_id" />
+          </Key>
+          <Property Name="usr_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usr_nome" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="usr_genero" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="usr_cpf" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="usr_dt_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usr_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="usr_dt_aprovado" Type="DateTime" Precision="3" />
+          <Property Name="usr_aprovado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="usr_deletado" Type="Boolean" Nullable="false" />
+          <Property Name="usr_senha" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="usr_nvl_id" Type="Int32" Nullable="false" />
+          <Property Name="usr_atualiza_senha" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="HistoricoEvento" Relationship="Self.FK_HistoricoEvento_Usuario" FromRole="Usuario" ToRole="HistoricoEvento" />
+          <NavigationProperty Name="Log" Relationship="Self.FK_Log_Usuario" FromRole="Usuario" ToRole="Log" />
+          <NavigationProperty Name="NivelAcesso" Relationship="Self.FK_dbo_Usuario_dbo_NivelAcesso_usr_nvl_id" FromRole="Usuario" ToRole="NivelAcesso" />
+        </EntityType>
+        <Association Name="FK_Log_Acao">
+          <End Role="Acao" Type="Self.Acao" Multiplicity="1" />
+          <End Role="Log" Type="Self.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acao">
+              <PropertyRef Name="aco_id" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="log_aco_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DadosCobranca_Banco">
+          <End Role="Banco" Type="Self.Banco" Multiplicity="1" />
+          <End Role="DadosCobranca" Type="Self.DadosCobranca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banco">
+              <PropertyRef Name="ban_id" />
+            </Principal>
+            <Dependent Role="DadosCobranca">
+              <PropertyRef Name="dco_ban_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contato_Parentesco">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="1" />
+          <End Role="Contato" Type="Self.Contato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="par_id" />
+            </Principal>
+            <Dependent Role="Contato">
+              <PropertyRef Name="cnt_par_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DadosCobranca_Segurado">
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="1" />
+          <End Role="DadosCobranca" Type="Self.DadosCobranca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Segurado">
+              <PropertyRef Name="seg_id" />
+            </Principal>
+            <Dependent Role="DadosCobranca">
+              <PropertyRef Name="dco_seg_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dependente_EstadoCivil">
+          <End Role="EstadoCivil" Type="Self.EstadoCivil" Multiplicity="0..1" />
+          <End Role="Dependente" Type="Self.Dependente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoCivil">
+              <PropertyRef Name="civ_id" />
+            </Principal>
+            <Dependent Role="Dependente">
+              <PropertyRef Name="dep_civ_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dependente_Profissao">
+          <End Role="Profissao" Type="Self.Profissao" Multiplicity="0..1" />
+          <End Role="Dependente" Type="Self.Dependente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profissao">
+              <PropertyRef Name="prf_id" />
+            </Principal>
+            <Dependent Role="Dependente">
+              <PropertyRef Name="dep_prf_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dependente_Tipo_parentesco">
+          <End Role="Tipo_parentesco" Type="Self.Tipo_parentesco" Multiplicity="1" />
+          <End Role="Dependente" Type="Self.Dependente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_parentesco">
+              <PropertyRef Name="tpa_id" />
+            </Principal>
+            <Dependent Role="Dependente">
+              <PropertyRef Name="dep_tpa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Endereco_Parentesco">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="1" />
+          <End Role="Endereco" Type="Self.Endereco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="par_id" />
+            </Principal>
+            <Dependent Role="Endereco">
+              <PropertyRef Name="end_par_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segurado_Especialidade">
+          <End Role="Especialidade" Type="Self.Especialidade" Multiplicity="0..1" />
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialidade">
+              <PropertyRef Name="esp_id" />
+            </Principal>
+            <Dependent Role="Segurado">
+              <PropertyRef Name="seg_esp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segurado_EstadoCivil">
+          <End Role="EstadoCivil" Type="Self.EstadoCivil" Multiplicity="0..1" />
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoCivil">
+              <PropertyRef Name="civ_id" />
+            </Principal>
+            <Dependent Role="Segurado">
+              <PropertyRef Name="seg_civ_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tipo_Parentesco">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="0..1" />
+          <End Role="Faturamento" Type="Self.Faturamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="par_id" />
+            </Principal>
+            <Dependent Role="Faturamento">
+              <PropertyRef Name="fat_par_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segurado_FormaPagamento">
+          <End Role="FormaPagamento" Type="Self.FormaPagamento" Multiplicity="0..1" />
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormaPagamento">
+              <PropertyRef Name="for_id" />
+            </Principal>
+            <Dependent Role="Segurado">
+              <PropertyRef Name="seg_for_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoricoEvento_Template">
+          <End Role="Template" Type="Self.Template" Multiplicity="1" />
+          <End Role="HistoricoEvento" Type="Self.HistoricoEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Template">
+              <PropertyRef Name="tpl_id" />
+            </Principal>
+            <Dependent Role="HistoricoEvento">
+              <PropertyRef Name="hev_tpl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoricoEvento_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="HistoricoEvento" Type="Self.HistoricoEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usr_id" />
+            </Principal>
+            <Dependent Role="HistoricoEvento">
+              <PropertyRef Name="hev_usr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Template">
+          <End Role="Template" Type="Self.Template" Multiplicity="1" />
+          <End Role="LayoutTemplate" Type="Self.LayoutTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Template">
+              <PropertyRef Name="tpl_id" />
+            </Principal>
+            <Dependent Role="LayoutTemplate">
+              <PropertyRef Name="lay_tpl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_Parentesco">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="0..1" />
+          <End Role="Log" Type="Self.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="par_id" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="log_par_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Log" Type="Self.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usr_id" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="log_usr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segurado_Melhor_Dia_Pagamento">
+          <End Role="MelhorDiaPagamento" Type="Self.MelhorDiaPagamento" Multiplicity="0..1" />
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MelhorDiaPagamento">
+              <PropertyRef Name="mdp_id" />
+            </Principal>
+            <Dependent Role="Segurado">
+              <PropertyRef Name="seg_mdp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Usuario_dbo_NivelAcesso_usr_nvl_id">
+          <End Role="NivelAcesso" Type="Self.NivelAcesso" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NivelAcesso">
+              <PropertyRef Name="nvl_id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="usr_nvl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagamento_Plano">
+          <End Role="Plano" Type="Self.Plano" Multiplicity="1" />
+          <End Role="Pagamento" Type="Self.Pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plano">
+              <PropertyRef Name="pla_id" />
+            </Principal>
+            <Dependent Role="Pagamento">
+              <PropertyRef Name="pag_pla_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagamento_Segurado">
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="1" />
+          <End Role="Pagamento" Type="Self.Pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Segurado">
+              <PropertyRef Name="seg_id" />
+            </Principal>
+            <Dependent Role="Pagamento">
+              <PropertyRef Name="pag_seg_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagamento_StatusPagamento">
+          <End Role="StatusPagamento" Type="Self.StatusPagamento" Multiplicity="1" />
+          <End Role="Pagamento" Type="Self.Pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusPagamento">
+              <PropertyRef Name="spg_id" />
+            </Principal>
+            <Dependent Role="Pagamento">
+              <PropertyRef Name="pag_spg_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanoSegurado_Parentesco">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="0..1" />
+          <End Role="PlanoSegurado" Type="Self.PlanoSegurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="par_id" />
+            </Principal>
+            <Dependent Role="PlanoSegurado">
+              <PropertyRef Name="pls_par_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReajusteFaixaEtaria_Parentesco">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="1" />
+          <End Role="ReajusteFaixaEtaria" Type="Self.ReajusteFaixaEtaria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="par_id" />
+            </Principal>
+            <Dependent Role="ReajusteFaixaEtaria">
+              <PropertyRef Name="rfe_par_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segurado_Parentesco1">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="1" />
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="par_id" />
+            </Principal>
+            <Dependent Role="Segurado">
+              <PropertyRef Name="seg_par_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tipo_parentesco_Parentesco">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="0..1" />
+          <End Role="Tipo_parentesco" Type="Self.Tipo_parentesco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="par_id" />
+            </Principal>
+            <Dependent Role="Tipo_parentesco">
+              <PropertyRef Name="tpa_par_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plano">
+          <End Role="Plano" Type="Self.Plano" Multiplicity="1" />
+          <End Role="PlanoSegurado" Type="Self.PlanoSegurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plano">
+              <PropertyRef Name="pla_id" />
+            </Principal>
+            <Dependent Role="PlanoSegurado">
+              <PropertyRef Name="pls_pla_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanosFaixaEtaria_Planos">
+          <End Role="Plano" Type="Self.Plano" Multiplicity="1" />
+          <End Role="PlanoFaixaEtaria" Type="Self.PlanoFaixaEtaria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plano">
+              <PropertyRef Name="pla_id" />
+            </Principal>
+            <Dependent Role="PlanoFaixaEtaria">
+              <PropertyRef Name="pla_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReajusteFaixaEtaria_Plano">
+          <End Role="Plano" Type="Self.Plano" Multiplicity="1" />
+          <End Role="ReajusteFaixaEtaria" Type="Self.ReajusteFaixaEtaria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plano">
+              <PropertyRef Name="pla_id" />
+            </Principal>
+            <Dependent Role="ReajusteFaixaEtaria">
+              <PropertyRef Name="rfe_pla_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoPlano">
+          <End Role="TipoPlano" Type="Self.TipoPlano" Multiplicity="1" />
+          <End Role="Plano" Type="Self.Plano" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPlano">
+              <PropertyRef Name="tpp_id" />
+            </Principal>
+            <Dependent Role="Plano">
+              <PropertyRef Name="pla_tpp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segurado_Profissao">
+          <End Role="Profissao" Type="Self.Profissao" Multiplicity="0..1" />
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profissao">
+              <PropertyRef Name="prf_id" />
+            </Principal>
+            <Dependent Role="Segurado">
+              <PropertyRef Name="seg_prf_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RepositorioImportacao_Template">
+          <End Role="Template" Type="Self.Template" Multiplicity="1" />
+          <End Role="RepositorioImportacao" Type="Self.RepositorioImportacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Template">
+              <PropertyRef Name="tpl_id" />
+            </Principal>
+            <Dependent Role="RepositorioImportacao">
+              <PropertyRef Name="rep_tpl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segurado_Seguradora">
+          <End Role="Seguradora" Type="Self.Seguradora" Multiplicity="0..1" />
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seguradora">
+              <PropertyRef Name="cia_id" />
+            </Principal>
+            <Dependent Role="Segurado">
+              <PropertyRef Name="seg_cia_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segurado_Tipo_parentesco1">
+          <End Role="Tipo_parentesco" Type="Self.Tipo_parentesco" Multiplicity="1" />
+          <End Role="Segurado" Type="Self.Segurado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_parentesco">
+              <PropertyRef Name="tpa_id" />
+            </Principal>
+            <Dependent Role="Segurado">
+              <PropertyRef Name="seg_tpa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SindicatoMedicoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Acao" EntityType="Self.Acao" />
+          <EntitySet Name="Banco" EntityType="Self.Banco" />
+          <EntitySet Name="CicloFaturamento" EntityType="Self.CicloFaturamento" />
+          <EntitySet Name="Contato" EntityType="Self.Contato" />
+          <EntitySet Name="DadosCobranca" EntityType="Self.DadosCobranca" />
+          <EntitySet Name="Dependente" EntityType="Self.Dependente" />
+          <EntitySet Name="Endereco" EntityType="Self.Endereco" />
+          <EntitySet Name="Especialidade" EntityType="Self.Especialidade" />
+          <EntitySet Name="EstadoCivil" EntityType="Self.EstadoCivil" />
+          <EntitySet Name="Faturamento" EntityType="Self.Faturamento" />
+          <EntitySet Name="FormaPagamento" EntityType="Self.FormaPagamento" />
+          <EntitySet Name="HistoricoEvento" EntityType="Self.HistoricoEvento" />
+          <EntitySet Name="LayoutTemplate" EntityType="Self.LayoutTemplate" />
+          <EntitySet Name="Leads" EntityType="Self.Leads" />
+          <EntitySet Name="Log" EntityType="Self.Log" />
+          <EntitySet Name="MelhorDiaPagamento" EntityType="Self.MelhorDiaPagamento" />
+          <EntitySet Name="NivelAcesso" EntityType="Self.NivelAcesso" />
+          <EntitySet Name="Pagamento" EntityType="Self.Pagamento" />
+          <EntitySet Name="Parentesco" EntityType="Self.Parentesco" />
+          <EntitySet Name="Plano" EntityType="Self.Plano" />
+          <EntitySet Name="PlanoFaixaEtaria" EntityType="Self.PlanoFaixaEtaria" />
+          <EntitySet Name="PlanoSegurado" EntityType="Self.PlanoSegurado" />
+          <EntitySet Name="Profissao" EntityType="Self.Profissao" />
+          <EntitySet Name="ReajusteFaixaEtaria" EntityType="Self.ReajusteFaixaEtaria" />
+          <EntitySet Name="RepositorioImportacao" EntityType="Self.RepositorioImportacao" />
+          <EntitySet Name="Segurado" EntityType="Self.Segurado" />
+          <EntitySet Name="Seguradora" EntityType="Self.Seguradora" />
+          <EntitySet Name="StatusPagamento" EntityType="Self.StatusPagamento" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Template" EntityType="Self.Template" />
+          <EntitySet Name="Tipo_parentesco" EntityType="Self.Tipo_parentesco" />
+          <EntitySet Name="TipoPlano" EntityType="Self.TipoPlano" />
+          <EntitySet Name="tmpRepositorio" EntityType="Self.tmpRepositorio" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Log_Acao" Association="Self.FK_Log_Acao">
+            <End Role="Acao" EntitySet="Acao" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DadosCobranca_Banco" Association="Self.FK_DadosCobranca_Banco">
+            <End Role="Banco" EntitySet="Banco" />
+            <End Role="DadosCobranca" EntitySet="DadosCobranca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contato_Parentesco" Association="Self.FK_Contato_Parentesco">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="Contato" EntitySet="Contato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DadosCobranca_Segurado" Association="Self.FK_DadosCobranca_Segurado">
+            <End Role="Segurado" EntitySet="Segurado" />
+            <End Role="DadosCobranca" EntitySet="DadosCobranca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dependente_EstadoCivil" Association="Self.FK_Dependente_EstadoCivil">
+            <End Role="EstadoCivil" EntitySet="EstadoCivil" />
+            <End Role="Dependente" EntitySet="Dependente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dependente_Profissao" Association="Self.FK_Dependente_Profissao">
+            <End Role="Profissao" EntitySet="Profissao" />
+            <End Role="Dependente" EntitySet="Dependente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dependente_Tipo_parentesco" Association="Self.FK_Dependente_Tipo_parentesco">
+            <End Role="Tipo_parentesco" EntitySet="Tipo_parentesco" />
+            <End Role="Dependente" EntitySet="Dependente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Endereco_Parentesco" Association="Self.FK_Endereco_Parentesco">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="Endereco" EntitySet="Endereco" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segurado_Especialidade" Association="Self.FK_Segurado_Especialidade">
+            <End Role="Especialidade" EntitySet="Especialidade" />
+            <End Role="Segurado" EntitySet="Segurado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segurado_EstadoCivil" Association="Self.FK_Segurado_EstadoCivil">
+            <End Role="EstadoCivil" EntitySet="EstadoCivil" />
+            <End Role="Segurado" EntitySet="Segurado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tipo_Parentesco" Association="Self.FK_Tipo_Parentesco">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="Faturamento" EntitySet="Faturamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segurado_FormaPagamento" Association="Self.FK_Segurado_FormaPagamento">
+            <End Role="FormaPagamento" EntitySet="FormaPagamento" />
+            <End Role="Segurado" EntitySet="Segurado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoricoEvento_Template" Association="Self.FK_HistoricoEvento_Template">
+            <End Role="Template" EntitySet="Template" />
+            <End Role="HistoricoEvento" EntitySet="HistoricoEvento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoricoEvento_Usuario" Association="Self.FK_HistoricoEvento_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="HistoricoEvento" EntitySet="HistoricoEvento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Template" Association="Self.FK_Template">
+            <End Role="Template" EntitySet="Template" />
+            <End Role="LayoutTemplate" EntitySet="LayoutTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_Parentesco" Association="Self.FK_Log_Parentesco">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_Usuario" Association="Self.FK_Log_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segurado_Melhor_Dia_Pagamento" Association="Self.FK_Segurado_Melhor_Dia_Pagamento">
+            <End Role="MelhorDiaPagamento" EntitySet="MelhorDiaPagamento" />
+            <End Role="Segurado" EntitySet="Segurado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Usuario_dbo_NivelAcesso_usr_nvl_id" Association="Self.FK_dbo_Usuario_dbo_NivelAcesso_usr_nvl_id">
+            <End Role="NivelAcesso" EntitySet="NivelAcesso" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagamento_Plano" Association="Self.FK_Pagamento_Plano">
+            <End Role="Plano" EntitySet="Plano" />
+            <End Role="Pagamento" EntitySet="Pagamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagamento_Segurado" Association="Self.FK_Pagamento_Segurado">
+            <End Role="Segurado" EntitySet="Segurado" />
+            <End Role="Pagamento" EntitySet="Pagamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagamento_StatusPagamento" Association="Self.FK_Pagamento_StatusPagamento">
+            <End Role="StatusPagamento" EntitySet="StatusPagamento" />
+            <End Role="Pagamento" EntitySet="Pagamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanoSegurado_Parentesco" Association="Self.FK_PlanoSegurado_Parentesco">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="PlanoSegurado" EntitySet="PlanoSegurado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReajusteFaixaEtaria_Parentesco" Association="Self.FK_ReajusteFaixaEtaria_Parentesco">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="ReajusteFaixaEtaria" EntitySet="ReajusteFaixaEtaria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segurado_Parentesco1" Association="Self.FK_Segurado_Parentesco1">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="Segurado" EntitySet="Segurado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tipo_parentesco_Parentesco" Association="Self.FK_Tipo_parentesco_Parentesco">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="Tipo_parentesco" EntitySet="Tipo_parentesco" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plano" Association="Self.FK_Plano">
+            <End Role="Plano" EntitySet="Plano" />
+            <End Role="PlanoSegurado" EntitySet="PlanoSegurado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanosFaixaEtaria_Planos" Association="Self.FK_PlanosFaixaEtaria_Planos">
+            <End Role="Plano" EntitySet="Plano" />
+            <End Role="PlanoFaixaEtaria" EntitySet="PlanoFaixaEtaria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReajusteFaixaEtaria_Plano" Association="Self.FK_ReajusteFaixaEtaria_Plano">
+            <End Role="Plano" EntitySet="Plano" />
+            <End Role="ReajusteFaixaEtaria" EntitySet="ReajusteFaixaEtaria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoPlano" Association="Self.FK_TipoPlano">
+            <End Role="TipoPlano" EntitySet="TipoPlano" />
+            <End Role="Plano" EntitySet="Plano" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segurado_Profissao" Association="Self.FK_Segurado_Profissao">
+            <End Role="Profissao" EntitySet="Profissao" />
+            <End Role="Segurado" EntitySet="Segurado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RepositorioImportacao_Template" Association="Self.FK_RepositorioImportacao_Template">
+            <End Role="Template" EntitySet="Template" />
+            <End Role="RepositorioImportacao" EntitySet="RepositorioImportacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segurado_Seguradora" Association="Self.FK_Segurado_Seguradora">
+            <End Role="Seguradora" EntitySet="Seguradora" />
+            <End Role="Segurado" EntitySet="Segurado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segurado_Tipo_parentesco1" Association="Self.FK_Segurado_Tipo_parentesco1">
+            <End Role="Tipo_parentesco" EntitySet="Tipo_parentesco" />
+            <End Role="Segurado" EntitySet="Segurado" />
+          </AssociationSet>
+          <FunctionImport Name="fSplit" IsComposable="true" ReturnType="Collection(SindicatoMedicoModel.fSplit_Result)">
+            <Parameter Name="string" Mode="In" Type="String" />
+            <Parameter Name="separador" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Prc_consolidado_faturamento" ReturnType="Collection(SindicatoMedicoModel.Prc_consolidado_faturamento_Result)">
+            <Parameter Name="DataIni" Mode="In" Type="DateTime" />
+            <Parameter Name="DataFim" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Prc_consolidado_pagamento" ReturnType="Collection(SindicatoMedicoModel.Prc_consolidado_pagamento_Result)">
+            <Parameter Name="DataIni" Mode="In" Type="DateTime" />
+            <Parameter Name="DataFim" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Prc_consolidado_segurado" ReturnType="Collection(SindicatoMedicoModel.Prc_consolidado_segurado_Result)" />
+          <FunctionImport Name="Prc_detalhado_segurado" ReturnType="Collection(SindicatoMedicoModel.Prc_detalhado_segurado_Result)" />
+          <FunctionImport Name="StpBaixaPagamentoAutomatico">
+            <Parameter Name="NumTemplate" Mode="In" Type="Int32" />
+            <Parameter Name="AnoMes" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="StpGerarFaturamento" />
+          <FunctionImport Name="StpReajusteFaixaEtaria" />
+          <FunctionImport Name="Prc_Consolidado_Premio" ReturnType="Collection(SindicatoMedicoModel.Prc_Consolidado_Premio_Result)" />
+        </EntityContainer>
+        <ComplexType Name="Prc_consolidado_faturamento_Result">
+          <Property Type="Int32" Name="vw_produto" Nullable="true" />
+          <Property Type="Int32" Name="vw_mes" Nullable="true" />
+          <Property Type="Int32" Name="vw_ano" Nullable="true" />
+          <Property Type="Decimal" Name="vw_valor_faturamento" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="Prc_consolidado_pagamento_Result">
+          <Property Type="Int32" Name="vw_produto" Nullable="false" />
+          <Property Type="Int32" Name="vw_mes" Nullable="true" />
+          <Property Type="Int32" Name="vw_ano" Nullable="true" />
+          <Property Type="Decimal" Name="vw_valor_recebido" Nullable="false" Precision="38" Scale="2" />
+          <Property Type="Int32" Name="vw_quantidade_pagamento" Nullable="false" />
+          <Property Type="Decimal" Name="vw_valor_pendente" Nullable="false" Precision="38" Scale="2" />
+          <Property Type="Int32" Name="vw_quantidade_pendente" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Prc_consolidado_segurado_Result">
+          <Property Type="Int32" Name="vw_Produto" Nullable="true" />
+          <Property Type="String" Name="vw_TipoPessoa" Nullable="false" MaxLength="1" />
+          <Property Type="Int32" Name="vw_quantidade" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Prc_detalhado_segurado_Result">
+          <Property Type="Int32" Name="vw_quantidadesaude" Nullable="true" />
+          <Property Type="Int32" Name="vw_quantidadeodonto" Nullable="true" />
+          <Property Type="DateTime" Name="vw_periodo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Prc_Consolidado_Premio_Result">
+          <Property Type="Int32" Name="vw_quantidadesaude" Nullable="true" />
+          <Property Type="Int32" Name="vw_quantidadeodonto" Nullable="true" />
+          <Property Type="Decimal" Name="vw_premiosaude" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="vw_premioodonto" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="DateTime" Name="vw_periodo" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SindicatoMedicoModelStoreContainer" CdmEntityContainer="SindicatoMedicoEntities">
+          <EntitySetMapping Name="Acao">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.Acao">
+              <MappingFragment StoreEntitySet="Acao">
+                <ScalarProperty Name="aco_id" ColumnName="aco_id" />
+                <ScalarProperty Name="aco_nome" ColumnName="aco_nome" />
+                <ScalarProperty Name="aco_descricao" ColumnName="aco_descricao" />
+                <ScalarProperty Name="aco_ativo" ColumnName="aco_ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banco">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.Banco">
+              <MappingFragment StoreEntitySet="Banco">
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="ban_descricao" ColumnName="ban_descricao" />
+                <ScalarProperty Name="ban_ativo" ColumnName="ban_ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CicloFaturamento">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.CicloFaturamento">
+              <MappingFragment StoreEntitySet="CicloFaturamento">
+                <ScalarProperty Name="cft_id" ColumnName="cft_id" />
+                <ScalarProperty Name="cft_dia_inicial" ColumnName="cft_dia_inicial" />
+                <ScalarProperty Name="cft_dia_final" ColumnName="cft_dia_final" />
+                <ScalarProperty Name="cft_dia_faturamento" ColumnName="cft_dia_faturamento" />
+                <ScalarProperty Name="cft_dia_reajuste" ColumnName="cft_dia_reajuste" />
+                <ScalarProperty Name="cft_timestamp" ColumnName="cft_timestamp" />
+                <ScalarProperty Name="cft_ativo" ColumnName="cft_ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contato">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.Contato">
+              <MappingFragment StoreEntitySet="Contato">
+                <ScalarProperty Name="cnt_id" ColumnName="cnt_id" />
+                <ScalarProperty Name="cnt_cpf" ColumnName="cnt_cpf" />
+                <ScalarProperty Name="cnt_par_id" ColumnName="cnt_par_id" />
+                <ScalarProperty Name="cnt_ddd" ColumnName="cnt_ddd" />
+                <ScalarProperty Name="cnt_fone" ColumnName="cnt_fone" />
+                <ScalarProperty Name="cnt_celular" ColumnName="cnt_celular" />
+                <ScalarProperty Name="cnt_ativo" ColumnName="cnt_ativo" />
+                <ScalarProperty Name="cnt_ddd_celular" ColumnName="cnt_ddd_celular" />
+                <ScalarProperty Name="cnt_seg_id" ColumnName="cnt_seg_id" />
+                <ScalarProperty Name="cnt_dep_id" ColumnName="cnt_dep_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DadosCobranca">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.DadosCobranca">
+              <MappingFragment StoreEntitySet="DadosCobranca">
+                <ScalarProperty Name="dco_id" ColumnName="dco_id" />
+                <ScalarProperty Name="dco_seg_id" ColumnName="dco_seg_id" />
+                <ScalarProperty Name="dco_agencia" ColumnName="dco_agencia" />
+                <ScalarProperty Name="dco_conta" ColumnName="dco_conta" />
+                <ScalarProperty Name="dco_ban_id" ColumnName="dco_ban_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dependente">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.Dependente">
+              <MappingFragment StoreEntitySet="Dependente">
+                <ScalarProperty Name="dep_id" ColumnName="dep_id" />
+                <ScalarProperty Name="dep_cpf_titular" ColumnName="dep_cpf_titular" />
+                <ScalarProperty Name="dep_nome" ColumnName="dep_nome" />
+                <ScalarProperty Name="dep_cpf" ColumnName="dep_cpf" />
+                <ScalarProperty Name="dep_par_id" ColumnName="dep_par_id" />
+                <ScalarProperty Name="dep_tpa_id" ColumnName="dep_tpa_id" />
+                <ScalarProperty Name="dep_pla_id" ColumnName="dep_pla_id" />
+                <ScalarProperty Name="dep_data_nascimento" ColumnName="dep_data_nascimento" />
+                <ScalarProperty Name="dep_valor_faixa" ColumnName="dep_valor_faixa" />
+                <ScalarProperty Name="dep_email" ColumnName="dep_email" />
+                <ScalarProperty Name="dep_dt_cadastro" ColumnName="dep_dt_cadastro" />
+                <ScalarProperty Name="dep_dt_atualizacao" ColumnName="dep_dt_atualizacao" />
+                <ScalarProperty Name="dep_prf_id" ColumnName="dep_prf_id" />
+                <ScalarProperty Name="dep_civ_id" ColumnName="dep_civ_id" />
+                <ScalarProperty Name="dep_dt_filiacao" ColumnName="dep_dt_filiacao" />
+                <ScalarProperty Name="dep_sexo" ColumnName="dep_sexo" />
+                <ScalarProperty Name="dep_nacionalidade" ColumnName="dep_nacionalidade" />
+                <ScalarProperty Name="dep_pispasep" ColumnName="dep_pispasep" />
+                <ScalarProperty Name="dep_cns" ColumnName="dep_cns" />
+                <ScalarProperty Name="dep_dn" ColumnName="dep_dn" />
+                <ScalarProperty Name="dep_inicio_vigencia" ColumnName="dep_inicio_vigencia" />
+                <ScalarProperty Name="dep_fim_vigencia" ColumnName="dep_fim_vigencia" />
+                <ScalarProperty Name="dep_nome_mae" ColumnName="dep_nome_mae" />
+                <ScalarProperty Name="dep_ativo" ColumnName="dep_ativo" />
+                <ScalarProperty Name="dep_numero_carteira" ColumnName="dep_numero_carteira" />
+                <ScalarProperty Name="dep_valor_odonto" ColumnName="dep_valor_odonto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Endereco">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.Endereco">
+              <MappingFragment StoreEntitySet="Endereco">
+                <ScalarProperty Name="end_id" ColumnName="end_id" />
+                <ScalarProperty Name="end_par_id" ColumnName="end_par_id" />
+                <ScalarProperty Name="end_cpf" ColumnName="end_cpf" />
+                <ScalarProperty Name="end_endereco" ColumnName="end_endereco" />
+                <ScalarProperty Name="end_bairro" ColumnName="end_bairro" />
+                <ScalarProperty Name="end_cidade" ColumnName="end_cidade" />
+                <ScalarProperty Name="end_complemento" ColumnName="end_complemento" />
+                <ScalarProperty Name="end_estado" ColumnName="end_estado" />
+                <ScalarProperty Name="end_cep" ColumnName="end_cep" />
+                <ScalarProperty Name="end_ativo" ColumnName="end_ativo" />
+                <ScalarProperty Name="end_seg_id" ColumnName="end_seg_id" />
+                <ScalarProperty Name="end_dep_id" ColumnName="end_dep_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Especialidade">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.Especialidade">
+              <MappingFragment StoreEntitySet="Especialidade">
+                <ScalarProperty Name="esp_id" ColumnName="esp_id" />
+                <ScalarProperty Name="esp_descricao" ColumnName="esp_descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoCivil">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.EstadoCivil">
+              <MappingFragment StoreEntitySet="EstadoCivil">
+                <ScalarProperty Name="civ_id" ColumnName="civ_id" />
+                <ScalarProperty Name="civ_descricao" ColumnName="civ_descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Faturamento">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.Faturamento">
+              <MappingFragment StoreEntitySet="Faturamento">
+                <ScalarProperty Name="fat_id" ColumnName="fat_id" />
+                <ScalarProperty Name="fat_referencia" ColumnName="fat_referencia" />
+                <ScalarProperty Name="fat_valor_faturamento" ColumnName="fat_valor_faturamento" />
+                <ScalarProperty Name="fat_par_id" ColumnName="fat_par_id" />
+                <ScalarProperty Name="fat_pla_tpp_id" ColumnName="fat_pla_tpp_id" />
+                <ScalarProperty Name="fat_quantidade" ColumnName="fat_quantidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormaPagamento">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.FormaPagamento">
+              <MappingFragment StoreEntitySet="FormaPagamento">
+                <ScalarProperty Name="for_id" ColumnName="for_id" />
+                <ScalarProperty Name="for_descricao" ColumnName="for_descricao" />
+                <ScalarProperty Name="for_ativo" ColumnName="for_ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistoricoEvento">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.HistoricoEvento">
+              <MappingFragment StoreEntitySet="HistoricoEvento">
+                <ScalarProperty Name="hev_id" ColumnName="hev_id" />
+                <ScalarProperty Name="hev_DataEvento" ColumnName="hev_DataEvento" />
+                <ScalarProperty Name="hev_NomeArquivo" ColumnName="hev_NomeArquivo" />
+                <ScalarProperty Name="hev_tpl_id" ColumnName="hev_tpl_id" />
+                <ScalarProperty Name="hev_StatusEvento" ColumnName="hev_StatusEvento" />
+                <ScalarProperty Name="hev_usr_id" ColumnName="hev_usr_id" />
+                <ScalarProperty Name="hev_MesReferencia" ColumnName="hev_MesReferencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LayoutTemplate">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.LayoutTemplate">
+              <MappingFragment StoreEntitySet="LayoutTemplate">
+                <ScalarProperty Name="lay_id" ColumnName="lay_id" />
+                <ScalarProperty Name="lay_tpl_id" ColumnName="lay_tpl_id" />
+                <ScalarProperty Name="lay_posicao_campo" ColumnName="lay_posicao_campo" />
+                <ScalarProperty Name="lay_nome_campo" ColumnName="lay_nome_campo" />
+                <ScalarProperty Name="lay_tamanho_campo" ColumnName="lay_tamanho_campo" />
+                <ScalarProperty Name="lay_formato_campo" ColumnName="lay_formato_campo" />
+                <ScalarProperty Name="lay_obrigatoriedade" ColumnName="lay_obrigatoriedade" />
+                <ScalarProperty Name="lay_ativo" ColumnName="lay_ativo" />
+                <ScalarProperty Name="lay_timestamp" ColumnName="lay_timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leads">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.Leads">
+              <MappingFragment StoreEntitySet="Leads">
+                <ScalarProperty Name="led_id" ColumnName="led_id" />
+                <ScalarProperty Name="led_nome" ColumnName="led_nome" />
+                <ScalarProperty Name="led_crm" ColumnName="led_crm" />
+                <ScalarProperty Name="led_telefone" ColumnName="led_telefone" />
+                <ScalarProperty Name="led_celular" ColumnName="led_celular" />
+                <ScalarProperty Name="led_email" ColumnName="led_email" />
+                <ScalarProperty Name="led_timestamp" ColumnName="led_timestamp" />
+                <ScalarProperty Name="led_ativo" ColumnName="led_ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="log_id" ColumnName="log_id" />
+                <ScalarProperty Name="log_aco_id" ColumnName="log_aco_id" />
+                <ScalarProperty Name="log_data" ColumnName="log_data" />
+                <ScalarProperty Name="log_usr_id" ColumnName="log_usr_id" />
+                <ScalarProperty Name="log_cpf" ColumnName="log_cpf" />
+                <ScalarProperty Name="log_par_id" ColumnName="log_par_id" />
+                <ScalarProperty Name="log_ativo" ColumnName="log_ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MelhorDiaPagamento">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.MelhorDiaPagamento">
+              <MappingFragment StoreEntitySet="MelhorDiaPagamento">
+                <ScalarProperty Name="mdp_id" ColumnName="mdp_id" />
+                <ScalarProperty Name="mdp_dia" ColumnName="mdp_dia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NivelAcesso">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.NivelAcesso">
+              <MappingFragment StoreEntitySet="NivelAcesso">
+                <ScalarProperty Name="nvl_id" ColumnName="nvl_id" />
+                <ScalarProperty Name="nvl_descricao" ColumnName="nvl_descricao" />
+                <ScalarProperty Name="nvl_dt_cadastro" ColumnName="nvl_dt_cadastro" />
+                <ScalarProperty Name="nvl_bolAtivo" ColumnName="nvl_bolAtivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pagamento">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.Pagamento">
+              <MappingFragment StoreEntitySet="Pagamento">
+                <ScalarProperty Name="pag_id" ColumnName="pag_id" />
+                <ScalarProperty Name="pag_seg_id" ColumnName="pag_seg_id" />
+                <ScalarProperty Name="pag_data_vencimento" ColumnName="pag_data_vencimento" />
+                <ScalarProperty Name="pag_valor_vencimento" ColumnName="pag_valor_vencimento" />
+                <ScalarProperty Name="pag_identificacao" ColumnName="pag_identificacao" />
+                <ScalarProperty Name="pag_valor_recebido" ColumnName="pag_valor_recebido" />
+                <ScalarProperty Name="pag_juros" ColumnName="pag_juros" />
+                <ScalarProperty Name="pag_tipo_baixa" ColumnName="pag_tipo_baixa" />
+                <ScalarProperty Name="pag_spg_id" ColumnName="pag_spg_id" />
+                <ScalarProperty Name="pag_data_baixa_pagamento" ColumnName="pag_data_baixa_pagamento" />
+                <ScalarProperty Name="pag_ativo" ColumnName="pag_ativo" />
+                <ScalarProperty Name="pag_timestamp_baixa" ColumnName="pag_timestamp_baixa" />
+                <ScalarProperty Name="pag_pla_id" ColumnName="pag_pla_id" />
+                <ScalarProperty Name="pag_data_pagamento" ColumnName="pag_data_pagamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parentesco">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.Parentesco">
+              <MappingFragment StoreEntitySet="Parentesco">
+                <ScalarProperty Name="par_id" ColumnName="par_id" />
+                <ScalarProperty Name="par_nome" ColumnName="par_nome" />
+                <ScalarProperty Name="par_ativo" ColumnName="par_ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plano">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.Plano">
+              <MappingFragment StoreEntitySet="Plano">
+                <ScalarProperty Name="pla_id" ColumnName="pla_id" />
+                <ScalarProperty Name="pla_nome" ColumnName="pla_nome" />
+                <ScalarProperty Name="pla_descricao" ColumnName="pla_descricao" />
+                <ScalarProperty Name="pla_ativo" ColumnName="pla_ativo" />
+                <ScalarProperty Name="pla_tpp_id" ColumnName="pla_tpp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanoFaixaEtaria">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.PlanoFaixaEtaria">
+              <MappingFragment StoreEntitySet="PlanoFaixaEtaria">
+                <ScalarProperty Name="pfe_id" ColumnName="pfe_id" />
+                <ScalarProperty Name="pla_id" ColumnName="pla_id" />
+                <ScalarProperty Name="pfe_faixa_inicial" ColumnName="pfe_faixa_inicial" />
+                <ScalarProperty Name="pfe_faixa_final" ColumnName="pfe_faixa_final" />
+                <ScalarProperty Name="pfe_premio_total" ColumnName="pfe_premio_total" />
+                <ScalarProperty Name="pfe_data_alteracao" ColumnName="pfe_data_alteracao" />
+                <ScalarProperty Name="pfe_ativo" ColumnName="pfe_ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanoSegurado">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.PlanoSegurado">
+              <MappingFragment StoreEntitySet="PlanoSegurado">
+                <ScalarProperty Name="pls_id" ColumnName="pls_id" />
+                <ScalarProperty Name="pls_seg_id" ColumnName="pls_seg_id" />
+                <ScalarProperty Name="pls_pla_id" ColumnName="pls_pla_id" />
+                <ScalarProperty Name="pls_ativo" ColumnName="pls_ativo" />
+                <ScalarProperty Name="pls_timestamp" ColumnName="pls_timestamp" />
+                <ScalarProperty Name="pls_par_id" ColumnName="pls_par_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profissao">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.Profissao">
+              <MappingFragment StoreEntitySet="Profissao">
+                <ScalarProperty Name="prf_id" ColumnName="prf_id" />
+                <ScalarProperty Name="prf_descricao" ColumnName="prf_descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReajusteFaixaEtaria">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.ReajusteFaixaEtaria">
+              <MappingFragment StoreEntitySet="ReajusteFaixaEtaria">
+                <ScalarProperty Name="rfe_id" ColumnName="rfe_id" />
+                <ScalarProperty Name="rfe_id_seg_dep" ColumnName="rfe_id_seg_dep" />
+                <ScalarProperty Name="rfe_valor_anterior" ColumnName="rfe_valor_anterior" />
+                <ScalarProperty Name="rfe_valor_atualizado" ColumnName="rfe_valor_atualizado" />
+                <ScalarProperty Name="rfe_pla_id" ColumnName="rfe_pla_id" />
+                <ScalarProperty Name="rfe_par_id" ColumnName="rfe_par_id" />
+                <ScalarProperty Name="rfe_data_reajuste" ColumnName="rfe_data_reajuste" />
+                <ScalarProperty Name="rfe_ativo" ColumnName="rfe_ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RepositorioImportacao">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.RepositorioImportacao">
+              <MappingFragment StoreEntitySet="RepositorioImportacao">
+                <ScalarProperty Name="rep_id" ColumnName="rep_id" />
+                <ScalarProperty Name="rep_tpl_id" ColumnName="rep_tpl_id" />
+                <ScalarProperty Name="rep_arquivo" ColumnName="rep_arquivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Segurado">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.Segurado">
+              <MappingFragment StoreEntitySet="Segurado">
+                <ScalarProperty Name="seg_id" ColumnName="seg_id" />
+                <ScalarProperty Name="seg_nome" ColumnName="seg_nome" />
+                <ScalarProperty Name="seg_cpf" ColumnName="seg_cpf" />
+                <ScalarProperty Name="seg_par_id" ColumnName="seg_par_id" />
+                <ScalarProperty Name="seg_tpa_id" ColumnName="seg_tpa_id" />
+                <ScalarProperty Name="seg_data_nascimento" ColumnName="seg_data_nascimento" />
+                <ScalarProperty Name="seg_valor_faixa" ColumnName="seg_valor_faixa" />
+                <ScalarProperty Name="seg_dt_cadastro" ColumnName="seg_dt_cadastro" />
+                <ScalarProperty Name="seg_dt_atualiza_status" ColumnName="seg_dt_atualiza_status" />
+                <ScalarProperty Name="seg_email" ColumnName="seg_email" />
+                <ScalarProperty Name="seg_ativo" ColumnName="seg_ativo" />
+                <ScalarProperty Name="seg_prf_id" ColumnName="seg_prf_id" />
+                <ScalarProperty Name="seg_dt_filiacao" ColumnName="seg_dt_filiacao" />
+                <ScalarProperty Name="seg_sexo" ColumnName="seg_sexo" />
+                <ScalarProperty Name="seg_nome_mae" ColumnName="seg_nome_mae" />
+                <ScalarProperty Name="seg_nacionalidade" ColumnName="seg_nacionalidade" />
+                <ScalarProperty Name="seg_pispasep" ColumnName="seg_pispasep" />
+                <ScalarProperty Name="seg_dn" ColumnName="seg_dn" />
+                <ScalarProperty Name="seg_esp_id" ColumnName="seg_esp_id" />
+                <ScalarProperty Name="seg_cns" ColumnName="seg_cns" />
+                <ScalarProperty Name="seg_civ_id" ColumnName="seg_civ_id" />
+                <ScalarProperty Name="seg_inicio_vigencia" ColumnName="seg_inicio_vigencia" />
+                <ScalarProperty Name="seg_for_id" ColumnName="seg_for_id" />
+                <ScalarProperty Name="seg_cia_proposta" ColumnName="seg_cia_proposta" />
+                <ScalarProperty Name="seg_cia_id" ColumnName="seg_cia_id" />
+                <ScalarProperty Name="esp_id" ColumnName="esp_id" />
+                <ScalarProperty Name="seg_num_filiacao" ColumnName="seg_num_filiacao" />
+                <ScalarProperty Name="seg_num_proposta" ColumnName="seg_num_proposta" />
+                <ScalarProperty Name="seg_crm_estado" ColumnName="seg_crm_estado" />
+                <ScalarProperty Name="seg_mdp_id" ColumnName="seg_mdp_id" />
+                <ScalarProperty Name="seg_numero_carteira" ColumnName="seg_numero_carteira" />
+                <ScalarProperty Name="seg_crm" ColumnName="seg_crm" />
+                <ScalarProperty Name="seg_valor_odonto" ColumnName="seg_valor_odonto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seguradora">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.Seguradora">
+              <MappingFragment StoreEntitySet="Seguradora">
+                <ScalarProperty Name="cia_id" ColumnName="cia_id" />
+                <ScalarProperty Name="cia_descricao" ColumnName="cia_descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusPagamento">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.StatusPagamento">
+              <MappingFragment StoreEntitySet="StatusPagamento">
+                <ScalarProperty Name="spg_id" ColumnName="spg_id" />
+                <ScalarProperty Name="spg_nome" ColumnName="spg_nome" />
+                <ScalarProperty Name="spg_descricao" ColumnName="spg_descricao" />
+                <ScalarProperty Name="spg_ativo" ColumnName="spg_ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Template">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.Template">
+              <MappingFragment StoreEntitySet="Template">
+                <ScalarProperty Name="tpl_id" ColumnName="tpl_id" />
+                <ScalarProperty Name="tpl_nome_template" ColumnName="tpl_nome_template" />
+                <ScalarProperty Name="tpl_tipo_acao" ColumnName="tpl_tipo_acao" />
+                <ScalarProperty Name="tpl_delimitador" ColumnName="tpl_delimitador" />
+                <ScalarProperty Name="tpl_extensao" ColumnName="tpl_extensao" />
+                <ScalarProperty Name="tpl_ativo" ColumnName="tpl_ativo" />
+                <ScalarProperty Name="tpl_timestamp" ColumnName="tpl_timestamp" />
+                <ScalarProperty Name="tpl_padrao" ColumnName="tpl_padrao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_parentesco">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.Tipo_parentesco">
+              <MappingFragment StoreEntitySet="Tipo_parentesco">
+                <ScalarProperty Name="tpa_id" ColumnName="tpa_id" />
+                <ScalarProperty Name="tpa_par_id" ColumnName="tpa_par_id" />
+                <ScalarProperty Name="tpa_nome" ColumnName="tpa_nome" />
+                <ScalarProperty Name="tpa_ativo" ColumnName="tpa_ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoPlano">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.TipoPlano">
+              <MappingFragment StoreEntitySet="TipoPlano">
+                <ScalarProperty Name="tpp_id" ColumnName="tpp_id" />
+                <ScalarProperty Name="tpp_descricao" ColumnName="tpp_descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tmpRepositorio">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.tmpRepositorio">
+              <MappingFragment StoreEntitySet="tmpRepositorio">
+                <ScalarProperty Name="Nome_Segurado" ColumnName="Nome_Segurado" />
+                <ScalarProperty Name="Numero_Filiacao" ColumnName="Numero_Filiacao" />
+                <ScalarProperty Name="Valor_Pago" ColumnName="Valor_Pago" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="SindicatoMedicoModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="usr_id" ColumnName="usr_id" />
+                <ScalarProperty Name="usr_nome" ColumnName="usr_nome" />
+                <ScalarProperty Name="usr_genero" ColumnName="usr_genero" />
+                <ScalarProperty Name="usr_cpf" ColumnName="usr_cpf" />
+                <ScalarProperty Name="usr_dt_cadastro" ColumnName="usr_dt_cadastro" />
+                <ScalarProperty Name="usr_email" ColumnName="usr_email" />
+                <ScalarProperty Name="usr_dt_aprovado" ColumnName="usr_dt_aprovado" />
+                <ScalarProperty Name="usr_aprovado" ColumnName="usr_aprovado" />
+                <ScalarProperty Name="usr_deletado" ColumnName="usr_deletado" />
+                <ScalarProperty Name="usr_senha" ColumnName="usr_senha" />
+                <ScalarProperty Name="usr_nvl_id" ColumnName="usr_nvl_id" />
+                <ScalarProperty Name="usr_atualiza_senha" ColumnName="usr_atualiza_senha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="SindicatoMedicoModel.Store.fSplit" FunctionImportName="fSplit">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SindicatoMedicoModel.fSplit_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="elemento" ColumnName="elemento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Prc_consolidado_faturamento" FunctionName="SindicatoMedicoModel.Store.Prc_consolidado_faturamento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SindicatoMedicoModel.Prc_consolidado_faturamento_Result">
+                <ScalarProperty Name="vw_produto" ColumnName="vw_produto" />
+                <ScalarProperty Name="vw_mes" ColumnName="vw_mes" />
+                <ScalarProperty Name="vw_ano" ColumnName="vw_ano" />
+                <ScalarProperty Name="vw_valor_faturamento" ColumnName="vw_valor_faturamento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Prc_consolidado_pagamento" FunctionName="SindicatoMedicoModel.Store.Prc_consolidado_pagamento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SindicatoMedicoModel.Prc_consolidado_pagamento_Result">
+                <ScalarProperty Name="vw_produto" ColumnName="vw_produto" />
+                <ScalarProperty Name="vw_mes" ColumnName="vw_mes" />
+                <ScalarProperty Name="vw_ano" ColumnName="vw_ano" />
+                <ScalarProperty Name="vw_valor_recebido" ColumnName="vw_valor_recebido" />
+                <ScalarProperty Name="vw_quantidade_pagamento" ColumnName="vw_quantidade_pagamento" />
+                <ScalarProperty Name="vw_valor_pendente" ColumnName="vw_valor_pendente" />
+                <ScalarProperty Name="vw_quantidade_pendente" ColumnName="vw_quantidade_pendente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Prc_consolidado_segurado" FunctionName="SindicatoMedicoModel.Store.Prc_consolidado_segurado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SindicatoMedicoModel.Prc_consolidado_segurado_Result">
+                <ScalarProperty Name="vw_Produto" ColumnName="vw_Produto" />
+                <ScalarProperty Name="vw_TipoPessoa" ColumnName="vw_TipoPessoa" />
+                <ScalarProperty Name="vw_quantidade" ColumnName="vw_quantidade" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Prc_detalhado_segurado" FunctionName="SindicatoMedicoModel.Store.Prc_detalhado_segurado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SindicatoMedicoModel.Prc_detalhado_segurado_Result">
+                <ScalarProperty Name="vw_quantidadesaude" ColumnName="vw_quantidadesaude" />
+                <ScalarProperty Name="vw_quantidadeodonto" ColumnName="vw_quantidadeodonto" />
+                <ScalarProperty Name="vw_periodo" ColumnName="vw_periodo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StpBaixaPagamentoAutomatico" FunctionName="SindicatoMedicoModel.Store.StpBaixaPagamentoAutomatico" />
+          <FunctionImportMapping FunctionImportName="StpGerarFaturamento" FunctionName="SindicatoMedicoModel.Store.StpGerarFaturamento" />
+          <FunctionImportMapping FunctionImportName="StpReajusteFaixaEtaria" FunctionName="SindicatoMedicoModel.Store.StpReajusteFaixaEtaria" />
+          <FunctionImportMapping FunctionImportName="Prc_Consolidado_Premio" FunctionName="SindicatoMedicoModel.Store.Prc_Consolidado_Premio">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SindicatoMedicoModel.Prc_Consolidado_Premio_Result">
+                <ScalarProperty Name="vw_quantidadesaude" ColumnName="vw_quantidadesaude" />
+                <ScalarProperty Name="vw_quantidadeodonto" ColumnName="vw_quantidadeodonto" />
+                <ScalarProperty Name="vw_premiosaude" ColumnName="vw_premiosaude" />
+                <ScalarProperty Name="vw_premioodonto" ColumnName="vw_premioodonto" />
+                <ScalarProperty Name="vw_periodo" ColumnName="vw_periodo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

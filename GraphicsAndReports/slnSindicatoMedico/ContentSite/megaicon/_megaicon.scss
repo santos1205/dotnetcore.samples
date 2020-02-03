@@ -1,0 +1,77 @@
+    /*
+    megaicon icon font: megaicon
+    Creation date: 30/04/2017 20:45
+    */
+
+    @font-face {
+  font-family: "megaicon";
+  src: url("./megaicon.eot");
+  src: url("./megaicon.eot?#iefix") format("embedded-opentype"),
+       url("./megaicon.woff") format("woff"),
+       url("./megaicon.ttf") format("truetype"),
+       url("./megaicon.svg#megaicon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "megaicon";
+    src: url("./megaicon.svg#megaicon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "megaicon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .megaicon-home:before { content: "\f100"; }
+.megaicon-phone-call:before { content: "\f101"; }
+.megaicon-arrows:before { content: "\f102"; }
+.megaicon-time-left:before { content: "\f103"; }
+.megaicon-add-circular-outlined-button:before { content: "\f104"; }
+.megaicon-quotes:before { content: "\f105"; }
+.megaicon-location-pin:before { content: "\f106"; }
+.megaicon-office:before { content: "\f107"; }
+.megaicon-technology-2:before { content: "\f108"; }
+.megaicon-science:before { content: "\f109"; }
+.megaicon-travel:before { content: "\f10a"; }
+.megaicon-ship:before { content: "\f10b"; }
+.megaicon-box:before { content: "\f10c"; }
+.megaicon-electric-tower:before { content: "\f10d"; }
+.megaicon-water:before { content: "\f10e"; }
+.megaicon-solar-energy:before { content: "\f10f"; }
+.megaicon-technology-1:before { content: "\f110"; }
+.megaicon-heart:before { content: "\f111"; }
+.megaicon-technology:before { content: "\f112"; }
+
+    $font-megaicon-home: "\f100";
+    $font-megaicon-phone-call: "\f101";
+    $font-megaicon-arrows: "\f102";
+    $font-megaicon-time-left: "\f103";
+    $font-megaicon-add-circular-outlined-button: "\f104";
+    $font-megaicon-quotes: "\f105";
+    $font-megaicon-location-pin: "\f106";
+    $font-megaicon-office: "\f107";
+    $font-megaicon-technology-2: "\f108";
+    $font-megaicon-science: "\f109";
+    $font-megaicon-travel: "\f10a";
+    $font-megaicon-ship: "\f10b";
+    $font-megaicon-box: "\f10c";
+    $font-megaicon-electric-tower: "\f10d";
+    $font-megaicon-water: "\f10e";
+    $font-megaicon-solar-energy: "\f10f";
+    $font-megaicon-technology-1: "\f110";
+    $font-megaicon-heart: "\f111";
+    $font-megaicon-technology: "\f112";
