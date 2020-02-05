@@ -1,4 +1,4 @@
-# firstRazorCore
+# DOTNET CLI commands
 
 1 - scaffold base - base first.
 dotnet ef dbcontext scaffold "data source=sqldesenv.proseg.com.br;initial catalog=<DB NAME>;user id=proseg;password=b123;MultipleActiveResultSets=True;App=EntityFramework" Microsoft.EntityFrameworkCore.SqlServer -o Models
