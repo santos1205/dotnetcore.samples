@@ -1,0 +1,5 @@
+Instalar EF - versão 5.0.0
+Report Viewer 
+	- necessita da dll Microsoft.SqlServer.Types
+		SindicatoMedico\Desenvolvimento\trunk\packages\Microsoft.SqlServer.Types.11.0.0\lib\net20
+	- alterar o report no vs 2012, senão, o report ficará com formato incompatível e n funcionará.
