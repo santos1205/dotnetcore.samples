@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/js")
+    @Scripts.Render("~/bundles/bootstrap")
+    @{
+        if (HttpContext.Current.Request.Url.Host.Contains("localhost"))
+        {
+            <script src="~/Scripts/questionario.js"></script>
+        }
+        else
+        {
+            <script src="~/Scripts/questionario.min.js"></script>
+        }
+    }
+    @RenderSection("scripts", required: false)
+    <link rel="shortcut icon" href="~/assets/img/favicon_smart_form.png" />
+    <title>Smart Form | @ViewBag.Title</title>
+</head>
+    <body>
+        <div id="wrapper">
+            @{Html.RenderAction("_MainMenu", "Common");}
+            <div id="page-wrapper" class="gray-bg">
+                <div class="row border-bottom">
+                    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                        <div class="navbar-header">
+
+                        </div>
+                        <ul class="nav navbar-top-links navbar-right">
+
+                            @*PARTIAL NOTIFICATIONS*@
+                            @{Html.RenderAction("_Notification", "Common");}
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#mdl-logout-config" style="font-size: 16px">
+                                    <i class="fa fa-sign-out"></i> Sair
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                @RenderBody()
+
+                @if (ViewBag.Title != "Formulário")
+                {
+                    <div class="footer">
+                        <div>
+                            <strong>Copyright</strong> Todos os direitos reservados &copy; @DateTime.Now.Year
+                        </div>
+                    </div>
+                }
+            </div>
+
+            @*MODAL TO CONFIRM LOGOUT*@
+            <div class="modal inmodal fade" id="mdl-logout-config" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title">Confirmação</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                <strong>Deseja realmente sair do sistema?</strong>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            @Html.ActionLink("Sim", "ExpirarSession", "Common", null, new { @class = "btn btn-primary" })
+                            <button type="button" class="btn btn-white" data-dismiss="modal">Não</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

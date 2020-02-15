@@ -1,0 +1,1343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Classificacao">
+          <Key>
+            <PropertyRef Name="cls_id" />
+          </Key>
+          <Property Name="cls_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cls_nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cls_dt_cadastro" Type="date" Nullable="false" />
+          <Property Name="cls_ativo" Type="bit" Nullable="false" />
+          <Property Name="cls_qst_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="dpt_id" />
+          </Key>
+          <Property Name="dpt_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dpt_nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="dpt_dt_cadastro" Type="datetime" Nullable="false" />
+          <Property Name="dpt_ativo" Type="bit" Nullable="false" />
+          <Property Name="dpt_emp_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="ema_id" />
+          </Key>
+          <Property Name="ema_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ema_remetente" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ema_destinatario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ema_motivo_envio" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="ema_dt_cadastro" Type="datetime" Nullable="false" />
+          <Property Name="ema_ativo" Type="bit" Nullable="false" />
+          <Property Name="ema_eml_id" Type="int" Nullable="false" />
+          <Property Name="ema_remetente_alias" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EmailConfiguracao">
+          <Key>
+            <PropertyRef Name="eml_id" />
+          </Key>
+          <Property Name="eml_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="eml_smtp_cliente" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="eml_smtp_cliente_porta" Type="int" Nullable="false" />
+          <Property Name="eml_smtp_usuario" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="eml_smtp_senha" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="eml_dt_cadastro" Type="datetime" Nullable="false" />
+          <Property Name="eml_ativo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emp_nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="emp_ativo" Type="bit" Nullable="false" />
+          <Property Name="emp_cnpj" Type="nvarchar" MaxLength="14" />
+          <Property Name="emp_cidade" Type="nvarchar" MaxLength="50" />
+          <Property Name="emp_estado" Type="char" MaxLength="2" />
+          <Property Name="emp_ramo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EmpresaQuestionario">
+          <Key>
+            <PropertyRef Name="eqt_id" />
+          </Key>
+          <Property Name="eqt_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="eqt_emp_id" Type="int" Nullable="false" />
+          <Property Name="eqt_qst_id" Type="int" Nullable="false" />
+          <Property Name="eqt_dt_cadastro" Type="datetime" Nullable="false" />
+          <Property Name="eqt_ativo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lead_empresa_lgpd">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome_completo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="telefone" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="nome_empresa" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="qnt_colaborador" Type="int" Nullable="false" />
+          <Property Name="cargo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ramo" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="dados_cliente" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="compartilha_dados" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="iniciou_adequacao" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="data_cadastro" Type="datetime" Nullable="false" />
+          <Property Name="cidade" Type="nvarchar" MaxLength="50" />
+          <Property Name="estado" Type="nvarchar" MaxLength="30" />
+          <Property Name="formulario" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Media">
+          <Key>
+            <PropertyRef Name="mda_id" />
+          </Key>
+          <Property Name="mda_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mda_usu_id" Type="int" Nullable="false" />
+          <Property Name="mda_item" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="mda_valor_atual" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="mda_valor_desejado" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="mda_dt_cadastro" Type="datetime" />
+        </EntityType>
+        <EntityType Name="NivelAcesso">
+          <Key>
+            <PropertyRef Name="nvl_id" />
+          </Key>
+          <Property Name="nvl_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nvl_nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nvl_ativo" Type="bit" Nullable="false" />
+          <Property Name="nvl_dt_cadastro" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notificacoes">
+          <Key>
+            <PropertyRef Name="ntf_id" />
+          </Key>
+          <Property Name="ntf_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ntf_dt_visualizacao" Type="datetime" Nullable="false" />
+          <Property Name="ntf_usu_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pergunta">
+          <Key>
+            <PropertyRef Name="prg_id" />
+          </Key>
+          <Property Name="prg_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prg_numero" Type="int" />
+          <Property Name="prg_item" Type="varchar" MaxLength="2" />
+          <Property Name="prg_descricao" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="prg_cls_id" Type="int" />
+          <Property Name="prg_qst_id" Type="int" Nullable="false" />
+          <Property Name="prg_ativo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Questionario">
+          <Key>
+            <PropertyRef Name="qst_id" />
+          </Key>
+          <Property Name="qst_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="qst_nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="qst_datacadastro" Type="datetime" Nullable="false" />
+          <Property Name="qst_ativo" Type="bit" Nullable="false" />
+          <Property Name="qst_publicado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Resposta">
+          <Key>
+            <PropertyRef Name="rsp_id" />
+          </Key>
+          <Property Name="rsp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rsp_valor" Type="varchar" MaxLength="100" />
+          <Property Name="rsp_descricao" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="rsp_qst_id" Type="int" Nullable="false" />
+          <Property Name="rsp_ativo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RespostaUsuario">
+          <Key>
+            <PropertyRef Name="rpu_id" />
+          </Key>
+          <Property Name="rpu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rpu_datacadastro" Type="datetime" Nullable="false" />
+          <Property Name="rpu_valor_resposta" Type="varchar" MaxLength="150" />
+          <Property Name="rpu_usu_id" Type="int" Nullable="false" />
+          <Property Name="rpu_rsp_id" Type="int" Nullable="false" />
+          <Property Name="rpu_qst_id" Type="int" Nullable="false" />
+          <Property Name="rpu_prg_id" Type="int" Nullable="false" />
+          <Property Name="rpu_dpt_id" Type="int" Nullable="false" />
+          <Property Name="rpu_emp_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="usu_id" />
+          </Key>
+          <Property Name="usu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usu_nome" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="usu_cargo" Type="varchar" MaxLength="100" />
+          <Property Name="usu_dt_cadastro" Type="datetime" Nullable="false" />
+          <Property Name="usu_cpf" Type="varchar" MaxLength="11" />
+          <Property Name="usu_email" Type="varchar" MaxLength="100" />
+          <Property Name="usu_telefone" Type="char" MaxLength="11" />
+          <Property Name="usu_dt_nascimento" Type="date" Nullable="false" />
+          <Property Name="usu_ativo" Type="bit" Nullable="false" />
+          <Property Name="usu_nvl_id" Type="int" Nullable="false" />
+          <Property Name="usu_emp_id" Type="int" Nullable="false" />
+          <Property Name="usu_dpt_id" Type="int" Nullable="false" />
+          <Property Name="usu_senha" Type="varchar" MaxLength="200" />
+          <Property Name="usu_aprovado" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Valor">
+          <Key>
+            <PropertyRef Name="vlr_id" />
+          </Key>
+          <Property Name="vlr_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vlr_rsp_id" Type="int" Nullable="false" />
+          <Property Name="vlr_valor" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="vlr_dt_cadastro" Type="datetime" Nullable="false" />
+          <Property Name="vlr_ativo" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CLS_QST_ID">
+          <End Role="Questionario" Type="Self.Questionario" Multiplicity="1" />
+          <End Role="Classificacao" Type="Self.Classificacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionario">
+              <PropertyRef Name="qst_id" />
+            </Principal>
+            <Dependent Role="Classificacao">
+              <PropertyRef Name="cls_qst_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DPT_EMP_ID">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="emp_id" />
+            </Principal>
+            <Dependent Role="Departamento">
+              <PropertyRef Name="dpt_emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMA_EML_ID">
+          <End Role="EmailConfiguracao" Type="Self.EmailConfiguracao" Multiplicity="1" />
+          <End Role="Email" Type="Self.Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmailConfiguracao">
+              <PropertyRef Name="eml_id" />
+            </Principal>
+            <Dependent Role="Email">
+              <PropertyRef Name="ema_eml_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQT_EMP_ID">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="EmpresaQuestionario" Type="Self.EmpresaQuestionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="emp_id" />
+            </Principal>
+            <Dependent Role="EmpresaQuestionario">
+              <PropertyRef Name="eqt_emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQT_QST_ID">
+          <End Role="Questionario" Type="Self.Questionario" Multiplicity="1" />
+          <End Role="EmpresaQuestionario" Type="Self.EmpresaQuestionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionario">
+              <PropertyRef Name="qst_id" />
+            </Principal>
+            <Dependent Role="EmpresaQuestionario">
+              <PropertyRef Name="eqt_qst_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Media_IDParticipante">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Media" Type="Self.Media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="Media">
+              <PropertyRef Name="mda_usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NTF_USU_ID">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Notificacoes" Type="Self.Notificacoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="Notificacoes">
+              <PropertyRef Name="ntf_usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRG_CLS_ID">
+          <End Role="Classificacao" Type="Self.Classificacao" Multiplicity="0..1" />
+          <End Role="Pergunta" Type="Self.Pergunta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classificacao">
+              <PropertyRef Name="cls_id" />
+            </Principal>
+            <Dependent Role="Pergunta">
+              <PropertyRef Name="prg_cls_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRG_QST_ID">
+          <End Role="Questionario" Type="Self.Questionario" Multiplicity="1" />
+          <End Role="Pergunta" Type="Self.Pergunta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionario">
+              <PropertyRef Name="qst_id" />
+            </Principal>
+            <Dependent Role="Pergunta">
+              <PropertyRef Name="prg_qst_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RPU_DPT_ID">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="RespostaUsuario" Type="Self.RespostaUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="dpt_id" />
+            </Principal>
+            <Dependent Role="RespostaUsuario">
+              <PropertyRef Name="rpu_dpt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RPU_EMP_ID">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="RespostaUsuario" Type="Self.RespostaUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="emp_id" />
+            </Principal>
+            <Dependent Role="RespostaUsuario">
+              <PropertyRef Name="rpu_emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RPU_PRG_ID">
+          <End Role="Pergunta" Type="Self.Pergunta" Multiplicity="1" />
+          <End Role="RespostaUsuario" Type="Self.RespostaUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pergunta">
+              <PropertyRef Name="prg_id" />
+            </Principal>
+            <Dependent Role="RespostaUsuario">
+              <PropertyRef Name="rpu_prg_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RPU_QST_ID">
+          <End Role="Questionario" Type="Self.Questionario" Multiplicity="1" />
+          <End Role="RespostaUsuario" Type="Self.RespostaUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionario">
+              <PropertyRef Name="qst_id" />
+            </Principal>
+            <Dependent Role="RespostaUsuario">
+              <PropertyRef Name="rpu_qst_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RPU_RSP_ID">
+          <End Role="Resposta" Type="Self.Resposta" Multiplicity="1" />
+          <End Role="RespostaUsuario" Type="Self.RespostaUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resposta">
+              <PropertyRef Name="rsp_id" />
+            </Principal>
+            <Dependent Role="RespostaUsuario">
+              <PropertyRef Name="rpu_rsp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RPU_USU_ID">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="RespostaUsuario" Type="Self.RespostaUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="RespostaUsuario">
+              <PropertyRef Name="rpu_usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RSP_QST_ID">
+          <End Role="Questionario" Type="Self.Questionario" Multiplicity="1" />
+          <End Role="Resposta" Type="Self.Resposta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionario">
+              <PropertyRef Name="qst_id" />
+            </Principal>
+            <Dependent Role="Resposta">
+              <PropertyRef Name="rsp_qst_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USU_DPT_ID">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="dpt_id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="usu_dpt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USU_EMP_ID">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="emp_id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="usu_emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USU_NVL_ID">
+          <End Role="NivelAcesso" Type="Self.NivelAcesso" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NivelAcesso">
+              <PropertyRef Name="nvl_id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="usu_nvl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VLR_RSP_ID">
+          <End Role="Resposta" Type="Self.Resposta" Multiplicity="1" />
+          <End Role="Valor" Type="Self.Valor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resposta">
+              <PropertyRef Name="rsp_id" />
+            </Principal>
+            <Dependent Role="Valor">
+              <PropertyRef Name="vlr_rsp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QBModelStoreContainer">
+          <EntitySet Name="Classificacao" EntityType="Self.Classificacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Email" EntityType="Self.Email" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailConfiguracao" EntityType="Self.EmailConfiguracao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpresaQuestionario" EntityType="Self.EmpresaQuestionario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lead_empresa_lgpd" EntityType="Self.lead_empresa_lgpd" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Media" EntityType="Self.Media" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NivelAcesso" EntityType="Self.NivelAcesso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notificacoes" EntityType="Self.Notificacoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pergunta" EntityType="Self.Pergunta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Questionario" EntityType="Self.Questionario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Resposta" EntityType="Self.Resposta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RespostaUsuario" EntityType="Self.RespostaUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Valor" EntityType="Self.Valor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CLS_QST_ID" Association="Self.FK_CLS_QST_ID">
+            <End Role="Questionario" EntitySet="Questionario" />
+            <End Role="Classificacao" EntitySet="Classificacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DPT_EMP_ID" Association="Self.FK_DPT_EMP_ID">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Departamento" EntitySet="Departamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMA_EML_ID" Association="Self.FK_EMA_EML_ID">
+            <End Role="EmailConfiguracao" EntitySet="EmailConfiguracao" />
+            <End Role="Email" EntitySet="Email" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQT_EMP_ID" Association="Self.FK_EQT_EMP_ID">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="EmpresaQuestionario" EntitySet="EmpresaQuestionario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQT_QST_ID" Association="Self.FK_EQT_QST_ID">
+            <End Role="Questionario" EntitySet="Questionario" />
+            <End Role="EmpresaQuestionario" EntitySet="EmpresaQuestionario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Media_IDParticipante" Association="Self.FK_Media_IDParticipante">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Media" EntitySet="Media" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NTF_USU_ID" Association="Self.FK_NTF_USU_ID">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Notificacoes" EntitySet="Notificacoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRG_CLS_ID" Association="Self.FK_PRG_CLS_ID">
+            <End Role="Classificacao" EntitySet="Classificacao" />
+            <End Role="Pergunta" EntitySet="Pergunta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRG_QST_ID" Association="Self.FK_PRG_QST_ID">
+            <End Role="Questionario" EntitySet="Questionario" />
+            <End Role="Pergunta" EntitySet="Pergunta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RPU_DPT_ID" Association="Self.FK_RPU_DPT_ID">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="RespostaUsuario" EntitySet="RespostaUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RPU_EMP_ID" Association="Self.FK_RPU_EMP_ID">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="RespostaUsuario" EntitySet="RespostaUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RPU_PRG_ID" Association="Self.FK_RPU_PRG_ID">
+            <End Role="Pergunta" EntitySet="Pergunta" />
+            <End Role="RespostaUsuario" EntitySet="RespostaUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RPU_QST_ID" Association="Self.FK_RPU_QST_ID">
+            <End Role="Questionario" EntitySet="Questionario" />
+            <End Role="RespostaUsuario" EntitySet="RespostaUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RPU_RSP_ID" Association="Self.FK_RPU_RSP_ID">
+            <End Role="Resposta" EntitySet="Resposta" />
+            <End Role="RespostaUsuario" EntitySet="RespostaUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RPU_USU_ID" Association="Self.FK_RPU_USU_ID">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="RespostaUsuario" EntitySet="RespostaUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RSP_QST_ID" Association="Self.FK_RSP_QST_ID">
+            <End Role="Questionario" EntitySet="Questionario" />
+            <End Role="Resposta" EntitySet="Resposta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USU_DPT_ID" Association="Self.FK_USU_DPT_ID">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USU_EMP_ID" Association="Self.FK_USU_EMP_ID">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USU_NVL_ID" Association="Self.FK_USU_NVL_ID">
+            <End Role="NivelAcesso" EntitySet="NivelAcesso" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VLR_RSP_ID" Association="Self.FK_VLR_RSP_ID">
+            <End Role="Resposta" EntitySet="Resposta" />
+            <End Role="Valor" EntitySet="Valor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Classificacao">
+          <Key>
+            <PropertyRef Name="cls_id" />
+          </Key>
+          <Property Name="cls_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cls_nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cls_dt_cadastro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cls_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="cls_qst_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pergunta" Relationship="QBModel.FK_PRG_CLS_ID" FromRole="Classificacao" ToRole="Pergunta" />
+          <NavigationProperty Name="Questionario" Relationship="QBModel.FK_CLS_QST_ID" FromRole="Classificacao" ToRole="Questionario" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="dpt_id" />
+          </Key>
+          <Property Name="dpt_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dpt_nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dpt_dt_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dpt_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="dpt_emp_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RespostaUsuario" Relationship="Self.FK_RPU_DPT_ID" FromRole="Departamento" ToRole="RespostaUsuario" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_USU_DPT_ID" FromRole="Departamento" ToRole="Usuario" />
+          <NavigationProperty Name="Empresa" Relationship="QBModel.FK_DPT_EMP_ID" FromRole="Departamento" ToRole="Empresa" />
+        </EntityType>
+        <EntityType Name="Media">
+          <Key>
+            <PropertyRef Name="mda_id" />
+          </Key>
+          <Property Name="mda_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mda_usu_id" Type="Int32" Nullable="false" />
+          <Property Name="mda_item" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="mda_valor_atual" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="mda_valor_desejado" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="mda_dt_cadastro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Media_IDParticipante" FromRole="Media" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="NivelAcesso">
+          <Key>
+            <PropertyRef Name="nvl_id" />
+          </Key>
+          <Property Name="nvl_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nvl_nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nvl_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="nvl_dt_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_USU_NVL_ID" FromRole="NivelAcesso" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Resposta">
+          <Key>
+            <PropertyRef Name="rsp_id" />
+          </Key>
+          <Property Name="rsp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rsp_valor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="rsp_descricao" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rsp_qst_id" Type="Int32" Nullable="false" />
+          <Property Name="rsp_ativo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="RespostaUsuario" Relationship="Self.FK_RPU_RSP_ID" FromRole="Resposta" ToRole="RespostaUsuario" />
+          <NavigationProperty Name="Valor" Relationship="Self.FK_VLR_RSP_ID" FromRole="Resposta" ToRole="Valor" />
+          <NavigationProperty Name="Questionario" Relationship="QBModel.FK_RSP_QST_ID" FromRole="Resposta" ToRole="Questionario" />
+        </EntityType>
+        <EntityType Name="RespostaUsuario">
+          <Key>
+            <PropertyRef Name="rpu_id" />
+          </Key>
+          <Property Name="rpu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rpu_datacadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="rpu_valor_resposta" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="rpu_usu_id" Type="Int32" Nullable="false" />
+          <Property Name="rpu_rsp_id" Type="Int32" Nullable="false" />
+          <Property Name="rpu_qst_id" Type="Int32" Nullable="false" />
+          <Property Name="rpu_prg_id" Type="Int32" Nullable="false" />
+          <Property Name="rpu_dpt_id" Type="Int32" Nullable="false" />
+          <Property Name="rpu_emp_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK_RPU_DPT_ID" FromRole="RespostaUsuario" ToRole="Departamento" />
+          <NavigationProperty Name="Resposta" Relationship="Self.FK_RPU_RSP_ID" FromRole="RespostaUsuario" ToRole="Resposta" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_RPU_USU_ID" FromRole="RespostaUsuario" ToRole="Usuario" />
+          <NavigationProperty Name="Pergunta" Relationship="QBModel.FK_RPU_PRG_ID" FromRole="RespostaUsuario" ToRole="Pergunta" />
+          <NavigationProperty Name="Questionario" Relationship="QBModel.FK_RPU_QST_ID" FromRole="RespostaUsuario" ToRole="Questionario" />
+          <NavigationProperty Name="Empresa" Relationship="QBModel.FK_RPU_EMP_ID" FromRole="RespostaUsuario" ToRole="Empresa" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="usu_id" />
+          </Key>
+          <Property Name="usu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usu_nome" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usu_cargo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="usu_dt_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usu_cpf" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="usu_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="usu_telefone" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="usu_dt_nascimento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="usu_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="usu_nvl_id" Type="Int32" Nullable="false" />
+          <Property Name="usu_emp_id" Type="Int32" Nullable="false" />
+          <Property Name="usu_dpt_id" Type="Int32" Nullable="false" />
+          <Property Name="usu_senha" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="usu_aprovado" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK_USU_DPT_ID" FromRole="Usuario" ToRole="Departamento" />
+          <NavigationProperty Name="Media" Relationship="Self.FK_Media_IDParticipante" FromRole="Usuario" ToRole="Media" />
+          <NavigationProperty Name="NivelAcesso" Relationship="Self.FK_USU_NVL_ID" FromRole="Usuario" ToRole="NivelAcesso" />
+          <NavigationProperty Name="RespostaUsuario" Relationship="Self.FK_RPU_USU_ID" FromRole="Usuario" ToRole="RespostaUsuario" />
+          <NavigationProperty Name="Empresa" Relationship="QBModel.FK_USU_EMP_ID" FromRole="Usuario" ToRole="Empresa" />
+          <NavigationProperty Name="Notificacoes" Relationship="QBModel.FK_NTF_USU_ID" FromRole="Usuario" ToRole="Notificacoes" />
+        </EntityType>
+        <EntityType Name="Valor">
+          <Key>
+            <PropertyRef Name="vlr_id" />
+          </Key>
+          <Property Name="vlr_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vlr_rsp_id" Type="Int32" Nullable="false" />
+          <Property Name="vlr_valor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="vlr_dt_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="vlr_ativo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Resposta" Relationship="Self.FK_VLR_RSP_ID" FromRole="Valor" ToRole="Resposta" />
+        </EntityType>
+        <Association Name="FK_RPU_DPT_ID">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="RespostaUsuario" Type="Self.RespostaUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="dpt_id" />
+            </Principal>
+            <Dependent Role="RespostaUsuario">
+              <PropertyRef Name="rpu_dpt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USU_DPT_ID">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="dpt_id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="usu_dpt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Media_IDParticipante">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Media" Type="Self.Media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="Media">
+              <PropertyRef Name="mda_usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USU_NVL_ID">
+          <End Role="NivelAcesso" Type="Self.NivelAcesso" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NivelAcesso">
+              <PropertyRef Name="nvl_id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="usu_nvl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RPU_RSP_ID">
+          <End Role="Resposta" Type="Self.Resposta" Multiplicity="1" />
+          <End Role="RespostaUsuario" Type="Self.RespostaUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resposta">
+              <PropertyRef Name="rsp_id" />
+            </Principal>
+            <Dependent Role="RespostaUsuario">
+              <PropertyRef Name="rpu_rsp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VLR_RSP_ID">
+          <End Role="Resposta" Type="Self.Resposta" Multiplicity="1" />
+          <End Role="Valor" Type="Self.Valor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resposta">
+              <PropertyRef Name="rsp_id" />
+            </Principal>
+            <Dependent Role="Valor">
+              <PropertyRef Name="vlr_rsp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RPU_USU_ID">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="RespostaUsuario" Type="Self.RespostaUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="RespostaUsuario">
+              <PropertyRef Name="rpu_usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuestionarioOrgDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Classificacao" EntityType="Self.Classificacao" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" />
+          <EntitySet Name="Media" EntityType="Self.Media" />
+          <EntitySet Name="NivelAcesso" EntityType="Self.NivelAcesso" />
+          <EntitySet Name="Resposta" EntityType="Self.Resposta" />
+          <EntitySet Name="RespostaUsuario" EntityType="Self.RespostaUsuario" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <EntitySet Name="Valor" EntityType="Self.Valor" />
+          <AssociationSet Name="FK_RPU_DPT_ID" Association="Self.FK_RPU_DPT_ID">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="RespostaUsuario" EntitySet="RespostaUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USU_DPT_ID" Association="Self.FK_USU_DPT_ID">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Media_IDParticipante" Association="Self.FK_Media_IDParticipante">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Media" EntitySet="Media" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USU_NVL_ID" Association="Self.FK_USU_NVL_ID">
+            <End Role="NivelAcesso" EntitySet="NivelAcesso" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RPU_RSP_ID" Association="Self.FK_RPU_RSP_ID">
+            <End Role="Resposta" EntitySet="Resposta" />
+            <End Role="RespostaUsuario" EntitySet="RespostaUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VLR_RSP_ID" Association="Self.FK_VLR_RSP_ID">
+            <End Role="Resposta" EntitySet="Resposta" />
+            <End Role="Valor" EntitySet="Valor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RPU_USU_ID" Association="Self.FK_RPU_USU_ID">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="RespostaUsuario" EntitySet="RespostaUsuario" />
+          </AssociationSet>
+          <EntitySet Name="Pergunta" EntityType="QBModel.Pergunta" />
+          <AssociationSet Name="FK_PRG_CLS_ID" Association="QBModel.FK_PRG_CLS_ID">
+            <End Role="Classificacao" EntitySet="Classificacao" />
+            <End Role="Pergunta" EntitySet="Pergunta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RPU_PRG_ID" Association="QBModel.FK_RPU_PRG_ID">
+            <End Role="Pergunta" EntitySet="Pergunta" />
+            <End Role="RespostaUsuario" EntitySet="RespostaUsuario" />
+          </AssociationSet>
+          <EntitySet Name="lead_empresa_lgpd" EntityType="QBModel.lead_empresa_lgpd" />
+          <EntitySet Name="Email" EntityType="QBModel.Email" />
+          <EntitySet Name="EmailConfiguracao" EntityType="QBModel.EmailConfiguracao" />
+          <AssociationSet Name="FK_EMA_EML_ID" Association="QBModel.FK_EMA_EML_ID">
+            <End Role="EmailConfiguracao" EntitySet="EmailConfiguracao" />
+            <End Role="Email" EntitySet="Email" />
+          </AssociationSet>
+          <EntitySet Name="EmpresaQuestionario" EntityType="QBModel.EmpresaQuestionario" />
+          <EntitySet Name="Questionario" EntityType="QBModel.Questionario" />
+          <AssociationSet Name="FK_CLS_QST_ID" Association="QBModel.FK_CLS_QST_ID">
+            <End Role="Questionario" EntitySet="Questionario" />
+            <End Role="Classificacao" EntitySet="Classificacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQT_QST_ID" Association="QBModel.FK_EQT_QST_ID">
+            <End Role="Questionario" EntitySet="Questionario" />
+            <End Role="EmpresaQuestionario" EntitySet="EmpresaQuestionario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRG_QST_ID" Association="QBModel.FK_PRG_QST_ID">
+            <End Role="Questionario" EntitySet="Questionario" />
+            <End Role="Pergunta" EntitySet="Pergunta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RPU_QST_ID" Association="QBModel.FK_RPU_QST_ID">
+            <End Role="Questionario" EntitySet="Questionario" />
+            <End Role="RespostaUsuario" EntitySet="RespostaUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RSP_QST_ID" Association="QBModel.FK_RSP_QST_ID">
+            <End Role="Questionario" EntitySet="Questionario" />
+            <End Role="Resposta" EntitySet="Resposta" />
+          </AssociationSet>
+          <EntitySet Name="Empresa" EntityType="QBModel.Empresa" />
+          <AssociationSet Name="FK_DPT_EMP_ID" Association="QBModel.FK_DPT_EMP_ID">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Departamento" EntitySet="Departamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQT_EMP_ID" Association="QBModel.FK_EQT_EMP_ID">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="EmpresaQuestionario" EntitySet="EmpresaQuestionario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RPU_EMP_ID" Association="QBModel.FK_RPU_EMP_ID">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="RespostaUsuario" EntitySet="RespostaUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USU_EMP_ID" Association="QBModel.FK_USU_EMP_ID">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <EntitySet Name="Notificacoes" EntityType="QBModel.Notificacoes" />
+          <AssociationSet Name="FK_NTF_USU_ID" Association="QBModel.FK_NTF_USU_ID">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Notificacoes" EntitySet="Notificacoes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Pergunta">
+          <Key>
+            <PropertyRef Name="prg_id" />
+          </Key>
+          <Property Name="prg_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prg_numero" Type="Int32" />
+          <Property Name="prg_item" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="prg_descricao" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="prg_cls_id" Type="Int32" />
+          <Property Name="prg_qst_id" Type="Int32" Nullable="false" />
+          <Property Name="prg_ativo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Classificacao" Relationship="QBModel.FK_PRG_CLS_ID" FromRole="Pergunta" ToRole="Classificacao" />
+          <NavigationProperty Name="RespostaUsuario" Relationship="QBModel.FK_RPU_PRG_ID" FromRole="Pergunta" ToRole="RespostaUsuario" />
+          <NavigationProperty Name="Questionario" Relationship="QBModel.FK_PRG_QST_ID" FromRole="Pergunta" ToRole="Questionario" />
+        </EntityType>
+        <Association Name="FK_PRG_CLS_ID">
+          <End Type="QBModel.Classificacao" Role="Classificacao" Multiplicity="0..1" />
+          <End Type="QBModel.Pergunta" Role="Pergunta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classificacao">
+              <PropertyRef Name="cls_id" />
+            </Principal>
+            <Dependent Role="Pergunta">
+              <PropertyRef Name="prg_cls_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RPU_PRG_ID">
+          <End Type="QBModel.Pergunta" Role="Pergunta" Multiplicity="1" />
+          <End Type="QBModel.RespostaUsuario" Role="RespostaUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pergunta">
+              <PropertyRef Name="prg_id" />
+            </Principal>
+            <Dependent Role="RespostaUsuario">
+              <PropertyRef Name="rpu_prg_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="lead_empresa_lgpd">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome_completo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="telefone" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="nome_empresa" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="qnt_colaborador" Type="Int32" Nullable="false" />
+          <Property Name="cargo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ramo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="dados_cliente" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="compartilha_dados" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="iniciou_adequacao" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="data_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="formulario" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="ema_id" />
+          </Key>
+          <Property Name="ema_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ema_remetente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ema_destinatario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ema_motivo_envio" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ema_dt_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ema_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="ema_eml_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EmailConfiguracao" Relationship="QBModel.FK_EMA_EML_ID" FromRole="Email" ToRole="EmailConfiguracao" />
+          <Property Name="ema_remetente_alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EmailConfiguracao">
+          <Key>
+            <PropertyRef Name="eml_id" />
+          </Key>
+          <Property Name="eml_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="eml_smtp_cliente" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="eml_smtp_cliente_porta" Type="Int32" Nullable="false" />
+          <Property Name="eml_smtp_usuario" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="eml_smtp_senha" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eml_dt_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="eml_ativo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Email" Relationship="QBModel.FK_EMA_EML_ID" FromRole="EmailConfiguracao" ToRole="Email" />
+        </EntityType>
+        <Association Name="FK_EMA_EML_ID">
+          <End Type="QBModel.EmailConfiguracao" Role="EmailConfiguracao" Multiplicity="1" />
+          <End Type="QBModel.Email" Role="Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmailConfiguracao">
+              <PropertyRef Name="eml_id" />
+            </Principal>
+            <Dependent Role="Email">
+              <PropertyRef Name="ema_eml_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EmpresaQuestionario">
+          <Key>
+            <PropertyRef Name="eqt_id" />
+          </Key>
+          <Property Name="eqt_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="eqt_emp_id" Type="Int32" Nullable="false" />
+          <Property Name="eqt_qst_id" Type="Int32" Nullable="false" />
+          <Property Name="eqt_dt_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="eqt_ativo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Questionario" Relationship="QBModel.FK_EQT_QST_ID" FromRole="EmpresaQuestionario" ToRole="Questionario" />
+          <NavigationProperty Name="Empresa" Relationship="QBModel.FK_EQT_EMP_ID" FromRole="EmpresaQuestionario" ToRole="Empresa" />
+        </EntityType>
+        <EntityType Name="Questionario">
+          <Key>
+            <PropertyRef Name="qst_id" />
+          </Key>
+          <Property Name="qst_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="qst_nome" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="qst_datacadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="qst_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="qst_publicado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Classificacao" Relationship="QBModel.FK_CLS_QST_ID" FromRole="Questionario" ToRole="Classificacao" />
+          <NavigationProperty Name="EmpresaQuestionario" Relationship="QBModel.FK_EQT_QST_ID" FromRole="Questionario" ToRole="EmpresaQuestionario" />
+          <NavigationProperty Name="Pergunta" Relationship="QBModel.FK_PRG_QST_ID" FromRole="Questionario" ToRole="Pergunta" />
+          <NavigationProperty Name="RespostaUsuario" Relationship="QBModel.FK_RPU_QST_ID" FromRole="Questionario" ToRole="RespostaUsuario" />
+          <NavigationProperty Name="Resposta" Relationship="QBModel.FK_RSP_QST_ID" FromRole="Questionario" ToRole="Resposta" />
+        </EntityType>
+        <Association Name="FK_CLS_QST_ID">
+          <End Type="QBModel.Questionario" Role="Questionario" Multiplicity="1" />
+          <End Type="QBModel.Classificacao" Role="Classificacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionario">
+              <PropertyRef Name="qst_id" />
+            </Principal>
+            <Dependent Role="Classificacao">
+              <PropertyRef Name="cls_qst_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQT_QST_ID">
+          <End Type="QBModel.Questionario" Role="Questionario" Multiplicity="1" />
+          <End Type="QBModel.EmpresaQuestionario" Role="EmpresaQuestionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionario">
+              <PropertyRef Name="qst_id" />
+            </Principal>
+            <Dependent Role="EmpresaQuestionario">
+              <PropertyRef Name="eqt_qst_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRG_QST_ID">
+          <End Type="QBModel.Questionario" Role="Questionario" Multiplicity="1" />
+          <End Type="QBModel.Pergunta" Role="Pergunta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionario">
+              <PropertyRef Name="qst_id" />
+            </Principal>
+            <Dependent Role="Pergunta">
+              <PropertyRef Name="prg_qst_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RPU_QST_ID">
+          <End Type="QBModel.Questionario" Role="Questionario" Multiplicity="1" />
+          <End Type="QBModel.RespostaUsuario" Role="RespostaUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionario">
+              <PropertyRef Name="qst_id" />
+            </Principal>
+            <Dependent Role="RespostaUsuario">
+              <PropertyRef Name="rpu_qst_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RSP_QST_ID">
+          <End Type="QBModel.Questionario" Role="Questionario" Multiplicity="1" />
+          <End Type="QBModel.Resposta" Role="Resposta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionario">
+              <PropertyRef Name="qst_id" />
+            </Principal>
+            <Dependent Role="Resposta">
+              <PropertyRef Name="rsp_qst_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emp_nome" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="emp_ativo" Type="Boolean" Nullable="false" />
+          <Property Name="emp_cnpj" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="emp_cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emp_estado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="emp_ramo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Departamento" Relationship="QBModel.FK_DPT_EMP_ID" FromRole="Empresa" ToRole="Departamento" />
+          <NavigationProperty Name="EmpresaQuestionario" Relationship="QBModel.FK_EQT_EMP_ID" FromRole="Empresa" ToRole="EmpresaQuestionario" />
+          <NavigationProperty Name="RespostaUsuario" Relationship="QBModel.FK_RPU_EMP_ID" FromRole="Empresa" ToRole="RespostaUsuario" />
+          <NavigationProperty Name="Usuario" Relationship="QBModel.FK_USU_EMP_ID" FromRole="Empresa" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK_DPT_EMP_ID">
+          <End Type="QBModel.Empresa" Role="Empresa" Multiplicity="1" />
+          <End Type="QBModel.Departamento" Role="Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="emp_id" />
+            </Principal>
+            <Dependent Role="Departamento">
+              <PropertyRef Name="dpt_emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQT_EMP_ID">
+          <End Type="QBModel.Empresa" Role="Empresa" Multiplicity="1" />
+          <End Type="QBModel.EmpresaQuestionario" Role="EmpresaQuestionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="emp_id" />
+            </Principal>
+            <Dependent Role="EmpresaQuestionario">
+              <PropertyRef Name="eqt_emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RPU_EMP_ID">
+          <End Type="QBModel.Empresa" Role="Empresa" Multiplicity="1" />
+          <End Type="QBModel.RespostaUsuario" Role="RespostaUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="emp_id" />
+            </Principal>
+            <Dependent Role="RespostaUsuario">
+              <PropertyRef Name="rpu_emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USU_EMP_ID">
+          <End Type="QBModel.Empresa" Role="Empresa" Multiplicity="1" />
+          <End Type="QBModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="emp_id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="usu_emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Notificacoes">
+          <Key>
+            <PropertyRef Name="ntf_id" />
+          </Key>
+          <Property Name="ntf_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ntf_dt_visualizacao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ntf_usu_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="QBModel.FK_NTF_USU_ID" FromRole="Notificacoes" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK_NTF_USU_ID">
+          <End Type="QBModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="QBModel.Notificacoes" Role="Notificacoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="Notificacoes">
+              <PropertyRef Name="ntf_usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QBModelStoreContainer" CdmEntityContainer="QuestionarioOrgDBEntities">
+          <EntitySetMapping Name="Classificacao">
+            <EntityTypeMapping TypeName="QBModel.Classificacao">
+              <MappingFragment StoreEntitySet="Classificacao">
+                <ScalarProperty Name="cls_id" ColumnName="cls_id" />
+                <ScalarProperty Name="cls_nome" ColumnName="cls_nome" />
+                <ScalarProperty Name="cls_dt_cadastro" ColumnName="cls_dt_cadastro" />
+                <ScalarProperty Name="cls_ativo" ColumnName="cls_ativo" />
+                <ScalarProperty Name="cls_qst_id" ColumnName="cls_qst_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamento">
+            <EntityTypeMapping TypeName="QBModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="dpt_id" ColumnName="dpt_id" />
+                <ScalarProperty Name="dpt_nome" ColumnName="dpt_nome" />
+                <ScalarProperty Name="dpt_dt_cadastro" ColumnName="dpt_dt_cadastro" />
+                <ScalarProperty Name="dpt_ativo" ColumnName="dpt_ativo" />
+                <ScalarProperty Name="dpt_emp_id" ColumnName="dpt_emp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Media">
+            <EntityTypeMapping TypeName="QBModel.Media">
+              <MappingFragment StoreEntitySet="Media">
+                <ScalarProperty Name="mda_id" ColumnName="mda_id" />
+                <ScalarProperty Name="mda_usu_id" ColumnName="mda_usu_id" />
+                <ScalarProperty Name="mda_item" ColumnName="mda_item" />
+                <ScalarProperty Name="mda_valor_atual" ColumnName="mda_valor_atual" />
+                <ScalarProperty Name="mda_valor_desejado" ColumnName="mda_valor_desejado" />
+                <ScalarProperty Name="mda_dt_cadastro" ColumnName="mda_dt_cadastro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NivelAcesso">
+            <EntityTypeMapping TypeName="QBModel.NivelAcesso">
+              <MappingFragment StoreEntitySet="NivelAcesso">
+                <ScalarProperty Name="nvl_id" ColumnName="nvl_id" />
+                <ScalarProperty Name="nvl_nome" ColumnName="nvl_nome" />
+                <ScalarProperty Name="nvl_ativo" ColumnName="nvl_ativo" />
+                <ScalarProperty Name="nvl_dt_cadastro" ColumnName="nvl_dt_cadastro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resposta">
+            <EntityTypeMapping TypeName="QBModel.Resposta">
+              <MappingFragment StoreEntitySet="Resposta">
+                <ScalarProperty Name="rsp_id" ColumnName="rsp_id" />
+                <ScalarProperty Name="rsp_valor" ColumnName="rsp_valor" />
+                <ScalarProperty Name="rsp_descricao" ColumnName="rsp_descricao" />
+                <ScalarProperty Name="rsp_qst_id" ColumnName="rsp_qst_id" />
+                <ScalarProperty Name="rsp_ativo" ColumnName="rsp_ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RespostaUsuario">
+            <EntityTypeMapping TypeName="QBModel.RespostaUsuario">
+              <MappingFragment StoreEntitySet="RespostaUsuario">
+                <ScalarProperty Name="rpu_id" ColumnName="rpu_id" />
+                <ScalarProperty Name="rpu_datacadastro" ColumnName="rpu_datacadastro" />
+                <ScalarProperty Name="rpu_valor_resposta" ColumnName="rpu_valor_resposta" />
+                <ScalarProperty Name="rpu_usu_id" ColumnName="rpu_usu_id" />
+                <ScalarProperty Name="rpu_rsp_id" ColumnName="rpu_rsp_id" />
+                <ScalarProperty Name="rpu_qst_id" ColumnName="rpu_qst_id" />
+                <ScalarProperty Name="rpu_prg_id" ColumnName="rpu_prg_id" />
+                <ScalarProperty Name="rpu_dpt_id" ColumnName="rpu_dpt_id" />
+                <ScalarProperty Name="rpu_emp_id" ColumnName="rpu_emp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="QBModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="usu_id" ColumnName="usu_id" />
+                <ScalarProperty Name="usu_nome" ColumnName="usu_nome" />
+                <ScalarProperty Name="usu_cargo" ColumnName="usu_cargo" />
+                <ScalarProperty Name="usu_dt_cadastro" ColumnName="usu_dt_cadastro" />
+                <ScalarProperty Name="usu_cpf" ColumnName="usu_cpf" />
+                <ScalarProperty Name="usu_email" ColumnName="usu_email" />
+                <ScalarProperty Name="usu_telefone" ColumnName="usu_telefone" />
+                <ScalarProperty Name="usu_dt_nascimento" ColumnName="usu_dt_nascimento" />
+                <ScalarProperty Name="usu_ativo" ColumnName="usu_ativo" />
+                <ScalarProperty Name="usu_nvl_id" ColumnName="usu_nvl_id" />
+                <ScalarProperty Name="usu_emp_id" ColumnName="usu_emp_id" />
+                <ScalarProperty Name="usu_dpt_id" ColumnName="usu_dpt_id" />
+                <ScalarProperty Name="usu_senha" ColumnName="usu_senha" />
+                <ScalarProperty Name="usu_aprovado" ColumnName="usu_aprovado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Valor">
+            <EntityTypeMapping TypeName="QBModel.Valor">
+              <MappingFragment StoreEntitySet="Valor">
+                <ScalarProperty Name="vlr_id" ColumnName="vlr_id" />
+                <ScalarProperty Name="vlr_rsp_id" ColumnName="vlr_rsp_id" />
+                <ScalarProperty Name="vlr_valor" ColumnName="vlr_valor" />
+                <ScalarProperty Name="vlr_dt_cadastro" ColumnName="vlr_dt_cadastro" />
+                <ScalarProperty Name="vlr_ativo" ColumnName="vlr_ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pergunta">
+            <EntityTypeMapping TypeName="QBModel.Pergunta">
+              <MappingFragment StoreEntitySet="Pergunta">
+                <ScalarProperty Name="prg_ativo" ColumnName="prg_ativo" />
+                <ScalarProperty Name="prg_qst_id" ColumnName="prg_qst_id" />
+                <ScalarProperty Name="prg_cls_id" ColumnName="prg_cls_id" />
+                <ScalarProperty Name="prg_descricao" ColumnName="prg_descricao" />
+                <ScalarProperty Name="prg_item" ColumnName="prg_item" />
+                <ScalarProperty Name="prg_numero" ColumnName="prg_numero" />
+                <ScalarProperty Name="prg_id" ColumnName="prg_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lead_empresa_lgpd">
+            <EntityTypeMapping TypeName="QBModel.lead_empresa_lgpd">
+              <MappingFragment StoreEntitySet="lead_empresa_lgpd">
+                <ScalarProperty Name="formulario" ColumnName="formulario" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="data_cadastro" ColumnName="data_cadastro" />
+                <ScalarProperty Name="iniciou_adequacao" ColumnName="iniciou_adequacao" />
+                <ScalarProperty Name="compartilha_dados" ColumnName="compartilha_dados" />
+                <ScalarProperty Name="dados_cliente" ColumnName="dados_cliente" />
+                <ScalarProperty Name="ramo" ColumnName="ramo" />
+                <ScalarProperty Name="cargo" ColumnName="cargo" />
+                <ScalarProperty Name="qnt_colaborador" ColumnName="qnt_colaborador" />
+                <ScalarProperty Name="nome_empresa" ColumnName="nome_empresa" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="nome_completo" ColumnName="nome_completo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Email">
+            <EntityTypeMapping TypeName="QBModel.Email">
+              <MappingFragment StoreEntitySet="Email">
+                <ScalarProperty Name="ema_remetente_alias" ColumnName="ema_remetente_alias" />
+                <ScalarProperty Name="ema_eml_id" ColumnName="ema_eml_id" />
+                <ScalarProperty Name="ema_ativo" ColumnName="ema_ativo" />
+                <ScalarProperty Name="ema_dt_cadastro" ColumnName="ema_dt_cadastro" />
+                <ScalarProperty Name="ema_motivo_envio" ColumnName="ema_motivo_envio" />
+                <ScalarProperty Name="ema_destinatario" ColumnName="ema_destinatario" />
+                <ScalarProperty Name="ema_remetente" ColumnName="ema_remetente" />
+                <ScalarProperty Name="ema_id" ColumnName="ema_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailConfiguracao">
+            <EntityTypeMapping TypeName="QBModel.EmailConfiguracao">
+              <MappingFragment StoreEntitySet="EmailConfiguracao">
+                <ScalarProperty Name="eml_ativo" ColumnName="eml_ativo" />
+                <ScalarProperty Name="eml_dt_cadastro" ColumnName="eml_dt_cadastro" />
+                <ScalarProperty Name="eml_smtp_senha" ColumnName="eml_smtp_senha" />
+                <ScalarProperty Name="eml_smtp_usuario" ColumnName="eml_smtp_usuario" />
+                <ScalarProperty Name="eml_smtp_cliente_porta" ColumnName="eml_smtp_cliente_porta" />
+                <ScalarProperty Name="eml_smtp_cliente" ColumnName="eml_smtp_cliente" />
+                <ScalarProperty Name="eml_id" ColumnName="eml_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpresaQuestionario">
+            <EntityTypeMapping TypeName="QBModel.EmpresaQuestionario">
+              <MappingFragment StoreEntitySet="EmpresaQuestionario">
+                <ScalarProperty Name="eqt_ativo" ColumnName="eqt_ativo" />
+                <ScalarProperty Name="eqt_dt_cadastro" ColumnName="eqt_dt_cadastro" />
+                <ScalarProperty Name="eqt_qst_id" ColumnName="eqt_qst_id" />
+                <ScalarProperty Name="eqt_emp_id" ColumnName="eqt_emp_id" />
+                <ScalarProperty Name="eqt_id" ColumnName="eqt_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questionario">
+            <EntityTypeMapping TypeName="QBModel.Questionario">
+              <MappingFragment StoreEntitySet="Questionario">
+                <ScalarProperty Name="qst_publicado" ColumnName="qst_publicado" />
+                <ScalarProperty Name="qst_ativo" ColumnName="qst_ativo" />
+                <ScalarProperty Name="qst_datacadastro" ColumnName="qst_datacadastro" />
+                <ScalarProperty Name="qst_nome" ColumnName="qst_nome" />
+                <ScalarProperty Name="qst_id" ColumnName="qst_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="QBModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="emp_ramo" ColumnName="emp_ramo" />
+                <ScalarProperty Name="emp_estado" ColumnName="emp_estado" />
+                <ScalarProperty Name="emp_cidade" ColumnName="emp_cidade" />
+                <ScalarProperty Name="emp_cnpj" ColumnName="emp_cnpj" />
+                <ScalarProperty Name="emp_ativo" ColumnName="emp_ativo" />
+                <ScalarProperty Name="emp_nome" ColumnName="emp_nome" />
+                <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notificacoes">
+            <EntityTypeMapping TypeName="QBModel.Notificacoes">
+              <MappingFragment StoreEntitySet="Notificacoes">
+                <ScalarProperty Name="ntf_usu_id" ColumnName="ntf_usu_id" />
+                <ScalarProperty Name="ntf_dt_visualizacao" ColumnName="ntf_dt_visualizacao" />
+                <ScalarProperty Name="ntf_id" ColumnName="ntf_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,92 @@
+﻿@model QuestionarioCOrg.ViewModels.PerguntaVM
+
+@{
+    ViewBag.Title = "Perguntas";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+@if (Model.Id != 0)
+{
+    { Html.RenderAction("_PageNavigation", "Admin", new { Nav = "Administrativo;Edição;Perguntas" }); }
+}
+else
+{
+    { Html.RenderAction("_PageNavigation", "Admin", new { Nav = "Administrativo;Cadastro;Perguntas" }); }
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div>
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Cadastro de Perguntas</h5>
+                    </div>
+
+                    <div class="ibox-content">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.HiddenFor(model => model.Id, new { @Id = "hdd-id-pergunta" })
+                            @Html.Hidden("hdd-pergunta-form-state", (bool)ViewBag.Success)
+                            @Html.Hidden("hdd-pergunta-error", (string)ViewBag.Error)
+                            @Html.Hidden("hdd-id-registro-selected", 0)
+                            <div class="form-group" id="fg-questionario-pergunta">
+                                <div>
+                                    <label>Questionário</label>
+                                    @{Html.RenderAction("_ComboQuestionario", "Admin", new { View = "pergunta", Id = Model.IdQuestionario });}
+                                    @Html.ValidationMessageFor(model => model.IdQuestionario, "", new { @class = "help-block m-b-none error-mgs", @id = "sp-questionario-pergunta-error" })
+                                </div>
+                            </div>
+                            //PARTIAL COMBO CLASSIFICAÇÃO
+                            <div id="partial-cmb-classificacao-pergunta"></div>
+                            <div class="form-group" id="fg-descricao-pergunta">
+                                <div>
+                                    <label>Pergunta</label>
+
+                                    @Html.TextAreaFor(model => model.Descricao, new
+                                    {
+                                    @class = "form-control qst-input",
+                                    @id = "txt-descricao-pergunta",
+                                    @MaxLength = "1000",
+                                    @placeHolder = "Informe a descrição da pergunta."
+                                    })
+                                    @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "help-block m-b-none error-mgs", @id = "sp-descricao-pergunta-error" })
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed" style="margin-top: 80px"></div>
+                            <div class="footer-btns">
+                                <button class="btn btn-primary" id="btn-resultados">Salvar</button>
+                                <button class="btn btn-default btn-limpar-form" style="margin-left: 10px">Limpar</button>
+                            </div>
+                        }
+                        <div id="lista-pergunta"></div>
+                        @*MODAL*@
+                        <div class="modal inmodal" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content animated flipInY">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title">Confirmação</h4>
+                                        <small class="font-bold">Exclusão de registro.</small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            <strong>Atenção.</strong> Deseja realmente excluir o registro?
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">Não</button>
+                                        <button type="button" onclick="excluirRegistro('Pergunta');" class="btn btn-danger" data-dismiss="modal">Excluir</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
