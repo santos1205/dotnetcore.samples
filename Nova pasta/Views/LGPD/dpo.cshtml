@@ -1,0 +1,221 @@
+﻿@model QuestionarioCOrg.DataAccess.lead_empresa_lgpd
+
+@{
+    Layout = "~/Views/Shared/_Layout_LGPD_Leads.cshtml";
+}
+
+
+<div class="main">
+
+    <div class="container">
+        <div class="signup-content">
+            <div class="signup-img">
+                <img src="~/assets/lgpd_leads/images/treinamento_dpo.png" alt="Lei Geral de Proteção de Dados">
+                <div class="signup-img-content">
+                    <!--<h2>Vamos começar ...</h2>-->
+                    <!--<p>Quero conhecer mais sua empresa!</p>-->
+                </div>
+            </div>
+            @if ((bool?)ViewBag.Success == true)
+            {
+                <h1 style="margin: 20% 30%">Obrigado!</h1>
+                <a href="@Url.Action("Index", "LGPD")">
+                    <div>
+                        <button class="submit" id="submit" name="enviar" style="position: absolute;top: 35%;left: 56%;"><< Voltar</button>
+                    </div>
+                </a>               
+                
+            }
+            else
+            {                
+                <div class="signup-form">
+
+                    @using (Html.BeginForm("Dpo", "LGPD", FormMethod.Post, new { @Class = "register-form", @Id = "register-form" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <div class="form-input">
+                                    <label for="nome_completo" class="required">Nome do participante</label>
+                                    @Html.EditorFor(model => model.nome_completo, new { htmlAttributes = new { @Id = "nome_completo", @MaxLength = "100" } })
+
+                                </div>
+
+                                <div class="form-input">
+                                    <label for="email" class="required">Email</label>
+                                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @Id = "email", @MaxLength = "80" } })
+                                </div>
+
+                                <div class="form-input">
+                                    <label for="telefone" class="required">Telefone</label>
+                                    @Html.EditorFor(model => model.telefone, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                        @Id = "telefone",
+                                        @MaxLength = "15",
+                                        @OnKeyPress = "MascaraTelefone_E_Celular(this)"
+                                        }
+                                    })
+                                </div>
+
+                                <div class="form-input">
+                                    <label for="empresa" class="required">Nome da empresa</label>
+                                    @Html.EditorFor(model => model.nome_empresa, new { htmlAttributes = new { @Id = "empresa" } })
+                                </div>
+                                <div class="form-input">
+                                    <label for="cargo" class="required">Cargo/Função</label>
+                                    @Html.EditorFor(model => model.cargo, new { htmlAttributes = new { @Id = "cargo", @MaxLength = "50" } })
+                                </div>
+
+                                <div class="form-select">
+                                    <div class="label-flex">
+                                        <label for="ramo">Negócio da empresa</label>
+                                        <a href="#" class="form-link">Ramo</a>
+                                    </div>
+                                    <div class="select-list">
+                                        <select name="ramo" id="ramo">
+                                            <option value="Alimentação">Alimentação</option>
+                                            <option value="Educacao">Educação</option>
+                                            <option value="Financeiro">Financeiro</option>
+                                            <option value="Marketing">Marketing</option>
+                                            <option value="Seguros">Seguros</option>
+                                            <option value="Saude">Saúde</option>
+                                            <option value="Tecnologia">Tecnologia da Informação</option>
+                                            <option value="Turismo">Turismo</option>
+                                            <option value="Outros">Outros</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="form-group">
+
+                                <div class="form-input">
+                                    <label for="cargo" class="required">Cidade</label>
+                                    @Html.EditorFor(model => model.cidade, new { htmlAttributes = new { @Id = "cidade", @MaxLength = "50" } })
+                                </div>
+
+                                <div class="form-select">
+                                    <div class="label-flex">
+                                        <label for="ramo">Estado</label>
+                                        <a href="#" class="form-link">Estado brasileiro</a>
+                                    </div>
+                                    <div class="select-list">
+                                        <select name="estado" id="estado">
+                                            <option value="ac">Acre</option>
+                                            <option value="al">Alagoas</option>
+                                            <option value="ap">Amapá</option>
+                                            <option value="am">Amazonas</option>
+                                            <option value="ba">Bahia</option>
+                                            <option value="ce">Ceará</option>
+                                            <option value="df">Distrito Federal</option>
+                                            <option value="go">Goiás</option>
+                                            <option value="ma">Maranhão</option>
+                                            <option value="mt">Mato Grosso</option>
+                                            <option value="ms">Mato Grosso do Sul</option>
+                                            <option value="mg">Minas Gerais</option>
+                                            <option value="pa">Pará</option>
+                                            <option value="pb">Paraíba </option>
+                                            <option value="pr">Paraná</option>
+                                            <option value="pe">Pernambuco</option>
+                                            <option value="pi">Piauí</option>
+                                            <option value="rj">Rio de Janeiro</option>
+                                            <option value="rn">Rio Grande do Norte </option>
+                                            <option value="rs">Rio Grande do Sul</option>
+                                            <option value="ro">Rondônia</option>
+                                            <option value="rr">Roraima</option>
+                                            <option value="sc">Santa Catarina</option>
+                                            <option value="sp">São Paulo</option>
+                                            <option value="se">Sergipe </option>
+                                            <option value="to">Tocantins </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-radio">
+                                        <div class="label-flex">
+                                            <label for="payment">A Empresa Armazena Dados de Clientes?</label>
+                                            <!--<a href="#" class="form-link">Payment Detail</a>-->
+                                        </div>
+                                        <div class="form-radio-group">
+                                            <div class="form-radio-item">
+                                                @Html.RadioButtonFor(model => model.dados_cliente, "Sim", new { @Id = "dados_sim" })
+                                                <label for="dados_sim">Sim</label>
+                                                <span class="check"></span>
+                                            </div>
+                                            <div class="form-radio-item">
+                                                @Html.RadioButtonFor(model => model.dados_cliente, "Não", new { @Id = "dados_nao" })
+                                                <label for="dados_nao">Não</label>
+                                                <span class="check"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-radio">
+                                        <div class="label-flex">
+                                            <label for="payment">A empresa compartilha dados com parceiros ou prestadores de serviços?</label>
+
+                                        </div>
+                                        <div class="form-radio-group">
+                                            <div class="form-radio-item">
+                                                @Html.RadioButtonFor(model => model.compartilha_dados, "Sim", new { @Id = "compartilha_sim", @Name = "compartilha_dados" })
+                                                <label for="compartilha_sim">Sim</label>
+                                                <span class="check"></span>
+                                            </div>
+                                            <div class="form-radio-item">
+                                                @Html.RadioButtonFor(model => model.compartilha_dados, "Não", new { @Id = "compartilha_nao", @Name = "compartilha_dados" })
+                                                <label for="compartilha_nao">Não</label>
+                                                <span class="check"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-radio">
+                                        <div class="label-flex">
+                                            <label for="payment">A empresa já iniciou a adequação da Lei Geral de Proteção de Dados?</label>
+
+                                        </div>
+                                        <div class="form-radio-group">
+                                            <div class="form-radio-item">
+                                                @Html.RadioButtonFor(model => model.iniciou_adequacao, "Sim", new { @Id = "adequa_sim" })
+                                                <label for="adequa_sim">Sim</label>
+                                                <span class="check"></span>
+                                            </div>
+                                            <div class="form-radio-item">
+                                                @Html.RadioButtonFor(model => model.iniciou_adequacao, "Não", new { @Id = "adequa_nao" })
+                                                <label for="adequa_nao">Não</label>
+                                                <span class="check"></span>
+                                            </div>
+                                            <div class="form-radio-item">
+                                                @Html.RadioButtonFor(model => model.iniciou_adequacao, "Nce", new { @Id = "desconhece" })
+                                                <label for="desconhece">Desconhece a LGDP</label>
+                                                <span class="check"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-submit">
+                            <input type="submit" value="Enviar >>" class="submit" id="submit" name="enviar" />
+                        </div>
+                    }
+                </div>
+            }
+
+        </div>
+    </div>
+
+</div>
+
+
+
+

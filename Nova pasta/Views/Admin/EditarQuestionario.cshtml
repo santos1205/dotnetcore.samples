@@ -1,0 +1,59 @@
+﻿@model QuestionarioCOrg.ViewModels.QuestionarioVM
+
+@{
+    ViewBag.Title = "Editar Questionario";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+@{Html.RenderAction("_PageNavigation", "Admin", new { Nav = "Administrativo;Edição;Questionário" });}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div>
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Editar Questionário</h5>
+                </div>
+
+                <div class="ibox-content">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group" id="fg-nome-questionario">
+                            @Html.Hidden("hdd-questionario-form-state", (bool)ViewBag.Success)
+                            @Html.Hidden("hdd-questionario-error", (string)ViewBag.Error)
+                            @Html.Hidden("hdd-id-questionario", (string)ViewBag.IdQuestionario)
+                            <div>
+                                <label>Nome</label>
+                                @Html.EditorFor(model => model.Nome, new
+                           {
+                               htmlAttributes = new
+                               {
+                                   @class = "form-control qst-input",
+                                   @id = "nome-questionario",
+                                   @MaxLength = "100",
+                                   @placeHolder = "Insira um nome para o novo questionário"
+                               }
+                           })
+                                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "help-block m-b-none error-mgs", @id = "sp-nome-questionario-error" })
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <label class="control-label">Ativar</label>
+                                @{Html.RenderAction("_Toggle", "Common", new { TName = "Publicado", TChecked = Model.Publicado });}
+                            </div>
+                        </div>
+                        <br />
+                        <div class="hr-line-dashed" style="margin-top: -5px"></div>
+                        <div class="footer-btns">
+                            <input type="submit" value="Salvar" class="btn btn-primary" />
+                            <button class="btn btn-default btn-limpar-form" style="margin-left: 10px">Limpar</button>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

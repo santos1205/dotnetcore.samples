@@ -1,0 +1,171 @@
+﻿@model QuestionarioCOrg.ViewModels.DashboardVM
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+@{Html.RenderAction("_PageNavigation", "Admin", new { Nav = "Início;Dashboard" });}
+
+<div class="row">
+    <div class="col-lg-3">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Formulários Ativos</h5>
+            </div>
+            <div class="ibox-content">
+                <h1 class="no-margins">@Model.QtdeFormularios</h1>
+                <small>Total de Formulários Ativos</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Formulários Respondidos</h5>
+            </div>
+            <div class="ibox-content">
+                <h1 class="no-margins">@Model.QtdeFormulariosRespondidos</h1>
+                <small>Total de Formulários Respondidos</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Usuários Ativos</h5>
+            </div>
+            <div class="ibox-content">
+                <h1 class="no-margins">@Model.QtdeUsuarios</h1>
+                <small>Total de Usuários Ativos</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Empresas</h5>
+            </div>
+            <div class="ibox-content">
+                <h1 class="no-margins">@Model.QtdeEmpresas</h1>
+                <small>Total de Empresas</small>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Usuários</h5>
+            </div>
+            <div class="ibox-content">
+                <table class="table table-striped table-bordered table-hover dataTables-example">
+                    <thead>
+                        <tr>
+                            <th>Usuário</th>
+                            <th>Data de Cadastro</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var Usu in Model.Usuarios)
+                        {
+                            <tr class="gradeX">
+                                <td>@Usu.usu_nome</td>
+                                <td>@Usu.usu_dt_cadastro</td>
+                                @if (Usu.usu_ativo == true && Usu.usu_aprovado != null)
+                                {
+                                    <td>aprovado</td>
+                                }
+                                else if (Usu.usu_ativo == true && Usu.usu_aprovado == null)
+                                {
+                                    <td>reprovado</td>
+                                }
+                                else if (Usu.usu_ativo == false)
+                                {
+                                    <td>inativo</td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Empresas</h5>
+            </div>
+            <div class="ibox-content">
+                <table class="table table-striped table-bordered table-hover dataTables-example">
+                    <thead>
+                        <tr>
+                            <th>CNPJ</th>
+                            <th>Empresa</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var Emp in Model.Empresas)
+                        {
+                            string CNPJ = string.Empty;
+                            if (!string.IsNullOrEmpty(Emp.emp_cnpj))
+                            {
+                                CNPJ = Convert.ToInt64(Emp.emp_cnpj).ToString(@"00\.000\.000\/0000\-00");
+                            }
+                            else
+                            {
+                                CNPJ = "não informado";
+                            }
+                            <tr class="gradeX">
+                                <td>@CNPJ</td>
+
+                                <td>@Emp.emp_nome</td>
+                                @if (Emp.emp_ativo == true)
+                                {
+                                    <td>ativo</td>
+                                }
+                                else
+                                {
+                                    <td>inativo</td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+
+    body.DTTT_Print {
+        background: #fff;
+    }
+
+    .DTTT_Print #page-wrapper {
+        margin: 0;
+        background: #fff;
+    }
+
+    button.DTTT_button, div.DTTT_button, a.DTTT_button {
+        border: 1px solid #e7eaec;
+        background: #fff;
+        color: #676a6c;
+        box-shadow: none;
+        padding: 6px 8px;
+    }
+
+        button.DTTT_button:hover, div.DTTT_button:hover, a.DTTT_button:hover {
+            border: 1px solid #d2d2d2;
+            background: #fff;
+            color: #676a6c;
+            box-shadow: none;
+            padding: 6px 8px;
+        }
+
+    .dataTables_filter label {
+        margin-right: 5px;
+    }
+</style>

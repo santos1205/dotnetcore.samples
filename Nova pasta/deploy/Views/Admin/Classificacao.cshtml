@@ -1,0 +1,79 @@
+﻿@model QuestionarioCOrg.ViewModels.ClassificacaoVM
+
+@{
+    ViewBag.Title = "Administrativo";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+@{Html.RenderAction("_PageNavigation", "Admin", new { Nav = "Administrativo;Cadastro;Classificação" });}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div>
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Cadastro de Classificação</h5>
+                    </div>
+
+                    <div class="ibox-content">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.Hidden("hdd-classificacao-form-state", (bool)ViewBag.Success)
+                            @Html.Hidden("hdd-classificacao-error", (string)ViewBag.Error)
+                            @Html.Hidden("hdd-id-registro-selected", 0)
+
+                            <div class="form-group" id="fg-questionario-classificacao">
+                                <div>
+                                    <label>Questionário</label>
+                                    @Html.DropDownList("IdQuestionario", null, "Selecione", htmlAttributes: new {
+                                                @class = "form-control m-b", @Id = "questionario-classificacao" })
+                                    @Html.ValidationMessageFor(model => model.IdQuestionario, "", new { @class = "help-block m-b-none error-mgs",
+                                            @id = "sp-questionario-classificacao-error" })
+                                </div>
+                            </div>
+                            <div class="form-group" id="fg-nome-classificacao">
+                                <div>
+                                    <label>Nome</label>
+                                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control qst-input", @id = "txt-nome-classificacao",
+                                    @placeHolder = "Insira uma classificação de perguntas" } })
+                                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "help-block m-b-none error-mgs", @id = "sp-nome-classificacao-error" })
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="footer-btns">
+                                <button class="btn btn-primary" id="btn-resultados">Salvar</button>
+                                <button class="btn btn-default btn-limpar-form" style="margin-left: 10px">Limpar</button>
+                            </div>
+                        }
+
+                        <div id="lista-classificacao"></div>
+                        @*MODAL*@
+                        <div class="modal inmodal" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content animated flipInY">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title">Confirmação</h4>
+                                        <small class="font-bold">Exclusão de registro.</small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            <strong>Atenção.</strong> Deseja realmente excluir o registro?
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">Não</button>
+                                        <button type="button" onclick="excluirRegistro('Classificacao');" class="btn btn-danger" data-dismiss="modal">Excluir</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

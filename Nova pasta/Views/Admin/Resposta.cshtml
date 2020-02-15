@@ -1,0 +1,106 @@
+﻿@model QuestionarioCOrg.ViewModels.RespostaVM
+
+@{
+    ViewBag.Title = "Respostas";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+@if (Model.Id != 0)
+{
+    { Html.RenderAction("_PageNavigation", "Admin", new { Nav = "Administrativo;Edição;Respostas" }); }
+}
+else
+{
+    { Html.RenderAction("_PageNavigation", "Admin", new { Nav = "Administrativo;Cadastro;Respostas" }); }
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div>
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Cadastro de Respostas</h5>
+                    </div>
+
+                    <div class="ibox-content">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.HiddenFor(model => model.Id)
+                            @Html.Hidden("hdd-resposta-form-state", (bool)ViewBag.Success)
+                            @Html.Hidden("hdd-resposta-error", (string)ViewBag.Error)
+                            @Html.Hidden("hdd-id-registro-selected", 0)
+                            <div class="form-group" id="fg-questionario-resposta">
+                                <div>
+                                    <label>Questionário</label>
+                                    @{Html.RenderAction("_ComboQuestionario", "Admin", new { View = "resposta", Id = Model.IdQuestionario });}
+                                    @Html.ValidationMessageFor(model => model.IdQuestionario, "", new { @class = "help-block m-b-none error-mgs", @id = "sp-questionario-resposta-error" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div>
+                                    <label>Resposta</label>
+                                    @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control qst-input", @id = "txt-descricao-resposta", @MaxLength = "100",
+                                    @placeHolder = "Descreva a resposta" } })
+                                    @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "help-block m-b-none error-mgs", @id = "sp-descricao-resposta-error" })
+                                </div>
+                            </div>
+                            <div id="partial-valor-resposta"></div>
+
+                            //if (Model.Id != 0)
+                            //{
+                            <div class="form-group col-md-6" style="padding-left: 0px">
+                                <div>
+                                    <label>Valor</label>
+                                    @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control qst-input", @id = "valor-resposta",
+                                    @placeHolder = "Informe o(s) valor/peso(s) da resposta. (opcional)" } })
+                                    @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "help-block m-b-none error-mgs", @id = "sp-valor-resposta-error" })
+                                </div>
+                            </div>
+                            // SOMENTE PARA MUITOS VALORES
+                            @*<div class="form-group col-md-6 dv-add-valor">
+                                    <button class="btn btn-success dim" type="button" onclick="AdicionarValorResposta(@Model.Id)"><i class="fa fa-plus"></i></button>
+                                </div>*@
+
+                            <div id="partial-lista-valor-reposta"></div>
+                            //}
+
+
+                            <div class="hr-line-dashed" style="margin-top: 90px"></div>
+                            <div class="footer-btns">
+                                <button class="btn btn-primary" style="margin-left: 10px">Salvar</button>
+                                <button class="btn btn-default btn-limpar-form" style="margin-left: 10px">Limpar</button>
+                            </div>
+                        }
+                        <div id="lista-resposta"></div>
+                        @*MODAL*@
+                        <div class="modal inmodal" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content animated flipInY">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title">Confirmação</h4>
+                                        <small class="font-bold">Exclusão de registro.</small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            <strong>Atenção.</strong> Deseja realmente excluir o registro?
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">Não</button>
+                                        <button type="button" onclick="excluirRegistro('Resposta');" class="btn btn-danger" data-dismiss="modal">Excluir</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

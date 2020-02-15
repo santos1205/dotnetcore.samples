@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Not Found";
+    Layout = "~/Views/Shared/_Layout_error.cshtml";
+}
+
+
+<div class="middle-box text-center animated fadeInDown">    
+    <h3 class="font-bold">Ops... Página não encontrada!</h3>
+
+    <div class="error-desc">
+        Desculpe, mas a página que você está procurando não foi encontrada. Tente checar se o endereço está correto.
+        @using (Html.BeginForm("Index", "LGPD", FormMethod.Post, new { @class = "form-inline m-t" }))
+        { 
+            <button type="submit" class="btn btn-primary">Voltar à página principal</button>
+        }   
+    </div>
+</div>

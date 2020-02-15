@@ -1,0 +1,37 @@
+﻿@model QuestionarioCOrg.ViewModels.RespostaVM
+
+@if (Model.Valores != null)
+{
+    <div class="ibox-content">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Valor</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @{
+                    int auxCont = 1;
+                }
+
+                @foreach (var item in Model.Valores.Where(x => x.vlr_ativo))
+                {
+                    <tr>
+                        <td>@auxCont</td>
+                        <td>@item.vlr_valor</td>
+                        <td>
+                            <a data-toggle="modal" onclick="excluiValorResposta(@item.vlr_id);">
+                                <i class="fa fa-times text-danger" style="padding-left: 5px"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    auxCont++;
+                }
+
+            </tbody>
+        </table>
+    </div>
+}

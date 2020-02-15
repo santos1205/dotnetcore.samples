@@ -1,0 +1,125 @@
+﻿@model QuestionarioCOrg.ViewModels.UsuarioVM
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout_login.cshtml";
+}
+
+<style>
+    :root {
+        margin-top: 5%;
+    }
+</style>
+
+<body>
+    @using (Html.BeginForm("Registro", "Login", FormMethod.Post, new { @class = "form-signin" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.Hidden("hdd-registro-form-state", (bool)ViewBag.Success)
+        @Html.Hidden("hdd-login-error", (string)ViewBag.Error)
+        <div class="text-center mb-4">
+            <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Registro</h1>
+            <p>Registre-se para acessar o sistema</p>
+        </div>
+
+        if (ViewBag.Success == true)
+        {
+            <div class="alert alert-success" role="alert">
+                <a href="#" class="alert-link">Parabéns!</a> Dados Cadastrados com Sucesso!
+            </div>
+        }
+
+        if (!string.IsNullOrEmpty(ViewBag.Error))
+        {
+            <div class="alert alert-danger" role="alert">
+                <a href="#" class="alert-link">Erro!</a> @ViewBag.Error
+            </div>
+        }
+
+        <div class="form-label-group">
+            @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "form-control qst-input",
+                   @id = "cpf-usuario-signup",
+                   maxlength = "14",
+                   onkeypress = "MascaraCPF(this)",
+                   @placeHolder = "CPF" } })
+            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "help-block m-b-none error-mgs", @id = "sp-cpf-signup-error" })
+            <label for="cpf-usuario-signup">CPF</label>
+        </div>
+
+        <div class="form-label-group">
+            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control qst-input",
+            @id = "nome-usuario-signup",
+            @placeHolder = "Nome" } })
+            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "help-block m-b-none error-mgs", @id = "sp-nome-signup-error" })
+            <label for="nome-usuario-signup">Nome</label>
+        </div>
+
+        <div class="form-label-group">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control qst-input",
+                    @id = "email-usuario-signup",
+                    @placeHolder = "Email" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "help-block m-b-none error-mgs", @id = "sp-email-signup-error" })
+            <label for="email-usuario-signup">Email</label>
+        </div>
+
+        <div class="form-label-group">
+            @Html.EditorFor(model => model.Cargo, new { htmlAttributes = new { @class = "form-control qst-input",
+                    @id = "cargo-usuario-signup",
+                    @placeHolder = "Cargo" } })
+            @Html.ValidationMessageFor(model => model.Cargo, "", new { @class = "help-block m-b-none error-mgs", @id = "sp-cargo-signup-error" })
+            <label for="cargo-usuario-signup">Cargo</label>
+        </div>
+
+        <div class="form-label-group">
+            @Html.EditorFor(model => model.DtNascimento, new { htmlAttributes = new { @class = "form-control qst-input",
+                   @id = "data-nascimento-usuario-signup",
+                   maxlength = "10",
+                   onkeypress = "MascaraData(this)",
+                   @placeHolder = "Data de Nascimento" } })
+            @Html.ValidationMessageFor(model => model.DtNascimento, "", new { @class = "help-block m-b-none error-mgs", @id = "sp-dt-nascimento-signup-error" })
+            <label for="data-nascimento-usuario-signup">Data de Nascimento</label>
+        </div>
+
+        <div class="form-label-group">
+            @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control qst-input",
+                    @id = "telefone-usuario-signup",
+                    maxlength = "15",
+                    onkeypress = "MascaraTelefone(this)",
+                    @placeHolder = "Telefone" } })
+            @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "help-block m-b-none error-mgs",
+                    @id = "sp-telefone-signup-error" })
+            <label for="telefone-usuario-signup">Telefone</label>
+        </div>
+
+        <div class="form-label-group">
+            @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { type = "password",
+                   @class = "form-control qst-input",
+                   @id = "senha-usuario-signup",
+                   @placeHolder = "Senha" } })
+            @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "help-block m-b-none error-mgs", @id = "sp-senha-signup-error" })
+            <label for="senha-usuario-signup">Senha</label>
+        </div>
+
+        @*<div class="checkbox mb-3">
+                <label>
+                    Já possui uma conta? <a href="@Url.Action("Registro", "Login")"> Login </a>
+                </label>
+            </div>*@
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Salvar</button>
+        <p class="text-muted text-center"><small>Já possui uma conta?</small></p>
+        <a class="btn btn-sm btn-white btn-block" href=@Url.Action("Index", "Login")>Login</a>
+    }
+
+</body>
+<script>
+    $(document).ready(function () {
+        let url = new URL(window.location)
+        url = String(url)
+
+        if (url.includes('Login/Registro')) {
+            $('.qst-input').val('');
+        }
+    });
+</script>
