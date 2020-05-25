@@ -1,0 +1,145 @@
+﻿@model QuestionarioCOrg.ViewModels.ResultadosVM
+
+@{
+    ViewBag.Title = "Resultados";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+@{Html.RenderAction("_PageNavigation", "Admin", new { Nav = "Administrativo;Resultados" });}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Resultados</h5>
+                </div>
+
+                @*PARAMETROS*@
+                <div class="ibox-content">
+                    @using (Html.BeginForm("Resultados", "Admin", FormMethod.Post, new { @class = "form-horizontal" }))
+                    {
+                        <div class="form-group" style="margin-left: -10%">
+                            <label class="col-lg-2 control-label">Questionário</label>
+                            <div class="col-md-6">
+                                @Html.DropDownList("IdQuestionario", null, "Selecione o questionário", htmlAttributes: new {
+                                    @class = "form-control m-b qst-input", @Id = "questionario-filtro-resultados" })
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-left: -10%">
+                            <label class="col-lg-2 control-label">Data</label>
+                            <div class="col-md-3">
+                                @Html.DropDownList("MesPreenchimento", null, "Selecione o mês", htmlAttributes: new {
+                                    @class = "form-control m-b qst-input", @Id = "mes-filtro-resultados" })
+                            </div>
+                            <div class="col-md-3">
+                                @Html.DropDownList("AnoPreenchimento", null, "Selecione o ano", htmlAttributes: new {
+                                    @class = "form-control m-b qst-input", @Id = "ano-filtro-resultados" })
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-left: -10%">
+                            <label class="col-lg-2 control-label">Empresa</label>
+                            <div class="col-md-6">
+                                @Html.DropDownList("IdEmpresa", null, "Selecione a empresa", htmlAttributes: new {
+                                    @class = "form-control m-b qst-input", @Id = "empresa-filtro-resultados" })
+                            </div>
+                        </div>
+                        <div id="partial-cmb-departamento-resultados">
+                            <div class="form-group" style="margin-left: -10%">
+                                <label class="col-lg-2 control-label">Departamento</label>
+                                <div class="col-md-6">
+                                    @Html.DropDownList("IdDepartamento", null, "Selecione o departamento", htmlAttributes: new {
+                                        @class = "form-control m-b qst-input", @Id = "depto-filtro-resultados" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed" style="margin-top: 35px"></div>
+                        <div class="footer-btns">
+                            <button class="btn btn-primary" id="btn-consultar-resultados">Consultar</button>
+                            <button class="btn btn-default btn-limpar-form" style="margin-left: 10px">Limpar</button>
+                        </div>
+                    }
+                    @*<form class="form-horizontal"></form>*@
+
+                    <table class="table table-striped table-bordered table-hover dataTables-example" style="margin-top: 15px">
+                        <thead>
+                            <tr>
+                                <th>Usuário</th>
+                                <th>Empresa</th>
+                                <th>Departamento</th>
+                                <th>Cargo</th>
+                                <th>Pontuação</th>
+                                <th>Resultado</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Respostas)
+                            {
+                                var arrValorRsp = item.rpu_valor_resposta.Split('#');
+                                string pontuacao = string.Empty;
+                                string resultado = string.Empty;
+                                if (arrValorRsp.Length > 0)
+                                {
+                                    pontuacao = item.rpu_valor_resposta.Split('#')[0];
+                                }
+                                if (arrValorRsp.Length > 1)
+                                {
+                                    resultado = item.rpu_valor_resposta.Split('#')[1];
+                                }
+
+                                <tr class="gradeX">
+                                    <td>@Html.DisplayFor(modelItem => item.Usuario.usu_nome)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Empresa.emp_nome)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Departamento.dpt_nome)</td>
+                                    <td class="center">@Html.DisplayFor(modelItem => item.Usuario.usu_cargo)</td>
+                                    <td class="center">@pontuacao</td>
+                                    <td class="center">@resultado</td>
+                                    @{
+                                        string dtResp = item.rpu_datacadastro.ToShortDateString();
+                                    }
+                                    <td class="center">@dtResp</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page-Level Scripts -->
+<script>
+
+
+</script>
+<style>
+
+    body.DTTT_Print {
+        background: #fff;
+    }
+
+    .DTTT_Print #page-wrapper {
+        margin: 0;
+        background: #fff;
+    }
+
+    button.DTTT_button, div.DTTT_button, a.DTTT_button {
+        border: 1px solid #e7eaec;
+        background: #fff;
+        color: #676a6c;
+        box-shadow: none;
+        padding: 6px 8px;
+    }
+
+        button.DTTT_button:hover, div.DTTT_button:hover, a.DTTT_button:hover {
+            border: 1px solid #d2d2d2;
+            background: #fff;
+            color: #676a6c;
+            box-shadow: none;
+            padding: 6px 8px;
+        }
+
+    .dataTables_filter label {
+        margin-right: 5px;
+    }
+</style>

@@ -1,0 +1,7 @@
+﻿@{ 
+    string idCmb = string.Format("questionario-{0}", (string)ViewBag.View);
+    string idSPVld = string.Format("sp-questionario-{0}-error", (string)ViewBag.View);
+}
+
+@Html.DropDownList("IdQuestionario", null, "Selecione", htmlAttributes: new {
+            @class = "form-control m-b", @Id = idCmb })        

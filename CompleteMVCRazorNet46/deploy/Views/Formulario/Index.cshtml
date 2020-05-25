@@ -1,0 +1,151 @@
+﻿@model QuestionarioCOrg.ViewModels.QuestionarioVM
+
+@{
+    ViewBag.Title = "Formulário";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+@{ 
+    string strNav = "Questionário;" + Model.Nome;
+}
+
+@{Html.RenderAction("_PageNavigation", "Admin", new { Nav = strNav });}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div>
+            <div class="ibox float-e-margins">
+                @Html.Hidden("hdd-formulario-form-state", (bool)ViewBag.Success)
+                @Html.HiddenFor(model => model.Id, htmlAttributes: new { @id = "hdd-id-questionario" })
+                @Html.HiddenFor(model => model.IdUsuario, htmlAttributes: new { @id = "hdd-id-usuario" })
+
+                <div class="ibox-content">
+                    @*SE QUESTIONÁRIO TEM CLASSIFICAÇÃO DE PERGUNTAS*@
+                    @{
+                        int auxCountClassificacao = 1;
+                        int auxCountPerguntas = 1;
+                    }
+                    @foreach (var item in Model.Classificacoes.Where(x => x.cls_ativo))
+                    {
+                        auxCountPerguntas = 1;
+                        <table class="table tbl-questionario">
+                            <thead>
+                                <tr>
+                                    <th class="tbl-questionario-titulo">
+                                        @auxCountClassificacao - @item.cls_nome
+                                    </th>
+                                </tr>
+                            </thead>
+                            @*TBODY*@
+                            <tbody>
+                                @foreach (var subitem in Model.Perguntas)
+                                {
+                                    if (subitem.prg_cls_id == item.cls_id)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <p>@auxCountClassificacao.@auxCountPerguntas - @subitem.prg_descricao</p>
+                                            </td>
+                                            @*VALORES RESPOSTAS*@
+                                            @foreach (var resposta in Model.Respostas)
+                                            {
+
+                                                string optDefault = string.Format("{0}#{1}#", subitem.prg_id, resposta.rsp_id);
+
+                                                <td>
+                                                    <div class="form-group">
+                                                        <div>
+                                                            @{
+                                                                string idcmb = string.Format("cmb-resposta-{0}", auxCountPerguntas);
+                                                            }
+
+                                                            <select class="form-control m-b cls-respostas" id=@idcmb>
+                                                                <option value="">@resposta.rsp_descricao</option>
+                                                                @{
+                                                                    var arrValores = resposta.rsp_valor.Split(';');
+                                                                    foreach (var valor in arrValores)
+                                                                    {
+                                                                        string Tvalor = valor.Replace(" ", "");
+                                                                        string optValue = string.Format("{0}#{1}#{2}", subitem.prg_id, resposta.rsp_id, Tvalor);
+                                                                        <option value=@optValue>@valor</option>
+                                                                    }
+                                                                }
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            }
+                                        </tr>
+                                        auxCountPerguntas++;
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                        <div class="hr-line-dashed" style="margin-top: 20px"></div>
+                        auxCountClassificacao++;
+                    }
+
+                    @*SENÃO TIVER CLASSIFICAÇÃO*@
+                    @{
+                        auxCountPerguntas = 1;
+                        if (Model.Classificacoes.Count() == 0)
+                        {
+                            foreach (var item in Model.Perguntas)
+                            {
+                                <table class="table tbl-questionario">
+                                    <tr>
+                                        @if (Model.Nome.Equals("Mindset"))
+                                        {
+                                            <td style="min-width: 800px">
+                                                <p>@auxCountPerguntas - @item.prg_descricao</p>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                <p>@auxCountPerguntas - @item.prg_descricao</p>
+                                            </td>
+                                        }
+                                        @*VALORES RESPOSTAS*@
+                                        @foreach (var resposta in Model.Respostas)
+                                        {
+                                            string optDefault = string.Format("{0}#{1}#", item.prg_id, resposta.rsp_id);
+                                            <td>
+                                                <div class="form-group">
+                                                    <div>
+                                                        @{
+                                                            string idcmb = string.Format("cmb-resposta-{0}", auxCountPerguntas);
+                                                        }
+                                                        <select class="form-control m-b cls-respostas" id=@idcmb>
+                                                            <option value="">@resposta.rsp_descricao</option>
+                                                            @{
+                                                                var arrValores = resposta.rsp_valor.Split(';');
+                                                                foreach (var valor in arrValores)
+                                                                {
+                                                                    string Tvalor = valor.Replace(" ", "");
+                                                                    string optValue = string.Format("{0}#{1}#{2}", item.prg_id, resposta.rsp_id, Tvalor);
+                                                                    <option value=@optValue>@valor</option>
+                                                                }
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        }
+                                    </tr>
+                                    @{
+                                        auxCountPerguntas++;
+                                    }
+                                </table>
+                            }
+                        }
+                    }
+
+                    <div class="footer-btns">
+                        <button class="btn btn-primary" id="btn-salvar-questionario">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

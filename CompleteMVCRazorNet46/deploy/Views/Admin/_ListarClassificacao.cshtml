@@ -1,0 +1,35 @@
+﻿<div class="ibox float-e-margins" style="margin-top: 15px">
+    <div class="ibox-title">
+        <h5>Lista classificação por questionário</h5>
+    </div>
+    <div class="ibox-content">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Descrição</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ 
+                    int auxCont = 1;
+                }
+
+                @foreach (var item in ViewBag.Classificacoes)
+                {
+                    <tr>
+                        <td>@auxCont</td>
+                        <td>@item.cls_nome</td>
+                        <td>
+                            <a href="@Url.Action("EditarClassificacao", "Admin", new { Id = item.cls_id })"><i class="fa fa-pen text-navy"></i></a>
+                            <a data-toggle="modal" href="#myModal2" onclick="javascript:document.getElementById('hdd-id-registro-selected').value = @item.cls_id;"><i class="fa fa-times text-danger" style="padding-left: 5px"></i></a>
+                        </td>
+                    </tr>
+                    auxCont++;
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

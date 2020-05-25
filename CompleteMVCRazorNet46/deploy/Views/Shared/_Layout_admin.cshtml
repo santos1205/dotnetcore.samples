@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/js")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <title>@ViewBag.Title</title>    
+
+</head>
+
+
+    <body>
+        <div id="wrapper">
+            <nav class="navbar-default navbar-static-side" role="navigation">
+                <div class="sidebar-collapse">
+                    <ul class="nav" id="side-menu">
+                        @{Html.RenderAction("_UserBox", "Home");}
+                        <li id="mn-admin">
+                            <a href="index.html" id="anc-admin"><i class="fas fa-tools"></i> <span class="nav-label">Administrativo</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level" id="ul-admin">
+                                <li id="sb-mn-questionario">@Html.ActionLink("Questionário", "Questionario", "Admin")</li>
+                                <li id="sb-mn-classificacao">@Html.ActionLink("Classificação", "Classificacao", "Admin")</li>
+                                <li id="sb-mn-perguntas">@Html.ActionLink("Perguntas", "Pergunta", "Admin")</li>
+                                <li id="sb-mn-respostas">@Html.ActionLink("Respostas", "Resposta", "Admin")</li>
+                                <li id="sb-mn-resultados">@Html.ActionLink("Resultados", "Resultados", "Admin")</li>
+                            </ul>
+                        </li>
+                        <li id="mn-formularios">
+                            <a href="index.html" id="anc-forms"><i class="fa fa-clipboard"></i> <span class="nav-label">Questionários</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level" id="ul-forms">
+
+                                @foreach (var item in ViewBag.MenuQuestionarios)
+                                {
+                                    var idSubMenu = "sb-mn-" + item.qst_nome.Replace(" ", "");
+                                    var link = "/Formulario/Index/" + item.qst_id;
+
+                                    if (!item.qst_publicado)
+                                    {
+                                        continue;
+                                    }
+
+                                    if (item.qst_nome == "Cultura Organizacional")
+                                    {
+                                        <li id="sb-mn-corg"><a href="/Questionario/Form">Cultura Organizacional</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li id=@idSubMenu><a href=@link>@item.qst_nome</a></li>
+                                    }
+                                }
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div id="page-wrapper" class="gray-bg">
+                <div class="row border-bottom">
+                    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                        <div class="navbar-header">
+
+                        </div>
+                        <ul class="nav navbar-top-links navbar-right">
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#mdl-logout-config">
+                                    <i class="fa fa-sign-out"></i> Sair
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                @RenderBody()
+
+                <div class="footer">
+                    <div class="pull-right">
+                        10GB of <strong>250GB</strong> Free.
+                    </div>
+                    <div>
+                        <strong>Copyright</strong> Example Company &copy; @DateTime.Now.Year
+                    </div>
+                </div>
+            </div>
+
+            @*MODAL TO CONFIRM LOGOUT*@
+            <div class="modal inmodal fade" id="mdl-logout-config" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title">Confirmação</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                <strong>Deseja realmente sair do sistema?</strong>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            @Html.ActionLink("Sim", "ExpirarSession", "Home", null, new { @class = "btn btn-primary" })
+                            <button type="button" class="btn btn-white" data-dismiss="modal">Não</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

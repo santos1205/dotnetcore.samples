@@ -1,0 +1,45 @@
+﻿
+@if (ViewBag.Error != "")
+{
+    <h3 style="color: red">Erro - @ViewBag.Error</h3>
+}
+else
+{
+    <div class="ibox float-e-margins" style="margin-top: 15px">
+        <div class="ibox-title">
+            <h5>Lista dos leads @ViewBag.TpLead</h5>
+        </div>
+        <div class="ibox-content">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Data Cadastro</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int auxCont = 1;
+                    }
+
+                    @foreach (var item in ViewBag.Leads)
+                    {
+                        <tr>
+                            <td>@auxCont</td>
+                            <td>@item.nome_completo</td>
+                            <td>@item.email</td>
+                            <td>@item.telefone</td>
+                            <td>@item.data_cadastro</td>
+                        </tr>
+                        auxCont++;
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+}

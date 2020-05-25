@@ -1,0 +1,535 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>LGPD | Lei Geral de Proteção de Dados</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link href="~/assets/img/lgpd/favicon_lgpd.png" rel="icon">
+    @*<link href="~/assets/img/lgpd/apple-touch-icon.png" rel="apple-touch-icon">*@
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="~/assets/lgpd/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Libraries CSS Files -->
+    <link href="~/assets/lgpd/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/assets/lgpd/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="~/assets/lgpd/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="~/assets/lgpd/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/assets/lgpd/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="~/assets/css/lgpd/style.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <style>
+
+        .btn-lgpd {
+            background: #18d26e;
+            border: 0;
+            padding: 10px 30px;
+            color: #fff;
+            transition: 0.4s;
+            cursor: pointer;
+        }
+
+            .btn-lgpd:hover {
+                background: #13a456;
+            }
+
+        .alert-info {
+            color: #f7f7f7;
+            background-color: #01b6d8;
+            border-color: #bee5eb;
+        }
+    </style>
+
+
+    @RenderBody()
+    <!--==========================
+      Header
+    ============================-->
+    <header id="header">
+        <div class="container-fluid">
+
+            <div id="logo" class="pull-left">
+                <h1><a href="#intro" class="scrollto main-title">  LGPD<span id="main-title"> - Lei Geral de Proteção de Dados</span></a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!--<a href="#intro"><img src="~/assets/img/logo.png" alt="" title="" /></a>-->
+            </div>
+
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li class="menu-active"><a href="#intro">Início</a></li>
+                    <li><a href="#about">Sobre Nós</a></li>
+                    <li><a href="#services">Programa</a></li>
+                    <li><a href="#clients">Parceiros</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                    <li><a href="@Url.Action("Index", "Login")" style="color: #d2b318;font-size: 16px"><i class="fa fa-lock" style="margin-right: 5px"></i>Entrar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header><!-- #header -->
+    <!--==========================
+      Inrrodução Section
+    ============================-->
+    <section id="intro">
+        <div class="intro-container">
+            <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+
+                    <div class="carousel-item active">
+                        <div class="carousel-background"><img src="~/assets/img/lgpd/intro-carousel/1.jpg" alt="Lei Geral de Proteção de Dados"></div>
+                        <div class="carousel-container">
+                            <div class="carousel-content">
+                                <h2>Programa de Adequação</h2>
+                                <p>Somos uma empresa especializada e capacitada para os desafios previstos na nova legislação da LGPD. </p>
+                                <a href="@Url.Action("Leads", "LGPD")" target="_blank" class="btn-get-started scrollto">Comece Agora!</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="carousel-background"><img src="~/assets/img/lgpd/intro-carousel/adequacao_lgpd2.jpg" alt="Lei Geral de Proteção de Dados"></div>
+                        <div class="carousel-container">
+                            <div class="carousel-content">
+                                <h2>Por Que se Adequar?</h2>
+                                <p>A LGPD dispõe sobre o tratamento de dados pessoais com o objetivo de proteger os direitos fundamentais de liberdade e de privacidade. Até agosto de 2020, as empresas precisam estar em conformidade com a Lei Geral de Proteção de Dados.</p>
+                                <a href="@Url.Action("Leads", "LGPD")" target="_blank" class="btn-get-started scrollto">Faça uma avaliação rápida</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="carousel-background"><img src="~/assets/img/lgpd/intro-carousel/comprometimento_lgpd.jpg" alt="Lei Geral de Proteção de Dados"></div>
+                        <div class="carousel-container">
+                            <div class="carousel-content">
+                                <h2>Nosso Comprometimento</h2>
+                                <p>A GMS Perspectivas, Peter Filho e a Opportuna Tecnologia, assumem o compromisso de cultivar padrões éticos e legais em seu negócio. Esse comprometimento com a responsabilidade corporativa busca construir uma relação de confiança com os clientes, colaboradores, parceiros e toda rede de relacionamento.</p>
+                                <a href="@Url.Action("Leads", "LGPD")" target="_blank" class="btn-get-started scrollto">Conheça nosso trabalho</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Anterior</span>
+                </a>
+
+                <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Avançar</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+    <!-- #introdução -->
+
+    <section class="features-top-area" id="features">
+        <div class="container">
+            <div class="row promo-content">
+                <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+                    <div class="text-icon-box mb20 xs-mb0 wow fadeInUp padding30" data-wow-delay="0.1s">
+                        <div class="box-icon features-box-icon">
+                            <i class="ion-ios-bookmarks-outline"></i>
+                            <!--<i class="fa fa-graduation-cap"></i>-->
+                        </div>
+                        <h3 class="box-title">Como a Empresa se Adequa</h3>
+                        <p style="text-align:justify;">
+                            Adotando um conjunto de políticas organizadas e bem estruturadas, contamos com uma equipe de profissionais extremamente competentes e qualificados na área jurídica e tecnologia da informação.
+                            O nosso objetivo é conduzir a empresa para a adequação da Lei Geral de Proteção de Dados.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+                    <div class="text-icon-box relative mb20 xs-mb0  wow fadeInUp padding30" data-wow-delay="0.2s">
+                        <div class="box-icon features-box-icon">
+                            <i class="ion-ios-stopwatch-outline"></i>
+                        </div>
+                        <h3 class="box-title">Prazo de Adequação</h3>
+                        <p style="text-align:justify;">
+                            O prazo para adequação pode variar de 6 a 18 meses, de acordo com o porte e complexidade da atuação de mercado de cada empresa.
+                            O trabalho é realizado em fases com absoluta transparência e cumprimento dos prazos acordados.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+                    <div class="text-icon-box relative mb20 xs-mb0 wow fadeInUp padding30" data-wow-delay="0.3s">
+                        <div class="box-icon features-box-icon">
+                            <i class="ion-trophy"></i>
+                        </div>
+                        <h3 class="box-title">Otimização da Adequação</h3>
+                        <p style="text-align:justify;">
+                            Por se tratar de uma lei multissetorial, com impacto direto e imediato em diferentes áreas, a relação íntegra e dinâmica com a alta diretoria
+                            facilitará as adequações sem que as medidas adotadas prejudiquem o negócio ou dificultar operação da empresa.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--==========================
+      Sobre Nós -  Section
+    ============================-->
+    <section id="about" style="margin-top: 30px">
+        <div class="container">
+
+            <header class="section-header">
+                <h3>Nosso Trabalho</h3>
+                <p style="text-align:justify;">
+                    Somos uma equipe preparada para os desafios previstos na legislação brasileira. Temos uma estrutura corporativa dedicada a conceber, acompanhar e revisar todas as etapas do programa de adequação à LGDP, em coautoria com nossos clientes.
+                    Garantimos a transparência durante todas as etapas do trabalho e promovemos uma dinâmica fluida e contínua, nas entregas seriadas dos resultados.
+                </p>
+            </header>
+
+            <div class="row about-cols">
+
+                <div class="col-md-4 wow fadeInUp">
+                    <div class="about-col">
+                        <div class="img">
+                            <img src="~/assets/img/lgpd/gms_perspectiva.jpg" alt="" class="img-fluid">
+                            <div class="icon"><i class="ion-ios-eye-outline"></i></div>
+                        </div>
+                        <h2 class="title">GMS Perspectivas</h2>
+                        <p>
+                            A GMS possui em seus quadros consultores altamente qualificados e com larga experiência nos temas: regulação, organização e supervisão do SFN:
+                            <br><br>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="about-col">
+                        <div class="img">
+                            <img src="~/assets/img/lgpd/peter_filho.jpg" alt="" class="img-fluid">
+                            <div class="icon"><i class="ion-ios-list-outline"></i></div>
+                        </div>
+                        <h2 class="title">Peter Filho</h2>
+                        <p style="text-align:justify;">
+                            Assessoria jurídica preparada e capacitada para atuar nos desafios previstos na legislação brasileira. Possui uma estrutura corporativa dedicada a conceber, acompanhar e revisar todas as etapas do programa de adequação à LGDP, em coautoria com nossos clientes.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="about-col">
+                        <div class="img">
+                            <img src="~/assets/img/lgpd/logomarca_opportuna_tecnologia.jpg" alt="" class="img-fluid">
+                            <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+                        </div>
+                        <h2 class="title">Opportuna Tecnologia</h2>
+                        <p style="text-align:justify;">
+                            A Opportuna é uma empresa brasileira que atua no mercado com inovação e soluções em Tecnologia da Informação, dentre elas, consultoria e assessoria durante todo o ciclo de vida da adequação da Lei Geral de Proteção de Dados.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- #about -->
+    <!--==========================
+      Programa -  Section
+    ============================-->
+    <section id="services">
+        <div class="container">
+
+            <header class="section-header wow fadeInUp">
+                <h3>Programa de Adequação - LGPD</h3>
+                <p>Programa para implementação da Governça de Privacidade, seguindo a exigências da Lei Geral de Proteção de Dados (LGPD)</p>
+            </header>
+
+            <div class="row">
+
+                <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                    <div class="icon"><i class="ion-ios-people-outline"></i></div>
+                    <h4 class="title">Alinhamento Estratégico</h4>
+                    <p style="text-align:justify;" class="description">Alinhamento com as áreas estratégicas para comunicação das diretivas que serão tomadas durante o projeto de adequação da Lei Geral de Proteção de Dados </p>
+                </div>
+
+                <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                    <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+                    <h4 class="title">Execução do Planejamento</h4>
+                    <p style="text-align:justify;" class="description">Nesse momento o cronograma é executado em sua plenitude com a assessoria jurídica e os profissionais de Tecnologia da Informação. </p>
+                </div>
+
+                <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+                    <div class="icon"><i class="ion-ios-paper-outline"></i></div>
+                    <h4 class="title">Fechamento do Projeto</h4>
+                    <p style="text-align:justify;" class="description">Após todo o trabalho realizado, a entrega final é realizada primeiramente com as áreas estratégicas e posteriormente nas áreas táticas. </p>
+                </div>
+                <div class=" row col-lg-12 col-md-12 col-sm-12">
+                    <div class="col-lg-6 col-md-12 col-sm-12" style="padding-left: 0px;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 box wow bounceInUp">
+                            <div class="icon"><i class="ion-ios-paper-outline"></i></div>
+                            <h2 class="title">Curso de Formação para DPOs - Data Protection Officer</h2>
+                            <p style="text-align:justify;" class="description">
+                                Treinamento corporativo preparatório para profissionais com o objetivo compreender as nuances da proteção de dados e dos requisitos legais brasileiros, conforme definido na LGPD.
+                                No final deste treinamento, o aluno estará preparado para realizar a prova de certificação ESSENTIALS da Exin (certificação reconhecida internacionalmente) e atuar como DPO na sua empresa.
+                            </p>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 wow bounceInUp" style="padding-left: 80px;">
+                            <div class="icon2"><i class="fa fa-user" style="font-size:26px;"></i></div>
+                            <h4 class="title2">Público Alvo</h4>
+                            <p style="text-align:justify;" class="description2">Todo profissional que precise da compreensão dos requisitos legais brasileiros, conforme definido na LGPD.</p>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 wow bounceInUp" style="padding-left: 80px;">
+                            <div class="icon2"><i class="fa fa-pencil" style="font-size:26px;"></i></div>
+                            <h4 class="title2">Modalidade do treinamento</h4>
+                            <p style="text-align:justify;" class="description2">Presencial</p>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 wow bounceInUp" style="padding-left: 80px; padding-top: 40px">
+                            <div class="icon2"><i class="fa fa-history" style="font-size:30px;"></i></div>
+                            <h4 class="title2">Duração do Treinamento</h4>
+                            <p style="text-align:justify;" class="description2">16 horas de treinamento (incluindo exercícios)</p>
+                        </div>
+
+                        <form>
+                        </form>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 wow bounceInUp" style="padding-left: 80px; padding-top: 40px">
+                            <a href="@Url.Action("Dpo", "LGPD")" target="_blank"><button type="submit" class="btn-lgpd">Quero treinamento</button></a>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div style="min-height: 300px; margin-bottom: 10px;">
+                            <a href="@Url.Action("Dpo", "LGPD")" target="_blank"><img src="~/assets/img/lgpd/dpo.jpg" class="img-dpo"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--==========================
+      Números Section
+    ============================-->
+    <section id="facts" class="wow fadeIn">
+        <div class="container">
+
+            <header class="section-header">
+                <h3>Nossos Números</h3>
+                <p>Números de clientes, parceiros, rede de relacionamentos e resultados de sucesso nos trabalhos realizados.</p>
+            </header>
+
+            <div class="row counters">
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-toggle="counter-up">817</span>
+                    <p>Clientes e Parceiros</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-toggle="counter-up">3</span>
+                    <p>Projetos em andamento</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-toggle="counter-up">9</span>
+                    <p>Projetos concluidos</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-toggle="counter-up">1200</span>
+                    <p>Horas trabalhadas</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- #Números -->
+    <!--==========================
+      Parceiros e Clientes Section
+    ============================-->
+    <section id="clients" class="wow fadeInUp">
+        <div class="container">
+
+            <header class="section-header">
+                <h3>Nossos Clientes e Parceiros</h3>
+            </header>
+
+            <div class="owl-carousel clients-carousel">
+                <img src="~/assets/img/lgpd/clients/abracam.png" alt="Assossiação Brasileira de Câmbio">
+                <img src="~/assets/img/lgpd/clients/acrefi.png" alt="Acrefi">
+                <img src="~/assets/img/lgpd/clients/pan.png" alt="Banco Pan">
+                <img src="~/assets/img/lgpd/clients/isaca.png" alt="ISACA">
+                <img src="~/assets/img/lgpd/clients/security_labs.png" alt="Security Labs - Segurança da Informação">
+                <img src="~/assets/img/lgpd/clients/w3corp.png" alt="W3 Corp">
+            </div>
+
+        </div>
+    </section>
+
+    <!--==========================
+      Contact Section
+    ============================-->
+    <section id="contact" class="section-bg wow fadeInUp">
+        <div class="container">
+
+            <div class="section-header">
+                <h3>Contato</h3>
+                <p>Estamos prontos para atendê-lo, entre em contato e nosso Time retornará o contato.</p>
+            </div>
+
+            <div class="row contact-info">
+
+                <div class="col-md-4">
+                    <div class="contact-address">
+                        <i class="ion-ios-location-outline"></i>
+                        <h3>Endereço</h3>
+                        <address>Rua Pamplona, 518, Ed. China Trade Center, 1º andar, Jardim Paulista, São Paulo/SP</address>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-phone">
+                        <i class="ion-ios-telephone-outline"></i>
+                        <h3>Telefone</h3>
+                        <p><a href="tel:+551132530888">+55 (11) 3253-0888</a></p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-email">
+                        <i class="ion-ios-email-outline" ></i>
+                        <h3>Email</h3>
+                        <p><a href="mailto:info@example.com">atendimento@peterfilho.com.br</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form">
+                <div id="sendmessage">Obrigado por entrar em contato!</div>
+                <div id="errormessage"></div>
+                <form action="FormContato" method="post" role="form" class="contactForm">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input type="text" name="name" class="form-control contato-form" id="name" placeholder="Nome Completo" data-rule="minlen:4" data-msg="Preencha seu nome completo" />
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="email" class="form-control contato-form" name="email" id="email" placeholder="E-mail" data-rule="email" data-msg="Informe um e-mail válido" />
+                            <div class="validation"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input type="text" name="telefone" class="form-control contato-form" id="telefone" placeholder="Telefone de contato" maxlength="15" onkeypress="MascaraTelefone_E_Celular(this)"
+                                   data-rule="minlen:4" data-msg="Preencha seu telefone" />
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control contato-form" name="empresa" id="empresa" placeholder="Informe sua empresa" 
+                                    data-rule="empresa" data-msg="Informe sua empresa" />
+                            <div class="validation"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control contato-form" name="subject" id="subject" placeholder="Assunto" data-rule="minlen:4" data-msg="Qual o título da nossa conversa?" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control contato-form" name="message" id="txt-area-message" rows="5" data-rule="required" data-msg="Inicie uma descrição da nossa conversa" placeholder="Descrição da conversa"></textarea>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="alert alert-info" id="msg-form-contato" style="display:none">
+                        Obrigado! Seu contato foi envidado! Em breve entraremos em contato!
+                    </div>
+                    <div class="text-center"><button type="submit">Enviar Mensagem</button></div>
+                </form>
+            </div>
+
+        </div>
+    </section><!-- #contact -->
+    </main>
+
+    <!--==========================
+      Footer
+    ============================-->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-info">
+                        <h3>LGPD</h3>
+                        <p>Somos um empresa especializada e capacitada para os desafios previstos na nova legislação da LGPD.</p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Links Úteis</h4>
+                        <ul>
+                            <li><i class="ion-ios-arrow-right"></i> <a href="#">Início</a></li>
+                            <li><i class="ion-ios-arrow-right"></i> <a href="#">Sobre Nós</a></li>
+                            <li><i class="ion-ios-arrow-right"></i> <a href="#">Programa</a></li>
+                            <li><i class="ion-ios-arrow-right"></i> <a href="#">Parceiros</a></li>
+                            <li><i class="ion-ios-arrow-right"></i> <a href="#">Contatos</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h4>Nosso Contato</h4>
+                        <p>
+                            Rua Pamplona, 518, Ed. China Trade Center, 1º andar, Jardim Paulista<br>
+                            São Paulo -
+                            Brasil <br><br>
+                            <strong>Telefone:</strong> +55 (11) 3253-0888<br>
+                            <!-- <strong>Email:</strong> atendimento@peterfilho.com.br<br>-->
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 footer-newsletter">
+                        <h4>Formação - LGPD</h4>
+                        <p>Capacite o profissional da sua empresa para dar continuidade ao trabalho de compliance da LGPD.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong>|</strong> Todos os Direitos Resevados.
+                <div class="credits">
+                    <!--
+                      All the links in the footer should remain intact.
+                      You can delete the links only if you purchased the pro version.
+                      Licensing information: https://bootstrapmade.com/license/
+                      Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=BizPage
+                    -->
+                    Criado por <a href="http://opportunatecnologia.com.br/">Opportuna | Inovação e Solução em Tecnologia da Informação</a>
+                </div>
+            </div>
+    </footer><!-- #footer -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <script src="~/assets/lgpd/lib/jquery/jquery.min.js"></script>
+    <script src="~/assets/lgpd/lib/jquery/jquery-migrate.min.js"></script>
+    <script src="~/assets/lgpd/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/lgpd/lib/easing/easing.min.js"></script>
+    <script src="~/assets/lgpd/lib/superfish/hoverIntent.js"></script>
+    <script src="~/assets/lgpd/lib/superfish/superfish.min.js"></script>
+    <script src="~/assets/lgpd/lib/wow/wow.min.js"></script>
+    <script src="~/assets/lgpd/lib/waypoints/waypoints.min.js"></script>
+    <script src="~/assets/lgpd/lib/counterup/counterup.min.js"></script>
+    <script src="~/assets/lgpd/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/assets/lgpd/lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="~/assets/lgpd/lib/lightbox/js/lightbox.min.js"></script>
+    <script src="~/assets/lgpd/lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+    <!-- JavaScript do Formulário de Contatos -->
+    <script src="~/assets/js/lgpd/contactform.js"></script>
+    <!-- JavaScript Principal (MAIN) -->
+    <script src="~/assets/js/lgpd/main.js"></script>
+    <script src="~/Scripts/ValidacoesCamposForm.js"></script>
+</body>
+</html>
