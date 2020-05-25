@@ -1,0 +1,37 @@
+﻿@if (ViewBag.Acesso.Equals("administrativo") || ViewBag.Acesso.Equals("gestor"))
+{
+    <li class="dropdown">
+        <a class="dropdown-toggle count-info" id="icon-notifs" data-toggle="dropdown" href="#">
+            <i class="fa fa-bell"></i>
+            @if ((int?)ViewBag.NrTotalNotifs > 0)
+            {
+                <span class="label label-primary" id="notif-count">@ViewBag.NrTotalNotifs</span>
+            }
+        </a>
+        <ul class="dropdown-menu dropdown-alerts" style="margin-top: -35%">
+            <li>
+                <a href="@Url.Action("Usuario", "Admin")">
+                    <div>
+                        <i class="fa fa-users fa-fw"></i> Existe(m) @ViewBag.NrUsuSemAvalicacao usuário(s) sem avaliação
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="@Url.Action("Resultados", "Admin")">
+                    <div>
+                        <i class="fa fa-clipboard fa-fw"></i> Existe(m) @ViewBag.NrNovasRespostas nova(s) resposta(s)
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="@Url.Action("Lead", "Admin")">
+                    <div>
+                        <i class="fa fa-user-plus fa-fw"></i> Existe(m) @ViewBag.NrNovosLeads novo(s) lead(s)
+                    </div>
+                </a>
+            </li>            
+        </ul>
+    </li>
+}

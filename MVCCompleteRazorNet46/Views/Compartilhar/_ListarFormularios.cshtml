@@ -1,0 +1,49 @@
+﻿@if (ViewBag.Error != "")
+{
+    <h3 style="color: red">Erro - @ViewBag.Error</h3>
+}
+else
+{
+    <div class="ibox float-e-margins" style="margin-top: 15px">
+        <div class="ibox-title">
+            <h5>Selecione o(s) formulário(s) que deseja compartilhar</h5>
+        </div>
+        <div class="ibox-content">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Formulário</th>                        
+                        <th>Selecionar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int auxCont = 1;
+                    }
+
+                    @foreach (var item in ViewBag.Formularios)
+                    {
+                        <tr>
+                            <td>@auxCont</td>
+                            <td>@item.qst_nome</td>
+                            <td>
+                                <span onclick="SelecionarShareForm(@item.qst_id)">
+                                    @{
+                                        string strNameApr = "chk-share-form";
+                                    }
+                                    
+                                    @{ Html.RenderAction("_Toggle", "Common", new { TName = strNameApr, TNumber = item.qst_id }); }
+                                    
+                                </span>
+                            </td>
+                        </tr>
+                        auxCont++;
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+}

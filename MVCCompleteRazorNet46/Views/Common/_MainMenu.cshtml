@@ -1,0 +1,78 @@
+﻿<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            @{Html.RenderAction("_UserBox", "Common");}
+
+            @if (ViewBag.Acesso.Equals("administrativo") || ViewBag.Acesso.Equals("gestor"))
+            {
+                <li id="mn-dashboard">
+                    <a href="#" id="anc-dashboard">
+                        <i class="fas fa-chart-bar"></i>
+                        <span class="nav-label">Dashboard</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level" id="ul-dashboard">
+                        <li id="sb-mn-dashboard">@Html.ActionLink("Início", "Index", "Dashboard")</li>
+                        <li id="sb-mn-leads">@Html.ActionLink("Leads", "Lead", "Admin")</li>
+                    </ul>
+                </li>
+                <li id="mn-admin">
+                    <a href="index.html" id="anc-admin"><i class="fas fa-tools"></i> <span class="nav-label">Administrativo</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level" id="ul-admin">
+                        <li id="sb-mn-questionario">@Html.ActionLink("Questionário", "Questionario", "Admin")</li>
+                        <li id="sb-mn-classificacao">@Html.ActionLink("Classificação", "Classificacao", "Admin")</li>
+                        <li id="sb-mn-perguntas">@Html.ActionLink("Perguntas", "Pergunta", "Admin")</li>
+                        <li id="sb-mn-respostas">@Html.ActionLink("Respostas", "Resposta", "Admin")</li>
+                        <li id="sb-mn-resultados">@Html.ActionLink("Resultados", "Resultados", "Admin")</li>
+                    </ul>
+                </li>
+            }
+
+            <li id="mn-formularios">
+                <a href="index.html" id="anc-forms"><i class="fa fa-clipboard"></i> <span class="nav-label">Formulários</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" id="ul-forms">
+
+                    @foreach (var item in ViewBag.MenuQuestionarios)
+                    {
+                        var idSubMenu = "sb-mn-" + item.qst_nome.Replace(" ", "");
+                        var link = "/Questionarios/" + item.qst_id;
+
+                        if (!item.qst_publicado)
+                        {
+                            continue;
+                        }
+
+                        if (item.qst_nome.Contains("Cultura Organizacional"))
+                        {
+                            <li id="sb-mn-corg"><a href="@Url.Action("Form", "Questionario")">Cultura Organizacional</a></li>
+                        }
+                        else
+                        {
+                            <li id=@idSubMenu><a href=@link>@item.qst_nome</a></li>
+                        }
+                    }
+                </ul>
+            </li>
+            @if (ViewBag.Acesso.Equals("administrativo") || ViewBag.Acesso.Equals("gestor"))
+            {
+                <li id="mn-permissoes">
+                    <a href="#" id="anc-permissoes"><i class="fas fa-users"></i> <span class="nav-label">Permissões</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level" id="ul-permissoes">
+                        <li id="sb-mn-usuario">@Html.ActionLink("Usuário", "Usuario", "Admin")</li>
+                        <li id="sb-mn-empresa">@Html.ActionLink("Empresa", "Empresa", "Admin")</li>
+                        <li id="sb-mn-pform">@Html.ActionLink("Formulários", "PermissaoFormularios", "Admin")</li>
+                    </ul>
+                </li>
+            }
+            @if (ViewBag.Acesso.Equals("administrativo") || ViewBag.Acesso.Equals("gestor"))
+            {
+                <li id="mn-compartilhar">
+                    <a href="#" id="anc-compartilhar"><i class="fas fa-share-alt"></i> <span class="nav-label">Compartilhar</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level" id="ul-compartilhar">
+                        <li id="sb-mn-formularios">@Html.ActionLink("Formulários", "Formularios", "Compartilhar")</li>                        
+                    </ul>
+                </li>
+            }
+        </ul>
+    </div>
+</nav>

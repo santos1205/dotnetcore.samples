@@ -1,0 +1,65 @@
+﻿body {
+}
+
+.msg-formParticipante-error {
+    display: none;
+}
+
+.tbl-questionario thead th {
+    text-align: center;
+}
+
+.tbl-questionario .tbl-questionario-titulo {
+    float: left;
+}
+
+.tbl-questionario select {
+    height: 30px;
+    /*max-width: 90px;*/
+}
+
+ .tbl-questionario .questionario-total div {
+    margin-left: 3px;
+ }
+
+
+.tbl-questionario tbody tr td {
+    vertical-align: middle;    
+}
+
+
+
+.tbl-questionario tbody tr td:first-child {
+    max-width: 800px;
+}
+
+
+.hr-line-dashed {
+    background-color: #b9b9b9;
+    margin-top: 70px;
+    margin-bottom: 10px;
+}
+
+.btn-salvar-form {
+    display: none;
+    margin-left: 5px;
+}
+
+#side-menu {
+    position: fixed;
+    top: 0;
+    width: 220px;
+}
+
+.grid-resultado {
+    margin-top: 10px;
+    display: none;
+}
+
+.grid-resultado table thead tr th, .grid-resultado table tbody tr td {
+    text-align: center
+}
+
+.toast-success {
+    background-color: #1a7bb9;
+}

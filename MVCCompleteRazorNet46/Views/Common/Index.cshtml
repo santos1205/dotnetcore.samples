@@ -1,0 +1,602 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-4">
+        <h2>Formulário de Pesquisa</h2>
+    </div>    
+</div>
+
+<form class="form-content" id="form">
+    @*FORM NOME PARTICIPANTE*@
+    <div class="input-name-form">
+        <div class="row input-name">
+            <div class="col-md-8 col-md-offset-2">
+                <label>Nome do participante: </label>
+                <input type="text" class="form-control" id="nome-input" onkeyup="HandlerEnterParticipante(event)" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <input type="button" class="btn btn-primary btn-ir-form" value="Ir para Formulário">
+            </div>
+        </div>
+    </div>   
+
+    @*FORM PTOS*@
+    <div class="inputs-form" style="display: none">
+        <h4>1 - Características dominantes</h4>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    A) A organização é um lugar muito pessoal. É como uma extensão da família. As pessoas parecem compartilhar muito de si mesmas.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb1A_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb1A_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    B) A organização é um lugar dinâmico e de empreendedorismo. As pessoas estão dispostas a colocar suas responsabilidades e assumir riscos
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb1B_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb1B_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    C) A organização está muito orientada a resultados. Uma grande preocupação é realizar o trabalho. As pessoas são muito competitivas e orientadas para a realização.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb1C_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb1C_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    D) A organização é um lugar muito controlado e estruturado. Os procedimentos formais geralmente regem o que as pessoas fazem
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb1D_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb1D_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+            </div>
+            <div class="col-md-2 input-test">
+                Total: <span id="total-atual-q1">0/100</span>
+            </div>
+            <div class="col-md-2 input-test">
+                Total: <span id="total-desejado-q1">0/100</span>
+            </div>
+        </div>
+
+        <h4>2 - Liderança organizacional</h4>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    A) A liderança na organização geralmente é considerada como exemplo de mentoring, facilitação ou orientação.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb2A_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb2A_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    B) A liderança na organização geralmente é considerada como exemplo de empreendedorismo, inovação ou tomada de riscos
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb2B_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb2B_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    C) A liderança na organização é geralmente considerada como exemplo de um foco que não seja sem sentido, seja agressivo e orientado a resultados.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb2C_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb2C_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    D) A liderança na organização geralmente é considerada como exemplo de coordenação, organização ou o funcionamento eficiente.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb2D_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb2D_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+            </div>
+            <div class="col-md-2 input-test">
+                Total: <span id="total-atual-q2">0/100</span>
+            </div>
+            <div class="col-md-2 input-test">
+                Total: <span id="total-desejado-q2">0/100</span>
+            </div>
+        </div>
+
+        <h4>3 - Gestão de funcionários</h4>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    A) O estilo de gestão na organização é caracterizado por trabalho em equipe, consenso e participação.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb3A_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb3A_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    B) O estilo de gestão na organização é caracterizado pelo risco assumido pelos indivíduos, pela inovação, liberdade e singularidade.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb3B_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb3B_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    C) O estilo de gestão na organização caracteriza-se pela elevada competitividade, alto grau de exigências e demandas.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb3C_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb3C_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    D) O estilo de gestão na organização é caracterizado pela segurança do emprego, conformidade, previsibilidade e estabilidade nos relacionamentos.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb3D_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb3D_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+            </div>
+            <div class="col-md-2 input-test">
+                Total: <span id="total-atual-q3">0/100</span>
+            </div>
+            <div class="col-md-2 input-test">
+                Total: <span id="total-desejado-q3">0/100</span>
+            </div>
+        </div>
+
+        <h4>4 - Integração da organização</h4>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    A) A integração que mantém a organização coesa e unida é lealdade e confiança mútua Compromisso com a organização é forte.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb4A_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb4A_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    B) A integração que mantém a organização coesa e unida é o compromisso com a inovação e o desenvolvimento. Há uma ênfase em estar na vanguarda.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb4B_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb4B_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    C) A integração que mantém a organização coesa e unida é a ênfase na realização e atingimento de objetivos.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb4C_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb4C_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    D) A integração que mantém a organização coesa e unida são regras e políticas formais. Manter uma organização que funciona sem grandes percalços é importante.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb4D_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb4D_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+            </div>
+            <div class="col-md-2 input-test">
+                Total: <span id="total-atual-q4">0/100</span>
+            </div>
+            <div class="col-md-2 input-test">
+                Total: <span id="total-desejado-q4">0/100</span>
+            </div>
+        </div>
+
+        <h4>5 - Ênfases estratégicas</h4>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    A) A organização enfatiza o desenvolvimento humano. Alta confiança, abertura e participação persistem.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb5A_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb5A_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    B) A organização enfatiza a aquisição de novos recursos e a criação de novos desafios. Experimentar coisas novas e prospecção de oportunidades são valorizadas.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb5B_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb5B_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    C) A organização enfatiza ações e conquistas competitivas. Atingir metas ambiciosas e ganhar posição no mercado são dominantes.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb5C_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb5C_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    D) A organização enfatiza a permanência e a estabilidade. Eficiência, controle e operações sem percalços são importantes.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb5D_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb5D_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+            </div>
+            <div class="col-md-2 input-test">
+                Total: <span id="total-atual-q5">0/100</span>
+            </div>
+            <div class="col-md-2 input-test">
+                Total: <span id="total-desejado-q5">0/100</span>
+            </div>
+        </div>
+
+        <h4>6 - Critérios de sucesso</h4>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    A) A organização define sucesso com base no desenvolvimento de recursos humanos, trabalho em equipe, compromisso dos funcionários e preocupação com as pessoas.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb6A_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb6A_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    B) A organização define o sucesso com base em produtos exclusivos ou novos. É líder de produtos e inovadora.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb6B_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb6B_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    C) A organização define sucesso com base nas conquistas no mercado e superação da concorrência. A liderança competitiva de mercado é fundamental.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb6C_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb6C_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+                <span>
+                    D) A organização define o sucesso nas bases da eficiência. A entrega confiável, a programação sem percalços e produção de baixo custo são críticas.
+                </span>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb6D_atual" class="cmb-atual-form">
+                    <option value="">Atual</option>
+                </select>
+            </div>
+            <div class="col-md-2 input-test">
+                <select id="cmb6D_desejado" class="cmb-desejado-form">
+                    <option value="">Desejado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row row-question">
+            <div class="col-md-8">
+            </div>
+            <div class="col-md-2 input-test">
+                Total: <span id="total-atual-q6">0/100</span>
+            </div>
+            <div class="col-md-2 input-test">
+                Total: <span id="total-desejado-q6">0/100</span>
+            </div>
+        </div>
+        <div class="row text-center" style="margin: 10px 0 0 0">
+            <div class="col-md-2 col-md-offset-4">
+                <button class="btn btn-primary" id="btn-resultados">Gerar Resultados</button>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary" value="Enviar">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    @*RESULTADOS*@
+    <div class="sector-resultado">
+        <div>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 grid-resultado" style="background-color: #337ab7; color: white;">
+                    <h4>Resultados</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-3 grid-resultado-header">
+                    <span>ITEM</span>
+                </div>
+                <div class="col-md-2 grid-resultado-header">
+                    <span>Média (Atual)</span>
+                </div>
+                <div class="col-md-2 grid-resultado-header">
+                    <span>Média (Desejado)</span>
+                </div>
+            </div>
+        </div>        
+        @*MÉDIAS RESULTADO*@
+        <div>            
+            @*<div class="row">
+                <div class="col-md-6 col-md-offset-3 grid-resultado">
+                    <span>Questão 1</span>
+                </div>
+            </div>*@
+            <div class="row">
+                <div class="col-md-2 col-md-offset-3 grid-resultado">
+                    <span>A</span>
+                </div>
+                <div class="col-md-2 grid-resultado">
+                    <span id="itemA-avg">0</span>
+                </div>
+                <div class="col-md-2 grid-resultado">
+                    <span id="itemA-avg-desejado">0</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-3 grid-resultado">
+                    <span>B</span>
+                </div>
+                <div class="col-md-2 grid-resultado">
+                    <span id="itemB-avg">0</span>
+                </div>
+                <div class="col-md-2 grid-resultado">
+                    <span id="itemB-avg-desejado">0</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-3 grid-resultado">
+                    <span>C</span>
+                </div>
+                <div class="col-md-2 grid-resultado">
+                    <span id="itemC-avg">0</span>
+                </div>
+                <div class="col-md-2 grid-resultado">
+                    <span id="itemC-avg-desejado">0</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-3 grid-resultado">
+                    <span>D</span>
+                </div>
+                <div class="col-md-2 grid-resultado">
+                    <span id="itemD-avg">0</span>
+                </div>
+                <div class="col-md-2 grid-resultado">
+                    <span id="itemD-avg-desejado">0</span>
+                </div>
+            </div>            
+        </div>        
+    </div>
+
+    @*MSG-SUCESSO*@
+    <div class="msg-sucesso" style="display:none">
+        <div class="row">
+            <div class="col-md-4 col-lg-offset-4">
+                <h4>Obrigado! Seus dados foram enviados com sucesso!</h4>
+            </div>
+        </div>
+    </div>
+</form>
+
+
