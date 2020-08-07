@@ -1,3 +1,27 @@
+$(document).ready(() => {    
+    $('#btn-enviar-ebook').click(() => {
+        if (ValidarFormEbook() && AntiWebCrawler())
+            EnviarEbook();        
+    });
+
+
+    $('.e-book-field').click(() => {        
+        $('#f-ebook-msg-error').hide();
+    });
+
+    $('#chk-lgpd-aceite').click(() => {
+        if ($('#chk-lgpd-aceite').is(':checked')) {
+            $('#btn-enviar-ebook').css("background-color", "#007bff");
+            $('#btn-enviar-ebook').css("border-color", "#007bff");
+        }
+        else {
+            $('#btn-enviar-ebook').css("background-color", "#93a4b7");
+            $('#btn-enviar-ebook').css("border-color", "#93a4b7");
+        }
+    });
+});
+
+
 (function ($) {
   "use strict";
 
@@ -205,3 +229,106 @@
 
 })(jQuery);
 
+function ValidarFormEbook() {
+    $('#f-ebook-msg-error').hide();
+    
+    if (isNullOrEmpty($('.e-book-field').val())) {    
+        $('#f-ebook-msg-error').show();
+        $('#f-ebook-msg-error').text('Todos os campos s\u00e3o obrigat\u00f3rios');
+        $('#btn-enviar-ebook').css("background-color", "#93a4b7");
+        $('#btn-enviar-ebook').css("border-color", "#93a4b7");
+        return false;
+    }
+    
+    if (isNullOrEmpty($('#f-ebook-nrfuncionario').val())) {
+        $('#f-ebook-msg-error').show();
+        $('#f-ebook-msg-error').text('Todos os campos s\u00e3o obrigat\u00f3rios');
+        $('#btn-enviar-ebook').css("background-color", "#93a4b7");
+        $('#btn-enviar-ebook').css("border-color", "#93a4b7");
+        return false;
+    }
+
+    if (isNullOrEmpty($('#f-ebook-cidade').val())) {
+        $('#f-ebook-msg-error').show();
+        $('#f-ebook-msg-error').text('Todos os campos s\u00e3o obrigat\u00f3rios');
+        $('#btn-enviar-ebook').css("background-color", "#93a4b7");
+        $('#btn-enviar-ebook').css("border-color", "#93a4b7");
+        return false;
+    }
+
+    if (!$("#chk-lgpd-aceite").is(':checked')) {
+        $('#f-ebook-msg-error').show();
+        $('#btn-enviar-ebook').css("background-color", "#93a4b7");
+        $('#btn-enviar-ebook').css("border-color", "#93a4b7");
+        $('#f-ebook-msg-error').text('Para baixar o e-book, necess\u00e1rio estar de acordo com registro de dados acima');
+        return false;
+    }
+    else {
+        $('#btn-enviar-ebook').css("background-color", "#007bff");
+        $('#btn-enviar-ebook').css("border-color", "#007bff");
+    }
+
+    return true;
+}
+
+function EnviarEbook() {
+
+    let data = {
+        VM: {
+            Nome: $('#f-ebook-nome').val(),
+            Email: $('#f-ebook-email').val(),
+            Telefone: $('#f-ebook-telefone').val().replace(/[^\d]+/g, ''),
+            Empresa: $('#f-ebook-empresa').val(),
+            Ramo: $('#f-ebook-ramo').val(),
+            NRFuncionario: $('#f-ebook-nrfuncionario').val(),
+            Cidade: $('#f-ebook-cidade').val()
+        }
+    };
+
+    $.ajax({
+        type: 'POST',
+        data,
+        url: '/LGPD/FormEbook',
+        dataType: 'json',
+        cache: false,
+        async: true,
+        success: (data) => {
+            // console.log(data);            
+            try {
+                if (data.Error) {
+                    $('#f-ebook-msg-error').show();
+                    $('#f-ebook-msg-error').text(data.Error);
+                }                    
+                else {
+                    // Baixar pdf e-book
+                    var link = document.createElement('a');
+                    link.href = "";
+                    link.download = '~/Ebook/Ebook_LGPD.pdf';
+                    link.dispatchEvent(new MouseEvent('click'));
+                    $('#EbookModal').modal('hide');
+                    $('.e-book-field').val('');
+                    $("#chk-lgpd-aceite").prop("checked", false);
+                }                
+            }
+            catch (err) {
+
+            }
+        }
+    });
+}
+
+function AntiWebCrawler() {
+    let nrDownloads = localStorage.getItem('vr_ebk_dwl');
+    if (isNullOrEmpty(nrDownloads)) {
+        localStorage.setItem('vr_ebk_dwl', 1);
+    } else {
+        nrDownloads = parseInt(nrDownloads);
+        nrDownloads++;
+        localStorage.setItem('vr_ebk_dwl', nrDownloads);
+    }
+    if (nrDownloads > 10) {
+        return false;
+    }
+
+    return true;
+}

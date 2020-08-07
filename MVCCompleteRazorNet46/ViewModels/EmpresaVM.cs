@@ -38,6 +38,7 @@ namespace QuestionarioCOrg.ViewModels
                 emp_nome = Nome,
                 emp_cidade = Cidade,
                 emp_estado = Estado,
+                emp_ramo = Ramo,
                 emp_ativo = true
             };
 

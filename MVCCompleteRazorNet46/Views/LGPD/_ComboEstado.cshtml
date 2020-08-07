@@ -1,0 +1,12 @@
+﻿@model QuestionarioCOrg.ViewModels.LeadLGPDVM
+
+@Html.DropDownList("EstadoEmpresa", null, "Selecione", htmlAttributes: new
+{
+    @class = "form-control bg-light-5 rounded border-0 text-1",
+    @Id = "estado-empresa"
+})
+@Html.ValidationMessageFor(model => model.EstadoEmpresa, "", new
+{
+    @class = "help-block m-b-none error-mgs",
+    @id = "sp-q-lgpd-empresa-error"
+})

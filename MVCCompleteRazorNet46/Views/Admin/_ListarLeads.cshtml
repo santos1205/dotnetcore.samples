@@ -17,7 +17,8 @@ else
                         <th>Nome</th>
                         <th>Email</th>
                         <th>Telefone</th>
-                        <th>Data Cadastro</th>                        
+                        <th>Data Cadastro</th>
+                        <th>Ação</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,18 +28,21 @@ else
 
                     @foreach (var item in ViewBag.Leads)
                     {
-                        <tr>
-                            <td>@auxCont</td>
-                            <td>@item.nome_completo</td>
-                            <td>@item.email</td>
-                            <td>@item.telefone</td>
-                            <td>@item.data_cadastro</td>
-                        </tr>
+                    <tr>
+                        <td>@auxCont</td>
+                        <td>@item.nome_completo</td>
+                        <td>@item.email</td>
+                        <td>@item.telefone</td>
+                        <td>@item.data_cadastro</td>
+                        <td>
+                            <a href="#" data-toggle="modal" data-target="#mdDetalheLead" onclick="carregaMdLead(@item.id)"><i class="fa fa-search-plus text-navy"></i></a>                            
+                        </td>
+                    </tr>
                         auxCont++;
                     }
 
                 </tbody>
-            </table>
+            </table>            
         </div>
     </div>
 

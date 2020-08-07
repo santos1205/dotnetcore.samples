@@ -664,9 +664,30 @@ body.mobile-nav-active {
 /* Featured Services Section
 --------------------------------*/
 
+#features {
+    background: url("../../img/lgpd/about-bg.jpg") center top no-repeat fixed;
+    background-size: cover;
+    padding: 60px 0 40px 0;
+    position: relative;
+}
+
+    #features::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(248, 248, 248, 0.92);
+        z-index: 0;
+    }
+
 #featured-services {
     background: #000;
 }
+
+
+
 
     #featured-services .box {
         padding: 30px 20px;
@@ -709,7 +730,7 @@ body.mobile-nav-active {
 --------------------------------*/
 
 #about {
-    background: url("../../img/lgpd/about-bg.jpg") center top no-repeat fixed;    
+    /*background: url("../../img/lgpd/about-bg.jpg") center top no-repeat fixed;*/    
     background-size: cover;
     padding: 60px 0 40px 0;
     position: relative;
@@ -1195,6 +1216,23 @@ body.mobile-nav-active {
         #clients .owl-dot.active {
             background-color: #535362; /*#18d26e;*/
         }
+
+
+/* EBook Section
+--------------------------------*/
+
+.ebook-form-msg-error {
+    color: white;
+    font-size: 15px;
+    border: solid thin;
+    border-radius: 6px;
+    border-width: 1px;
+    width: 55%;
+    text-align: center;
+    background-color: #f96969;
+    height: -4%;
+}
+
 
 /* Testimonials Section
 --------------------------------*/

@@ -19,61 +19,160 @@
     <link rel="shortcut icon" href="~/assets/img/favicon_smart_form.png" />
     <title>Smart Form | @ViewBag.Title</title>
 </head>
-    <body>
-        <div id="wrapper">
-            @{Html.RenderAction("_MainMenu", "Common");}
-            <div id="page-wrapper" class="gray-bg">
-                <div class="row border-bottom">
-                    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-                        <div class="navbar-header">
+<body>
+    <div id="wrapper">
+        @{Html.RenderAction("_MainMenu", "Common");}
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
 
-                        </div>
-                        <ul class="nav navbar-top-links navbar-right">
-
-                            @*PARTIAL NOTIFICATIONS*@
-                            @{Html.RenderAction("_Notification", "Common");}
-                            <li>
-                                <a href="#" data-toggle="modal" data-target="#mdl-logout-config" style="font-size: 16px">
-                                    <i class="fa fa-sign-out"></i> Sair
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-
-                @RenderBody()
-
-                @if (ViewBag.Title != "Formulário")
-                {
-                    <div class="footer">
-                        <div>
-                            <strong>Copyright</strong> Todos os direitos reservados &copy; @DateTime.Now.Year
-                        </div>
                     </div>
-                }
+                    <ul class="nav navbar-top-links navbar-right">
+
+                        @*PARTIAL NOTIFICATIONS*@
+                        @{Html.RenderAction("_Notification", "Common");}
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mdl-logout-config" style="font-size: 16px">
+                                <i class="fa fa-sign-out"></i> Sair
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
 
-            @*MODAL TO CONFIRM LOGOUT*@
-            <div class="modal inmodal fade" id="mdl-logout-config" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                            <h4 class="modal-title">Confirmação</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p>
-                                <strong>Deseja realmente sair do sistema?</strong>
-                            </p>
-                        </div>
-                        <div class="modal-footer">
-                            @Html.ActionLink("Sim", "ExpirarSession", "Common", null, new { @class = "btn btn-primary" })
-                            <button type="button" class="btn btn-white" data-dismiss="modal">Não</button>
-                        </div>
+            @RenderBody()
+
+            @if (ViewBag.Title != "Formulário")
+            {
+                <div class="footer">
+                    <div>
+                        <strong>Copyright</strong> Todos os direitos reservados &copy; @DateTime.Now.Year
+                    </div>
+                </div>
+            }
+        </div>
+
+        @*MODAL TO CONFIRM LOGOUT*@
+        <div class="modal inmodal fade" id="mdl-logout-config" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">Confirmação</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            <strong>Deseja realmente sair do sistema?</strong>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        @Html.ActionLink("Sim", "ExpirarSession", "Common", null, new { @class = "btn btn-primary" })
+                        <button type="button" class="btn btn-white" data-dismiss="modal">Não</button>
                     </div>
                 </div>
             </div>
         </div>
-    </body>
+
+        @*MODAL DETALHES LEAD*@
+        <div class="modal inmodal fade" id="mdDetalheLead" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#" data-toggle="modal" data-target="#mdDetalheLead">
+                            <i class="fa fa-window-close text-navy close-md-icon" style="float: right;"></i>
+                        </a>
+                        @*<button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>*@
+                        <h4 class="modal-title">Dados do Lead</h4>
+                        @*<small class="font-bold">
+            Dados informados no cadastro
+        </small>*@
+                    </div>
+                    <div class="modal-body md-lead">
+                        <div>
+                            <div class="col-md-6">
+                                <strong class="label-lead">Nome:</strong><span id="sp-nome"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <strong class="label-lead">Email:</strong> <span id="sp-email"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="col-md-6">
+                                <strong class="label-lead">Telefone:</strong> <span id="sp-telefone"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <strong class="label-lead">Nome da Empresa:</strong> <span id="sp-nomeEmpresa"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="col-md-6">
+                                <strong class="label-lead">CNPJ:</strong> <span id="sp-CNPJ"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <strong class="label-lead">Cidade da Empresa:</strong> <span id="sp-cidadeEmpresa"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="col-md-6">
+                                <strong class="label-lead">Estado da Empresa:</strong> <span id="sp-estadoEmpresa"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <strong class="label-lead">Cargo/Função:</strong> <span id="sp-cargo"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="col-md-12">
+                                <strong class="label-lead">Ramo:</strong> <span id="sp-ramo"></span>
+                            </div>
+                            @*<div class="col-md-6">
+                <strong class="label-lead">Armazena dados do cliente?</strong> sim
+            </div>*@
+                        </div>
+                        <div>
+                            <div>
+                                <strong class="label-lead">Departamentos da empresa:</strong>
+                            </div>
+                            <div id="dv-deptos">
+                                @*<ul>
+                                    <li>Administrativo</li>
+                                    <li>Financeiro</li>
+                                    <li>Comercial</li>
+                                </ul>*@
+                            </div>
+                        </div>
+                        <div>
+                            <div class="col-md-6">
+                                <strong class="label-lead">TI Compartilha dados com terceiros?</strong> <span id="sp-tiTerceirizada"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <strong class="label-lead">Adequação á LGPD?</strong> <span id="sp-adequacaoLGPD"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="col-md-6">
+                                <strong class="label-lead">Situação da TI:</strong> <span id="sp-situacaoTI"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <strong class="label-lead">Área Jurídica:</strong> <span id="sp-areaJuridica"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="col-md-12">
+                                <strong class="label-lead">Quantidades de clientes:</strong> <span id="sp-qtdeClientes"></span>
+                            </div>                            
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 
 </html>

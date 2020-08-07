@@ -77,12 +77,14 @@
     // #endregion
     // #region Módulo Admin
     // Ativação/desativação dos links do menu
-    if (url.includes('Admin/Lead')) {
+    if (url.includes('Admin/Lead')) {       
+        
         // Eventos
         $('#btn-consultar-leads').click((ev) => {
             ListaLeads();
             ev.preventDefault();
         });
+        
         // Checa o menu
         $('#anc-admin').click();
         $('#ul-admin').addClass("in");
@@ -507,7 +509,6 @@ const VerificarSession = () => {
             }
         });
 }
-
 const CarregaListaClassificacao = (IdQ, IdC = 0) => {
     $.ajax(
         {
@@ -521,7 +522,6 @@ const CarregaListaClassificacao = (IdQ, IdC = 0) => {
             }
         });
 }
-
 const ListaLeads = () => {
     let TpLead = $('#tp-lead').val();
     let data = { TpLead };
@@ -539,7 +539,6 @@ const ListaLeads = () => {
             }
         });
 }
-
 const ListaUsuarios = () => {
 
     let data = {
@@ -562,7 +561,6 @@ const ListaUsuarios = () => {
             }
         });
 }
-
 const SalvarPermissaoForm = (idEQ) => {
     let isChecked = false;
     // Verifica qual estado do check após o click, se é p vincular ou desvincular
@@ -588,7 +586,6 @@ const SalvarPermissaoForm = (idEQ) => {
         }
     });
 }
-
 const SalvarRegistroUsuario = () => {
     //#region dummy data
     //let data = {
@@ -668,6 +665,92 @@ const SalvarRegistroUsuario = () => {
     });
 }
 
+class ObjLead {
+    constructor(
+        nome,
+        email,
+        telefone,
+        nomeEmpresa,
+        CNPJ,
+        cidadeEmpresa,
+        estadoEmpresa,
+        cargo,
+        ramo,
+        tiTerceirizada,
+        adequacaoLGPD,
+        situacaoTI,
+        areaJuridica,
+        qtdeClientes
+    ) {  // Constructor
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+        this.nomeEmpresa = nomeEmpresa;
+        this.CNPJ = CNPJ;
+        this.cidadeEmpresa = cidadeEmpresa;
+        this.estadoEmpresa = estadoEmpresa;
+        this.cargo = cargo;
+        this.ramo = ramo;
+        this.tiTerceirizada = tiTerceirizada,
+        this.adequacaoLGPD = adequacaoLGPD,
+        this.situacaoTI = situacaoTI,
+        this.areaJuridica = areaJuridica,
+        this.qtdeClientes = qtdeClientes
+    }
+}
+
+const carregaMdLead = (idLead) => {
+    // #region dummydata
+    //let objLead = new ObjLead('Mário Santos',
+    //    'mariosantos@gmail.com',
+    //    '61 99905-9066',
+    //    'Proseg',
+    //    '23545.43535.342',
+    //    'Brasília',
+    //    'DF',
+    //    'Analista',
+    //    'Alimentação',
+    //    'sim',
+    //    'não',
+    //    'ambos',
+    //    'própria',
+    //    '200');
+
+    //let deptos = [];
+    //deptos.push('Comercial');
+    //deptos.push('RH');
+        // #endregion
+
+    $.ajax(
+        {
+            type: 'GET',
+            url: `/LGPD/CarregarDadosEtapaLGPD/${idLead}`,
+            dataType: 'json',
+            cache: false,
+            async: true,
+            success: (data) => {                
+                //console.log(data);
+                CarregaDetalhesMdLead(data.Lead, data.Empresa);
+                CarregaDeptosLead(data.Deptos);
+            }
+        });
+}
+const CarregaDetalhesMdLead = (objLead, objEmpresa) => {
+    $('#sp-nome').text(objLead.nome_completo);
+    $('#sp-email').text(objLead.email);
+    $('#sp-telefone').text(objLead.telefone);
+    $('#sp-nomeEmpresa').text(objEmpresa.nome);
+    $('#sp-CNPJ').text(objEmpresa.CNPJ);
+    $('#sp-cidadeEmpresa').text(objEmpresa.cidadeEmpresa);
+    $('#sp-estadoEmpresa').text(objEmpresa.estadoEmpresa);
+    $('#sp-cargo').text(objLead.cargo);    
+    $('#sp-ramo').text(objLead.ramo);
+    $('#sp-tiTerceirizada').text(objLead.compartilha_dados);
+    $('#sp-adequacaoLGPD').text(objLead.iniciou_adequacao);
+    $('#sp-situacaoTI').text(objLead.lgpd_situacao_ti);
+    $('#sp-areaJuridica').text(objLead.lgpd_situacao_juridico);
+    $('#sp-qtdeClientes').text(objLead.qnt_colaborador);
+}
 const SalvarQuestionarioMindset = () => {
     let arrRespostas = [];
     
@@ -715,7 +798,6 @@ const SalvarQuestionarioMindset = () => {
     //$('#dv-msg-success-form').hide();
     //$('#dv-msg-error-form').show();
 }
-
 const excluirRegistro = (View) => {
     let IdQ = $(`#questionario-${View.toLowerCase()}`).val();
 
@@ -780,7 +862,6 @@ const excluirRegistro = (View) => {
             }
         });
 }
-
 const CarregaListaRespostas = (Id) => {
     $.ajax(
         {
@@ -794,7 +875,6 @@ const CarregaListaRespostas = (Id) => {
             }
         });
 }
-
 const CarregaListaPerguntas = (Id) => {
     $.ajax(
         {
@@ -808,7 +888,6 @@ const CarregaListaPerguntas = (Id) => {
             }
         });
 }
-
 const CarregaComboDepto = (IdEmpresa = 0) => {
     $.ajax(
         {
@@ -822,7 +901,6 @@ const CarregaComboDepto = (IdEmpresa = 0) => {
             }
         });
 }
-
 const CarregaComboRespondente = (IdQ, IdE = null) => {
     $.ajax(
         {
@@ -840,7 +918,6 @@ const CarregaComboRespondente = (IdQ, IdE = null) => {
             }
         });
 }
-
 const ExibirSideMenu = () => {
     $.ajax(
         {
@@ -860,8 +937,6 @@ const ExibirSideMenu = () => {
             }
         });
 }
-
-
 const SalvarAprovacaoUsuario = (idUsuario) => {
     let Checked = $("#chk-apr-usuario-" + idUsuario).is(':checked');
 
@@ -878,7 +953,6 @@ const SalvarAprovacaoUsuario = (idUsuario) => {
             }
         });
 }
-
 const ValidarPreenchimentoQ = () => {
     var valida = true;
     $('.cls-respostas').each((index, value) => {
@@ -888,7 +962,6 @@ const ValidarPreenchimentoQ = () => {
     });
     return valida;
 }
-
 const CarregaComboClassificacao = (Id = 0) => {
     $.ajax(
         {
@@ -919,7 +992,6 @@ const ShowToastrSuccess = (msgTitle, msg, timeOut = 2000) => {
     }
     toastr.success(msg, msgTitle);
 }
-
 const editaClassificacao = () => {    
 
     let Id = $('#hdd-id-classificacao').val();
@@ -947,7 +1019,6 @@ const editaClassificacao = () => {
             }
         });
 }
-
 const CarregaListaPermissaoFormularios = (idEmpresa) => {        
     $.ajax(
         {
@@ -961,7 +1032,6 @@ const CarregaListaPermissaoFormularios = (idEmpresa) => {
             }
         });
 }
-
 const AdicionarValorResposta = (idResposta) => {
     let vlr = $('#valor-resposta').val();
     $.ajax(
@@ -987,7 +1057,6 @@ const AdicionarValorResposta = (idResposta) => {
             }
         });
 }
-
 const excluiValorResposta = (idValorResposta) => {
     $.ajax(
         {
@@ -1011,8 +1080,6 @@ const excluiValorResposta = (idValorResposta) => {
             }
         });
 }
-
-
 const ValidaCompartilhamentoFormularios = () => {
     if (FormShareSelected.length == 0) {
         ShowToastrError('Erro', 'Selecione pelo menos um formulário a ser compartilhado', 3000);
@@ -1072,14 +1139,13 @@ const ValidaCompartilhamentoFormularios = () => {
                             ShowToastrError('Erro!', data.Error, 5000);                            
                         else
                             ShowToastrError('Erro!', 'problemas no compartilhamento de formulários', 5000);
-                        console.log(`erro: ${data.Error}`);
+                        //console.log(`erro: ${data.Error}`);
                     }
                 }                                
                 catch { }
             }
         });
 }
-
 var FormShareSelected = [];
 const SelecionarShareForm = (IdQ) => {
     if ($(`#chk-share-form-${IdQ}`).is(':checked'))
@@ -1089,7 +1155,6 @@ const SelecionarShareForm = (IdQ) => {
     }
     // console.log(FormShareSelected);
 }
-
 const AtualizaVisualizacaoNotifs = () => {
     
     $.ajax(
@@ -1113,7 +1178,6 @@ const AtualizaVisualizacaoNotifs = () => {
             }
         });
 }
-
 const listaValorResposta = (idResposta = null) => {
     $.ajax(
         {
@@ -1127,7 +1191,6 @@ const listaValorResposta = (idResposta = null) => {
             }
         });
 }
-
 const ValidaCNPJ = (cnpj) => {
 
     if (isNullOrEmpty(cnpj))
@@ -1163,7 +1226,6 @@ const ValidaCNPJ = (cnpj) => {
             }
         });
 }
-
 const ValidarEmail = (InputEmail) => {    
     $.ajax(
         {
@@ -1192,7 +1254,6 @@ const ValidarEmail = (InputEmail) => {
             }
         });
 }
-
 const VerificaUnicidadeUsuarioCpf = (InputCpf) => {   
 
     $.ajax(
@@ -1220,7 +1281,6 @@ const VerificaUnicidadeUsuarioCpf = (InputCpf) => {
             }
         });
 }
-
 const ativaNivelAcesso = (Nvl, IdUsuario) => {
     $.ajax(
         {
@@ -1247,14 +1307,12 @@ const ativaNivelAcesso = (Nvl, IdUsuario) => {
 const LimparFormularioAdmin = () => {
     $('.qst-input').val('');
 }
-
 const OcultaMsgConsent = () => {
     if ($('#Consentimento').is(':checked'))
         $('#msg-consentimento').hide();
     else
         $('#msg-consentimento').show();
 }
-
 const ExibeMsgValidacao = (hiddenSuccess, hiddenError, msg, titulo = 'Parabéns!') => {
     try {
         if (!isNullOrEmpty(hiddenSuccess))
@@ -1270,5 +1328,12 @@ const ExibeMsgValidacao = (hiddenSuccess, hiddenError, msg, titulo = 'Parabéns!
         return;
     }    
 }
-
+const CarregaDeptosLead = (deptos) => {
+    let listDeptos = '';
+    deptos.forEach((item) => {
+        listDeptos += `<li>${item.nome}</li>`;
+    });    
+    let htmlList = `<ul>${listDeptos}</ul>`;
+    $('#dv-deptos').html(htmlList);
+}
 // #endregion

@@ -23,7 +23,6 @@
         <EntityTypeShape EntityType="QBModel.Pergunta" Width="1.5" PointX="5.25" PointY="1.625" />
         <AssociationConnector Association="QBModel.FK_PRG_CLS_ID" />
         <AssociationConnector Association="QBModel.FK_RPU_PRG_ID" />
-        <EntityTypeShape EntityType="QBModel.lead_empresa_lgpd" Width="1.5" PointX="7.375" PointY="7.75" />
         <EntityTypeShape EntityType="QBModel.Email" Width="1.5" PointX="11.625" PointY="8" />
         <EntityTypeShape EntityType="QBModel.EmailConfiguracao" Width="1.5" PointX="9.375" PointY="8" />
         <AssociationConnector Association="QBModel.FK_EMA_EML_ID" />
@@ -34,13 +33,14 @@
         <AssociationConnector Association="QBModel.FK_PRG_QST_ID" />
         <AssociationConnector Association="QBModel.FK_RPU_QST_ID" />
         <AssociationConnector Association="QBModel.FK_RSP_QST_ID" />
+        <EntityTypeShape EntityType="QBModel.Notificacoes" Width="1.5" PointX="7.5" PointY="16.75" />
+        <AssociationConnector Association="QBModel.FK_NTF_USU_ID" />
         <EntityTypeShape EntityType="QBModel.Empresa" Width="1.5" PointX="3" PointY="9.25" />
         <AssociationConnector Association="QBModel.FK_DPT_EMP_ID" />
         <AssociationConnector Association="QBModel.FK_EQT_EMP_ID" />
         <AssociationConnector Association="QBModel.FK_RPU_EMP_ID" />
         <AssociationConnector Association="QBModel.FK_USU_EMP_ID" />
-        <EntityTypeShape EntityType="QBModel.Notificacoes" Width="1.5" PointX="7.5" PointY="16.75" />
-        <AssociationConnector Association="QBModel.FK_NTF_USU_ID" />
+        <EntityTypeShape EntityType="QBModel.lead_empresa_lgpd" Width="1.5" PointX="10.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

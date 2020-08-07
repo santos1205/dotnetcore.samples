@@ -2752,9 +2752,15 @@ body.boxed-layout #wrapper {
 a {
   cursor: pointer;
 }
+.fa-search-plus {
+    font-size: 20px;
+    cursor:pointer;
+    margin-left: 11px;
+}
+
 a:hover,
 a:focus {
-  text-decoration: none;
+    text-decoration: none;
 }
 .border-bottom {
   border-bottom: 1px solid #e7eaec !important;
@@ -2816,11 +2822,30 @@ video {
 .modal-dialog {
   z-index: 1200;
 }
+.label-lead {
+    margin: 0 5px;
+}
+.md-lead .col-md-6 {
+    padding: 5px 0;
+}
+.md-lead .col-md-12 {
+    padding-left: 0;
+    padding-bottom: 5px;
+    padding-top: 2px;
+}
+.md-lead ul li {
+    padding: 2px 0;
+}
 .modal-body {
-  padding: 20px 30px 30px 30px;
+    padding: 20px 30px 110px 30px;
+}
+.close-md-icon {
+    float: right;
+    font-size: 25px;
+    margin-top: -20px;
 }
 .inmodal .modal-body {
-  background: #f8fafb;
+    background: #f8fafb;
 }
 .inmodal .modal-header {
   padding: 30px 15px;

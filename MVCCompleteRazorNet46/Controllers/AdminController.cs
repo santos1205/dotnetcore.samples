@@ -1352,7 +1352,7 @@ namespace QuestionarioCOrg.Controllers
         {
             try
             {
-                var ObsLs = AdminService.ConsultarLeads(TpLead);
+                var ObsLs = AdminService.ConsultarLeads();
                 ViewBag.Leads = ObsLs.OrderByDescending(x => x.data_cadastro);
                 ViewBag.TpLead = TpLead == "treinamento" ? "DPO" : "";
                 ViewBag.Error = "";

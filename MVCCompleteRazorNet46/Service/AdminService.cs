@@ -1,4 +1,5 @@
-﻿using QuestionarioCOrg.DataAccess;
+﻿using Common;
+using QuestionarioCOrg.DataAccess;
 using QuestionarioCOrg.Enums;
 using QuestionarioCOrg.ViewModels;
 using System;
@@ -224,17 +225,22 @@ namespace QuestionarioCOrg.Service
             return TotalNotif;
         }
 
-        public static IEnumerable<lead_empresa_lgpd> ConsultarLeads(string TpLead = "lead")
+        public static IEnumerable<lead_empresa_lgpd> ConsultarLeads(string TpLead = "")
         {
             QuestionarioOrgDBEntities db = new QuestionarioOrgDBEntities();
-            var ObjL = db.lead_empresa_lgpd.Where(x => x.formulario.Equals(TpLead));
+            IQueryable<lead_empresa_lgpd> ObjL = db.lead_empresa_lgpd;
+
+            if (TpLead == "")            
+                ObjL = db.lead_empresa_lgpd.Where(x => x.formulario.Equals("lead") || x.formulario.Equals("leads LGPD"));                
+             else            
+                ObjL = db.lead_empresa_lgpd.Where(x => x.formulario.Equals(TpLead));
 
             foreach (var Lead in ObjL)
             {
                 string Nome = CommonService.PrimeiraLetraMaiuscula(Lead.nome_completo);
+                Lead.telefone = Formatacoes.FormatarTelefone(Lead.telefone);
                 Lead.nome_completo = Nome;
             }
-
 
             return ObjL;
         }

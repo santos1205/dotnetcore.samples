@@ -25,11 +25,15 @@
 
     <!-- Main Stylesheet File -->
     <link href="~/assets/css/lgpd/style.css" rel="stylesheet" />
-
 </head>
+
 
 <body>
     <style>
+        #EbookModal .form-group {
+            margin-bottom: 1rem;
+            margin-bottom: -4px;
+        }
 
         .btn-lgpd {
             background: #18d26e;
@@ -50,8 +54,6 @@
             border-color: #bee5eb;
         }
     </style>
-
-
     @RenderBody()
     <!--==========================
       Header
@@ -71,6 +73,7 @@
                     <li><a href="#about">Sobre Nós</a></li>
                     <li><a href="#services">Programa</a></li>
                     <li><a href="#clients">Parceiros</a></li>
+                    <li><a href="#portfolio">E-books</a></li>
                     <li><a href="#contact">Contato</a></li>
                     <li><a href="@Url.Action("Index", "Login")" style="color: #d2b318;font-size: 16px"><i class="fa fa-lock" style="margin-right: 5px"></i>Entrar</a></li>
                 </ul>
@@ -187,7 +190,7 @@
             <header class="section-header">
                 <h3>Nosso Trabalho</h3>
                 <p style="text-align:justify;">
-                    Somos uma equipe preparada para os desafios previstos na legislação brasileira. Temos uma estrutura corporativa dedicada a conceber, acompanhar e revisar todas as etapas do programa de adequação à LGDP, em coautoria com nossos clientes.
+                    Somos um time preparado para os desafios previstos na legislação brasileira. Temos uma estrutura corporativa dedicada a conceber, acompanhar e revisar todas as etapas do programa de adequação à LGDP, em coautoria com nossos clientes.
                     Garantimos a transparência durante todas as etapas do trabalho e promovemos uma dinâmica fluida e contínua, nas entregas seriadas dos resultados.
                 </p>
             </header>
@@ -254,7 +257,7 @@
                 <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
                     <div class="icon"><i class="ion-ios-people-outline"></i></div>
                     <h4 class="title">Alinhamento Estratégico</h4>
-                    <p style="text-align:justify;" class="description">Alinhamento com as áreas estratégicas para comunicação das diretivas que serão tomadas durante o projeto de adequação da Lei Geral de Proteção de Dados </p>
+                    <p style="text-align: justify;" class="description">Alinhamento com as áreas estratégicas para comunicação das diretivas que serão tomadas durante o projeto de adequação da Lei Geral de Proteção de Dados </p>
                 </div>
 
                 <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
@@ -315,6 +318,7 @@
     <!--==========================
       Números Section
     ============================-->
+    <!--
     <section id="facts" class="wow fadeIn">
         <div class="container">
 
@@ -348,7 +352,125 @@
             </div>
 
         </div>
-    </section><!-- #Números -->
+    </section> -->  <!-- #Números -->
+    <!--==========================
+      Portfolio Section
+    ============================-->
+    <section id="portfolio" class="section-bg">
+        <div class="container">
+
+            <header class="section-header">
+                <h3 class="section-title">e-book</h3>
+            </header>
+            <div class="row portfolio-container">
+                <div class="col-lg-4 offset-md-4 col-md-6 portfolio-item filter-app wow fadeInUp">
+                    <div class="portfolio-wrap">
+                        <figure>
+                            <img src="~/assets/img/lgpd/portfolio/e-book.jpg" class="img-fluid" alt="" />
+                            @*<a href="#" data-lightbox="portfolio" data-title="App 1" data-toggle="modal" data-target="#EbookModal" class="link-preview" title="Preview">
+                                    <i class="ion ion-eye"></i>
+                                </a>*@
+                            <a href="#" class="link-details" data-toggle="modal" data-target="#EbookModal" title="More Details" style="left: 45%;top: 70%;">
+                                <i class="ion ion-android-open"></i>
+                            </a>
+                        </figure>
+
+                        <div class="portfolio-info">
+                            <h4><a href="#" data-toggle="modal" data-target="#EbookModal">LPGD</a></h4>
+                            <p>simplificado para empresas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- #portfolio -->
+    <!-- Modal E-BOOK -->
+    <div class="modal fade" id="EbookModal" tabindex="-1" role="dialog" aria-labelledby="EbookModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="width: 499px;margin-left: 1%;margin-top: -5%;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Baixe o e-book</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="my-form" method="post">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Nome:</label>
+                            <input type="text" class="form-control e-book-field" maxlength="100" id="f-ebook-nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">E-mail:</label>
+                            <input type="text" class="form-control e-book-field" maxlength="80" id="f-ebook-email">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Telefone:</label>
+                            <input type="text" class="form-control e-book-field" maxlength="15" onkeypress="MascaraTelefone_E_Celular(this)" id="f-ebook-telefone">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" maxlength="50" class="col-form-label">Nome da Empresa:</label>
+                            <input type="text" class="form-control e-book-field" id="f-ebook-empresa">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" maxlength="30" class="col-form-label">Ramo de atividade:</label>                            
+                            <select name="ramo" id="f-ebook-ramo" class="form-control e-book-field" aria-invalid="false">
+                                <option value="">Selecione</option>
+                                <option value="Educacao">Educação</option>
+                                <option value="Financeiro">Financeiro</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Seguros">Seguros</option>
+                                <option value="Saude">Saúde</option>
+                                <option value="Tecnologia">Tecnologia da Informação</option>
+                                <option value="Turismo">Turismo</option>
+                                <option value="Outros">Outros</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Quantidade de Funcionários:</label>
+                            <input type="text" class="form-control e-book-field" onkeypress="mascaraInteiro(this)" id="f-ebook-nrfuncionario">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" maxlength="50" class="col-form-label">Cidade:</label>
+                            <input type="text" class="form-control e-book-field" id="f-ebook-cidade">
+                        </div>
+                    </form>
+                </div>
+                <p style="font-size: 13px;text-align: justify;margin: -10px 17px 0 17px;">
+                    <input type="checkbox" id="chk-lgpd-aceite" />
+                    Estou ciente de que meus dados estão sendo registrados, porém não serão utilizados para qualquer outra finalidade.
+                </p>
+                <div class="modal-footer">                    
+                    <span id="f-ebook-msg-error" class="ebook-form-msg-error" style="display: none"></span>
+                    <button type="button" class="btn btn-primary" style="background-color: #93a4b7; border-color: #93a4b7" id="btn-enviar-ebook">Baixar E-book</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #end modal E-BOOK -->
+    <!-- Modal MSG. SUCCESS E-BOOK -->
+    <div class="modal fade" id="MsgEbookModal" tabindex="-1" role="dialog" aria-labelledby="MsgEbookModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="top: 20%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Parabéns!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Pronto! Seu <span style="color: blue; font-weight: 600">e-book LGPD</span> já está disponível para download!
+                </div>
+                <div class="modal-footer" style="justify-content: center;">
+                    <a href="~/Ebook/Ebook_LGPD.pdf" download class="btn btn-primary" id="btn-download-ebook">                        
+                        Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #end modal MSG. SUCCESS E-BOOK -->
     <!--==========================
       Parceiros e Clientes Section
     ============================-->
@@ -402,7 +524,7 @@
 
                 <div class="col-md-4">
                     <div class="contact-email">
-                        <i class="ion-ios-email-outline" ></i>
+                        <i class="ion-ios-email-outline"></i>
                         <h3>Email</h3>
                         <p><a href="mailto:info@example.com">atendimento@peterfilho.com.br</a></p>
                     </div>
@@ -430,8 +552,8 @@
                             <div class="validation"></div>
                         </div>
                         <div class="form-group col-md-6">
-                            <input type="text" class="form-control contato-form" name="empresa" id="empresa" placeholder="Informe sua empresa" 
-                                    data-rule="empresa" data-msg="Informe sua empresa" />
+                            <input type="text" class="form-control contato-form" name="empresa" id="empresa" placeholder="Informe sua empresa"
+                                   data-rule="empresa" data-msg="Informe sua empresa" />
                             <div class="validation"></div>
                         </div>
                     </div>
@@ -529,7 +651,8 @@
     <!-- JavaScript do Formulário de Contatos -->
     <script src="~/assets/js/lgpd/contactform.js"></script>
     <!-- JavaScript Principal (MAIN) -->
-    <script src="~/assets/js/lgpd/main.js"></script>
+    <script src="~/assets/js/lgpd/main.js" charset="utf-8"></script>
+    <script src="~/Scripts/jquery.maskedinput.js"></script>
     <script src="~/Scripts/ValidacoesCamposForm.js"></script>
 </body>
 </html>

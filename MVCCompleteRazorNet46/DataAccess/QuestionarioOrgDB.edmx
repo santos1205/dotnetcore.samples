@@ -91,6 +91,12 @@
           <Property Name="cidade" Type="nvarchar" MaxLength="50" />
           <Property Name="estado" Type="nvarchar" MaxLength="30" />
           <Property Name="formulario" Type="nvarchar" MaxLength="15" />
+          <Property Name="lead_hash" Type="varchar" MaxLength="200" />
+          <Property Name="etapa_chat" Type="int" />
+          <Property Name="lgpd_armazena_dados" Type="char" MaxLength="3" />
+          <Property Name="lgpd_situacao_ti" Type="varchar" MaxLength="20" />
+          <Property Name="lgpd_situacao_juridico" Type="varchar" MaxLength="20" />
+          <Property Name="lgpd_id_empresa" Type="int" />
         </EntityType>
         <EntityType Name="Media">
           <Key>
@@ -639,8 +645,8 @@
           <NavigationProperty Name="Media" Relationship="Self.FK_Media_IDParticipante" FromRole="Usuario" ToRole="Media" />
           <NavigationProperty Name="NivelAcesso" Relationship="Self.FK_USU_NVL_ID" FromRole="Usuario" ToRole="NivelAcesso" />
           <NavigationProperty Name="RespostaUsuario" Relationship="Self.FK_RPU_USU_ID" FromRole="Usuario" ToRole="RespostaUsuario" />
-          <NavigationProperty Name="Empresa" Relationship="QBModel.FK_USU_EMP_ID" FromRole="Usuario" ToRole="Empresa" />
           <NavigationProperty Name="Notificacoes" Relationship="QBModel.FK_NTF_USU_ID" FromRole="Usuario" ToRole="Notificacoes" />
+          <NavigationProperty Name="Empresa" Relationship="QBModel.FK_USU_EMP_ID" FromRole="Usuario" ToRole="Empresa" />
         </EntityType>
         <EntityType Name="Valor">
           <Key>
@@ -783,7 +789,6 @@
             <End Role="Pergunta" EntitySet="Pergunta" />
             <End Role="RespostaUsuario" EntitySet="RespostaUsuario" />
           </AssociationSet>
-          <EntitySet Name="lead_empresa_lgpd" EntityType="QBModel.lead_empresa_lgpd" />
           <EntitySet Name="Email" EntityType="QBModel.Email" />
           <EntitySet Name="EmailConfiguracao" EntityType="QBModel.EmailConfiguracao" />
           <AssociationSet Name="FK_EMA_EML_ID" Association="QBModel.FK_EMA_EML_ID">
@@ -812,6 +817,11 @@
             <End Role="Questionario" EntitySet="Questionario" />
             <End Role="Resposta" EntitySet="Resposta" />
           </AssociationSet>
+          <EntitySet Name="Notificacoes" EntityType="QBModel.Notificacoes" />
+          <AssociationSet Name="FK_NTF_USU_ID" Association="QBModel.FK_NTF_USU_ID">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Notificacoes" EntitySet="Notificacoes" />
+          </AssociationSet>
           <EntitySet Name="Empresa" EntityType="QBModel.Empresa" />
           <AssociationSet Name="FK_DPT_EMP_ID" Association="QBModel.FK_DPT_EMP_ID">
             <End Role="Empresa" EntitySet="Empresa" />
@@ -829,11 +839,7 @@
             <End Role="Empresa" EntitySet="Empresa" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
-          <EntitySet Name="Notificacoes" EntityType="QBModel.Notificacoes" />
-          <AssociationSet Name="FK_NTF_USU_ID" Association="QBModel.FK_NTF_USU_ID">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Notificacoes" EntitySet="Notificacoes" />
-          </AssociationSet>
+          <EntitySet Name="lead_empresa_lgpd" EntityType="QBModel.lead_empresa_lgpd" />
         </EntityContainer>
         <EntityType Name="Pergunta">
           <Key>
@@ -874,26 +880,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="lead_empresa_lgpd">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nome_completo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
-          <Property Name="telefone" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
-          <Property Name="nome_empresa" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="qnt_colaborador" Type="Int32" Nullable="false" />
-          <Property Name="cargo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ramo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="dados_cliente" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Name="compartilha_dados" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Name="iniciou_adequacao" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Name="data_cadastro" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="estado" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="formulario" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Email">
           <Key>
             <PropertyRef Name="ema_id" />
@@ -1020,6 +1006,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Notificacoes">
+          <Key>
+            <PropertyRef Name="ntf_id" />
+          </Key>
+          <Property Name="ntf_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ntf_dt_visualizacao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ntf_usu_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="QBModel.FK_NTF_USU_ID" FromRole="Notificacoes" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK_NTF_USU_ID">
+          <End Type="QBModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="QBModel.Notificacoes" Role="Notificacoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="Notificacoes">
+              <PropertyRef Name="ntf_usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="Empresa">
           <Key>
             <PropertyRef Name="emp_id" />
@@ -1084,27 +1091,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Notificacoes">
+        <EntityType Name="lead_empresa_lgpd">
           <Key>
-            <PropertyRef Name="ntf_id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="ntf_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ntf_dt_visualizacao" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ntf_usu_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Usuario" Relationship="QBModel.FK_NTF_USU_ID" FromRole="Notificacoes" ToRole="Usuario" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome_completo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="telefone" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="nome_empresa" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="qnt_colaborador" Type="Int32" Nullable="false" />
+          <Property Name="cargo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ramo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="dados_cliente" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="compartilha_dados" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="iniciou_adequacao" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="data_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="formulario" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="lead_hash" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="etapa_chat" Type="Int32" />
+          <Property Name="lgpd_armazena_dados" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="lgpd_situacao_ti" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="lgpd_situacao_juridico" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="lgpd_id_empresa" Type="Int32" />
         </EntityType>
-        <Association Name="FK_NTF_USU_ID">
-          <End Type="QBModel.Usuario" Role="Usuario" Multiplicity="1" />
-          <End Type="QBModel.Notificacoes" Role="Notificacoes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="usu_id" />
-            </Principal>
-            <Dependent Role="Notificacoes">
-              <PropertyRef Name="ntf_usu_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1225,27 +1237,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="lead_empresa_lgpd">
-            <EntityTypeMapping TypeName="QBModel.lead_empresa_lgpd">
-              <MappingFragment StoreEntitySet="lead_empresa_lgpd">
-                <ScalarProperty Name="formulario" ColumnName="formulario" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="cidade" ColumnName="cidade" />
-                <ScalarProperty Name="data_cadastro" ColumnName="data_cadastro" />
-                <ScalarProperty Name="iniciou_adequacao" ColumnName="iniciou_adequacao" />
-                <ScalarProperty Name="compartilha_dados" ColumnName="compartilha_dados" />
-                <ScalarProperty Name="dados_cliente" ColumnName="dados_cliente" />
-                <ScalarProperty Name="ramo" ColumnName="ramo" />
-                <ScalarProperty Name="cargo" ColumnName="cargo" />
-                <ScalarProperty Name="qnt_colaborador" ColumnName="qnt_colaborador" />
-                <ScalarProperty Name="nome_empresa" ColumnName="nome_empresa" />
-                <ScalarProperty Name="telefone" ColumnName="telefone" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="nome_completo" ColumnName="nome_completo" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Email">
             <EntityTypeMapping TypeName="QBModel.Email">
               <MappingFragment StoreEntitySet="Email">
@@ -1295,6 +1286,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Notificacoes">
+            <EntityTypeMapping TypeName="QBModel.Notificacoes">
+              <MappingFragment StoreEntitySet="Notificacoes">
+                <ScalarProperty Name="ntf_usu_id" ColumnName="ntf_usu_id" />
+                <ScalarProperty Name="ntf_dt_visualizacao" ColumnName="ntf_dt_visualizacao" />
+                <ScalarProperty Name="ntf_id" ColumnName="ntf_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Empresa">
             <EntityTypeMapping TypeName="QBModel.Empresa">
               <MappingFragment StoreEntitySet="Empresa">
@@ -1308,12 +1308,30 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Notificacoes">
-            <EntityTypeMapping TypeName="QBModel.Notificacoes">
-              <MappingFragment StoreEntitySet="Notificacoes">
-                <ScalarProperty Name="ntf_usu_id" ColumnName="ntf_usu_id" />
-                <ScalarProperty Name="ntf_dt_visualizacao" ColumnName="ntf_dt_visualizacao" />
-                <ScalarProperty Name="ntf_id" ColumnName="ntf_id" />
+          <EntitySetMapping Name="lead_empresa_lgpd">
+            <EntityTypeMapping TypeName="QBModel.lead_empresa_lgpd">
+              <MappingFragment StoreEntitySet="lead_empresa_lgpd">
+                <ScalarProperty Name="lgpd_id_empresa" ColumnName="lgpd_id_empresa" />
+                <ScalarProperty Name="lgpd_situacao_juridico" ColumnName="lgpd_situacao_juridico" />
+                <ScalarProperty Name="lgpd_situacao_ti" ColumnName="lgpd_situacao_ti" />
+                <ScalarProperty Name="lgpd_armazena_dados" ColumnName="lgpd_armazena_dados" />
+                <ScalarProperty Name="etapa_chat" ColumnName="etapa_chat" />
+                <ScalarProperty Name="lead_hash" ColumnName="lead_hash" />
+                <ScalarProperty Name="formulario" ColumnName="formulario" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="data_cadastro" ColumnName="data_cadastro" />
+                <ScalarProperty Name="iniciou_adequacao" ColumnName="iniciou_adequacao" />
+                <ScalarProperty Name="compartilha_dados" ColumnName="compartilha_dados" />
+                <ScalarProperty Name="dados_cliente" ColumnName="dados_cliente" />
+                <ScalarProperty Name="ramo" ColumnName="ramo" />
+                <ScalarProperty Name="cargo" ColumnName="cargo" />
+                <ScalarProperty Name="qnt_colaborador" ColumnName="qnt_colaborador" />
+                <ScalarProperty Name="nome_empresa" ColumnName="nome_empresa" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="nome_completo" ColumnName="nome_completo" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

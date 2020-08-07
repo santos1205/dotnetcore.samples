@@ -1,174 +1,253 @@
-﻿@model QuestionarioCOrg.DataAccess.lead_empresa_lgpd
+﻿@model QuestionarioCOrg.ViewModels.LeadLGPDVM
 
 @{
     Layout = "~/Views/Shared/_Layout_LGPD_Leads.cshtml";
 }
-
-
-<div class="main">
-
-    <div class="container">
-        <div class="signup-content">
-            <div class="signup-img">
-                <img src="~/assets/lgpd_leads/images/lgpd.png" alt="Lei Geral de Proteção de Dados">
-                <div class="signup-img-content">
-                    <!--<h2>Vamos começar ...</h2>-->
-                    <!--<p>Quero conhecer mais sua empresa!</p>-->
-                </div>
-            </div>
-            @if ((bool?)ViewBag.Success == true)
+<link rel="stylesheet" href="~/assets/lgpd_leads/landing/css/main.css">
+<div class="ad-landing-fixed-wrapper top-control">
+    <div class="ad-landing-wrapper">
+        <div class="rounded h-100 p-5" style="margin-top: 15%">
+            @if (ViewBag.Success == false)
             {
-                <h1 style="margin: 20% 30%">Obrigado!</h1>                
+                <h2 class="font-weight-bold text-4" style="color: red">@ViewBag.Msg</h2>
+            }
+            @if (ViewBag.Success == true)
+            {
+                <h2 class="font-weight-bold text-4">Seus dados foram registrados!</h2>
+                <p style="font-size: 1.0em;">
+                    Um e-mail foi enviado para <b>@ViewBag.Email</b>.
+                    Dentro de instantes você receberá um e-mail com acesso ao formulário de avaliação LGPD.
+                </p>
             }
             else
             {
+                <h3 class="font-weight-bold text-4">Start with Free Leads</h3>
+                <p class="top-sub-title text-muted mb-4">30-day Free Trail, Cancel Anytime</p>
 
-                <div class="signup-form">
+                using (Html.BeginForm())
+                {
+                    <div class="form-row">
+                        <div class="form-group col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                            <label>Nome</label>
+                            @Html.EditorFor(model => model.Nome, new
+                            {
+                                htmlAttributes = new
+                                {
+                                    @class = "form-control bg-light-5 rounded border-0 text-1",
+                                    @MaxLength = "100"
+                                }
+                            })
+                            @Html.ValidationMessageFor(model => model.Nome, "", new
+                            {
+                                @class = "help-block m-b-none error-mgs",
+                                @id = "sp-q-lgpd-nome-error"
+                            })
 
-                    @using (Html.BeginForm("Leads", "LGPD", FormMethod.Post, new { @Class = "register-form", @Id = "register-form" }))
-                    {
-                        @Html.AntiForgeryToken()
-
-
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-                        <div class="form-row">
-                            <div class="form-group">                                
-                                <div class="form-input">
-                                    <label for="nome_completo" class="required">Nome completo</label>
-                                    @Html.EditorFor(model => model.nome_completo, new { htmlAttributes = new { @Id = "nome_completo", @MaxLength = "100" } })
-
-                                </div>
-
-                                <div class="form-input">
-                                    <label for="email" class="required">Email</label>
-                                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @Id = "email", @MaxLength = "80" } })
-                                </div>
-
-                                <div class="form-input">
-                                    <label for="telefone" class="required">Telefone</label>
-                                    @Html.EditorFor(model => model.telefone, new { htmlAttributes = new { 
-                                        @Id = "telefone", 
-                                        @MaxLength = "15",
-                                        @OnKeyPress = "MascaraTelefone_E_Celular(this)" }})
-                                </div>
-
-                                <div class="form-input">
-                                    <label for="empresa" class="required">Nome da empresa</label>
-                                    @Html.EditorFor(model => model.nome_empresa, new { htmlAttributes = new { @Id = "empresa" } })
-                                </div>
-                                <div class="form-input">
-                                    <label for="cargo" class="required">Cargo/Função</label>
-                                    @Html.EditorFor(model => model.cargo, new { htmlAttributes = new { @Id = "cargo", @MaxLength = "50" } })
-                                </div>
-
-
-                            </div>
-                            <div class="form-group">
-                                <div class="form-select">
-                                    <div class="label-flex">
-                                        <label for="ramo">Negócio da empresa</label>
-                                        <a href="#" class="form-link">Ramo</a>
-                                    </div>
-                                    <div class="select-list">
-                                        <select name="ramo" id="ramo">
-                                            <option value="Alimentação">Alimentação</option>
-                                            <option value="Educacao">Educação</option>
-                                            <option value="Financeiro">Financeiro</option>
-                                            <option value="Marketing">Marketing</option>
-                                            <option value="Seguros">Seguros</option>
-                                            <option value="Saude">Saúde</option>
-                                            <option value="Tecnologia">Tecnologia da Informação</option>
-                                            <option value="Turismo">Turismo</option>
-                                            <option value="Outros">Outros</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-radio">
-                                    <div class="label-flex">
-                                        <label for="payment">A Empresa Armazena Dados de Clientes?</label>
-                                        <!--<a href="#" class="form-link">Payment Detail</a>-->
-                                    </div>
-                                    <div class="form-radio-group">
-                                        <div class="form-radio-item">
-                                            @Html.RadioButtonFor(model => model.dados_cliente, "Sim", new { @Id = "dados_sim" })
-                                            <label for="dados_sim">Sim</label>
-                                            <span class="check"></span>
-                                        </div>
-                                        <div class="form-radio-item">
-                                            @Html.RadioButtonFor(model => model.dados_cliente, "Não", new { @Id = "dados_nao" })
-                                            <label for="dados_nao">Não</label>
-                                            <span class="check"></span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-radio">
-                                    <div class="label-flex">
-                                        <label for="payment">A empresa compartilha dados com parceiros ou prestadores de serviços?</label>
-
-                                    </div>
-                                    <div class="form-radio-group">
-                                        <div class="form-radio-item">
-                                            @Html.RadioButtonFor(model => model.compartilha_dados, "Sim", new { @Id = "compartilha_sim", @Name = "compartilha_dados" })
-                                            <label for="compartilha_sim">Sim</label>
-                                            <span class="check"></span>
-                                        </div>
-                                        <div class="form-radio-item">
-                                            @Html.RadioButtonFor(model => model.compartilha_dados, "Não", new { @Id = "compartilha_nao", @Name = "compartilha_dados" })
-                                            <label for="compartilha_nao">Não</label>
-                                            <span class="check"></span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-radio">
-                                    <div class="label-flex">
-                                        <label for="payment">A empresa já iniciou a adequação da Lei Geral de Proteção de Dados?</label>
-
-                                    </div>
-                                    <div class="form-radio-group">
-                                        <div class="form-radio-item">
-                                            @Html.RadioButtonFor(model => model.iniciou_adequacao, "Sim", new { @Id = "adequa_sim" })
-                                            <label for="adequa_sim">Sim</label>
-                                            <span class="check"></span>
-                                        </div>
-                                        <div class="form-radio-item">
-                                            @Html.RadioButtonFor(model => model.iniciou_adequacao, "Não", new { @Id = "adequa_nao" })
-                                            <label for="adequa_nao">Não</label>
-                                            <span class="check"></span>
-                                        </div>
-
-                                        <div class="form-radio-item">
-                                            @Html.RadioButtonFor(model => model.iniciou_adequacao, "Nce", new { @Id = "desconhece" })
-                                            <label for="desconhece">Desconhece a LGDP</label>
-                                            <span class="check"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                        <div class="donate-us">
-                            @Html.HiddenFor(model => model.qnt_colaborador, new { @Id = "hdd-qtd-col" })
-                            <label>Quantidade de colaboradores</label>
-                            <div class="price_slider ui-slider ui-slider-horizontal">
-                                <div id="slider-margin"></div>
-                                <span class="donate-value" id="value-lower"></span>
-                            </div>
+                        <div class="form-group col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                            <label>Email</label>
+                            @Html.EditorFor(model => model.Email, new
+                            {
+                                htmlAttributes = new
+                                {
+                                    @class = "form-control bg-light-5 rounded border-0 text-1",
+                                    @MaxLength = "100"
+                                }
+                            })
+                            @Html.ValidationMessageFor(model => model.Email, "", new
+                            {
+                                @class = "help-block m-b-none error-mgs",
+                                @id = "sp-q-lgpd-email-error"
+                            })
                         </div>
-                        <div class="form-submit">
-                            <input type="submit" value="Enviar >>" class="submit" id="submit" name="enviar" />
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                            <label>Telefone</label>
+                            @Html.EditorFor(model => model.Telefone, new
+                            {
+                                htmlAttributes = new
+                                {
+                                    @class = "form-control bg-light-5 rounded border-0 text-1",
+                                    @onkeypress = "MascaraTelefone_E_Celular(this)",
+                                    @MaxLength = "15"
+                                }
+                            })
+
+                            @Html.ValidationMessageFor(model => model.Telefone, "", new
+                            {
+                                @class = "help-block m-b-none error-mgs",
+                                @id = "sp-q-lgpd-email-error"
+                            })
                         </div>
-                    }
-                </div>
+                        <div class="form-group col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                            <label>Nome da Empresa</label>
+                            @Html.EditorFor(model => model.Empresa, new
+                            {
+                                htmlAttributes = new
+                                {
+                                    @class = "form-control bg-light-5 rounded border-0 text-1",
+                                    @MaxLength = "100"
+                                }
+                            })
+                            @Html.ValidationMessageFor(model => model.Empresa, "", new
+                            {
+                                @class = "help-block m-b-none error-mgs",
+                                @id = "sp-q-lgpd-empresa-error"
+                            })
+
+                        </div>
+                        <div class="form-group col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                            <label>CNPJ</label>
+                            @Html.EditorFor(model => model.CNPJ, new
+                            {
+                                htmlAttributes = new
+                                {
+                                    @class = "form-control bg-light-5 rounded border-0 text-1",
+                                    @id = "CNPJ",
+                                    maxlength = "18",
+                                    onkeypress = "MascaraCNPJ(this)"                                    
+                                }
+                            })                            
+                            @Html.ValidationMessageFor(model => model.CNPJ, "", new
+                            {
+                                @class = "help-block m-b-none error-mgs",
+                                @id = "sp-q-lgpd-empresa-error"
+                            })
+
+                        </div>
+                        <div class="form-group col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                            <label>Cidade da Empresa</label>
+                            @Html.EditorFor(model => model.CidadeEmpresa, new
+                            {
+                                htmlAttributes = new
+                                {
+                                    @class = "form-control bg-light-5 rounded border-0 text-1",
+                                    @MaxLength = "100"
+                                }
+                            })
+                            @Html.ValidationMessageFor(model => model.CidadeEmpresa, "", new
+                            {
+                                @class = "help-block m-b-none error-mgs",
+                                @id = "sp-q-lgpd-empresa-error"
+                            })
+
+                        </div>
+                        <div class="form-group col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                            <label>Estado da Empresa</label>
+                            @{ Html.RenderAction("_ComboEstado", "LGPD"); }                            
+                            @Html.ValidationMessageFor(model => model.EstadoEmpresa, "", new
+                            {
+                                @class = "help-block m-b-none error-mgs",
+                                @id = "sp-q-lgpd-empresa-error"
+                            })
+
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                            <label>Cargo/Função</label>
+                            @Html.EditorFor(model => model.Cargo, new
+                            {
+                                htmlAttributes = new
+                                {
+                                    @class = "form-control bg-light-5 rounded border-0 text-1",
+                                    @MaxLength = "100"
+                                }
+                            })
+                            @Html.ValidationMessageFor(model => model.Cargo, "", new
+                            {
+                                @class = "help-block m-b-none error-mgs",
+                                @id = "sp-q-lgpd-cargo-error"
+                            })
+                        </div>
+                        @*<div class="form-group col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                            <label>Número de Funcionários</label>
+
+                            @Html.EditorFor(model => model.NrFuncionarios, new
+                            {
+                                htmlAttributes = new
+                                {
+                                    @class = "form-control bg-light-5 rounded border-0 text-1",
+                                    @onkeypress = "somenteNumeros(this)",
+                                    @MaxLength = "6"
+                                }
+                            })
+                            @Html.ValidationMessageFor(model => model.NrFuncionarios, "", new
+                            {
+                                @class = "help-block m-b-none error-mgs",
+                                @id = "sp-q-lgpd-cargo-error"
+                            })
+                        </div>*@
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                            <label>Ramo</label>
+                            <select class="form-control bg-light-5 rounded border-0 text-1" name="ramo">
+                                <option value="Alimentação">Alimentação</option>
+                                <option value="Educacao">Educação</option>
+                                <option value="Financeiro">Financeiro</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Seguros">Seguros</option>
+                                <option value="Saude">Saúde</option>
+                                <option value="Tecnologia">Tecnologia da Informação</option>
+                                <option value="Turismo">Turismo</option>
+                                <option value="Outros">Outros</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                            <input type="checkbox" id="chk-consentimento" style="margin-top: -27px;padding-bottom: 31px;position: absolute;left: 6px;top: 30px;" />
+                            <label style="font-size: 0.9em;width: 90%;text-align: justify;margin-left: 23px;">
+                                Estou ciente de que meus dados estão sendo registrados, porém não serão utilizados para qualquer outra finalidade.
+                            </label>
+                        </div>
+                        <div class="form-group col-lg-12 col-md-6 col-sm-12 col-xs-12" id="msg-consentimento" style="display: none;margin-top: -25px;">
+                            <label style="font-size: 0.9em;width: 90%;text-align: justify;margin-left: 23px;color: red;">
+                                Consentimento obrigatório.
+                            </label>
+                        </div>
+                        <div class="form-group col-lg-12 col-md-6 col-sm-12 col-xs-12" id="msg-enviando" style="display: none;margin-bottom: -14px;margin-left: -3px;font-weight: bold;">
+                            <label style="font-size: 0.9em;width: 90%;text-align: justify;margin-left: 23px;">
+                                Enviando... aguarde
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-3">
+                        <div class="col text-right">
+                            <button class="btn btn-error-message btn-danger btn-block  btn-v-3 btn-h-3 font-weight-bold"
+                                    style="display:none"></button>
+                            <button type="submit" class="btn btn-primary btn-block btn-rounded btn-v-3 btn-h-3 font-weight-bold" id="lgpd-submit">
+                                Enviar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <p class="mb-0">
+                                By signing up, you agree to our <a href="http://www.arounddeal.com/terms/" target="_blank"
+                                                                   class="text-primary">Terms of Use</a>.
+                            </p>
+                            <p>
+                                Already have an account? <a href="https://leads.arounddeal.com/login"
+                                                            target="_blank" class="text-primary">Sign in</a>
+                            </p>
+                        </div>
+                    </div>
+                }
             }
 
+
+        </div>
+        <div class="loading-overlay">
+            <div class="bounce-loader">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
         </div>
     </div>
-
 </div>
-
-
-
-

@@ -1,0 +1,47 @@
+﻿@model QuestionarioCOrg.ViewModels.LeadLGPDVM
+
+@{
+    ViewBag.Title = "Questionario";
+    Layout = "~/Views/Shared/_Layout_LGPD_Leads.cshtml";
+}
+
+<link rel="stylesheet" href="~/assets/lgpd_leads/landing/css/main-chat.css">
+
+@Html.HiddenFor(model => model.Id)
+@Html.HiddenFor(model => model.Nome)
+@Html.HiddenFor(model => model.Empresa)
+@Html.Hidden("PossuiJuridico", "")
+
+
+<div class="ad-landing-fixed-wrapper top-control">
+    <div class="ad-landing-wrapper">
+        <div class="rounded h-100 chat-container">
+            <div class="chat-content">
+                <div class="contact-profile">
+                    <img src="~/assets/lgpd_leads/landing/imgs/user-avatar.png" alt="">
+                    <p>Atendimento virtual </p>
+                    <span style="font-size: 0.9em;float:right;padding-right: 20px;" id="sp-chat-concluido">0% concluído</span>
+                </div>
+                <div class="messages">
+                    <ul id="chat-msgs">
+                    </ul>
+                </div>
+                <div class="message-input">
+                    <div class="wrap">
+                        <input type="text" id="field-chat-msg" placeholder="Write your message...">
+                        <button class="submit" id="btn-enviar">
+                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="loading-overlay">
+            <div class="bounce-loader">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+</div>

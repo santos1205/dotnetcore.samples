@@ -1,0 +1,5 @@
+bin
+!deploy/bin
+obj
+.vs
+SQLScripts
