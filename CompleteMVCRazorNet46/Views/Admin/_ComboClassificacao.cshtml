@@ -1,9 +1,0 @@
-﻿@model QuestionarioCOrg.ViewModels.PerguntaVM
-<div class="form-group" id="fg-classificacao-pergunta">
-    <div>
-        <label>Classificação</label>
-        @Html.DropDownList("IdClassificacao", null, "Selecione a classificação (opcional)", htmlAttributes: new {
-                    @class = "form-control m-b" })
-        @Html.ValidationMessageFor(model => model.IdClassificacao, "", new { @class = "help-block m-b-none error-mgs", @id = "sp-classificacao-pergunta-error" })
-    </div>
-</div>
