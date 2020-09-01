@@ -1,14 +1,18 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace API.AssistCard.Infrastructure.Models
+namespace API.Viagem.Infrastructure.Models
 {
-    [Table("usuario", Schema = "dbo")]
+    [Table("Usuario", Schema = "dbo")]
     public class Usuario
     {
         [Key]
-        public int  Usu_ID { get; set; }
-        public string Usu_Nome { get; set; }      
-        public bool Usu_Ativo { get; set; }  
+        public int Usr_ID { get; set; }
+        public int Usr_ClientId { get; set; }
+        public string Usr_ClientSecret { get; set; }
+        public string Usr_Username { get; set; }
+        public string Usr_Password { get; set; }
+        public int Usr_IdEstipulante { get; set; }
+        public bool Usr_BoolAtivo { get; set; }
     }
 }

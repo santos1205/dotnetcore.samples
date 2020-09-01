@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace API.AssistCard.Domain.Interfaces.Repository
+namespace API.Viagem.Domain.Interfaces.Repository
 {
     public interface IRepository<TEntity> where TEntity : class
     {

@@ -1,47 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using API.Viagem.Domain.Constants;
+using API.Viagem.Domain.DTOs;
+using API.Viagem.Domain.Interfaces.Services;
+using API.Viagem.Domain.Models;
+using API.Viagem.Domain.Util;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 
-namespace API.AssistCard.Web.Controllers
+namespace API.Viagem.Web.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class AutenticacaoController : ControllerBase
+    [Route("apiViagem/[controller]")]
+    public class AutenticacaoController : Controller
     {
-        private IConfiguration _config;
-        public AutenticacaoController(IConfiguration Config)
+
+        private readonly IUsuarioService _userService;
+
+        public AutenticacaoController(IUsuarioService userService)
         {
-            _config = Config;
+            _userService = userService;
         }
 
-        [HttpPost("token")]
-        public ActionResult GetToken()
+        [AllowAnonymous]
+        [HttpPost]
+        public object Post([FromBody]UsuarioDTO usuario, [FromServices]SigningConfigurations signingConfigurations, [FromServices]TokenConfigurations tokenConfigurations)
         {
-            string Issuer =  _config.GetSection("SecuritySettings").GetSection("Issuer").Value;
-            string Audience = _config.GetSection("SecuritySettings").GetSection("Audience").Value;
+            try
+            {
+                var objeto = new object();
 
-            // Key Secreta
-            string SecurityKey = _config.GetSection("SecuritySettings").GetSection("SecurityKey").Value;
-            // Gerar key simétrica
-            var SymmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SecurityKey));
-            // Credenciais
-            var SignCredentials = new SigningCredentials(SymmetricSecurityKey, SecurityAlgorithms.HmacSha256Signature);
-            // gerar token
-            var token = new JwtSecurityToken(
-                issuer: Issuer,
-                audience: Audience,
-                expires: DateTime.Now.AddHours(1),
-                signingCredentials: SignCredentials
-            );
+                if (usuario != null)
+                    objeto = _userService.HabilitarAutenticacao(usuario, signingConfigurations, tokenConfigurations);
 
-            return Ok(new JwtSecurityTokenHandler().WriteToken(token));
+                IOFile.SalvarJsons(objeto, PathsConstant.JSONS_PATH_AssistCard_AUTENTICACAO, "envio_autenticacao");
+                return Ok(objeto);
+            }
+            catch (System.Exception exc)
+            {
+                return BadRequest(ApiReturn.ApiReturnObjectException(false, "001", Domain.Properties.Resources.ME001, exc));
+            }
         }
     }
 }

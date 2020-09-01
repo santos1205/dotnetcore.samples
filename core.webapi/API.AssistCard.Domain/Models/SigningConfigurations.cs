@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 using Microsoft.IdentityModel.Tokens;
 
-namespace API.AssistCard.Domain.Models
+namespace API.Viagem.Domain.Models
 {
     public class SigningConfigurations
     {

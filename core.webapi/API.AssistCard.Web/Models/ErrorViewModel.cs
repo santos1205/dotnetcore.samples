@@ -1,6 +1,6 @@
 using System;
 
-namespace API.AssistCard.Web.Models
+namespace API.Viagem.Web.Models
 {
     public class ErrorViewModel
     {

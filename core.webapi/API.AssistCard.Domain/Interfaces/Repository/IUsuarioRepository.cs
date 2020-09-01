@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using API.AssistCard.Infrastructure.Models;
+using API.Viagem.Infrastructure.Models;
 
-namespace API.AssistCard.Domain.Interfaces.Repository
+namespace API.Viagem.Domain.Interfaces.Repository
 {
     public interface IUsuarioRepository : IRepository<Usuario>
     {
-        List<Usuario> GetUsuariosAtivos();
+        Usuario GetUsuarioAutenticado(int usrClientID);
 
     }
 }

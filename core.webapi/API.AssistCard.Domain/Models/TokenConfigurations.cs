@@ -1,4 +1,4 @@
-﻿namespace API.AssistCard.Domain.Models
+﻿namespace API.Viagem.Domain.Models
 {
     public class TokenConfigurations
     {

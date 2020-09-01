@@ -2,17 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using API.AssistCard.Domain.Interfaces.Repository;
+using API.Viagem.Domain.Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
 
-namespace API.AssistCard.Infrastructure.Repository
+namespace API.Viagem.Infrastructure.Repository
 {
     public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        protected readonly ApiAssistCardContext _dbContext;
+        protected readonly MultCalcSegContext _dbContext;
         
 
-        public EFRepository(ApiAssistCardContext dbContext)
+        public EFRepository(MultCalcSegContext dbContext)
         {
             _dbContext = dbContext;
         }
