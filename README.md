@@ -1,11 +1,13 @@
 # DOTNET CLI commands
 
 1 - scaffold base - base first.
+
 dotnet ef dbcontext scaffold "data source=sqldesenv.proseg.com.br;initial catalog=<DB NAME>;user id=proseg;password=b123;MultipleActiveResultSets=True;App=EntityFramework" Microsoft.EntityFrameworkCore.SqlServer -o Models
 2 - scaffold controller / views
 dotnet aspnet-codegenerator controller -name <NAME CONTROLLER>Controller -m <NAME MODEL> -dc <NAME OF CREATED CONTEXT> --relativeFolderPath Controllers --useDefaultLayout
 
 2 - Update startup.cs file:
+
 in ConfigureService:
 
 services.AddDbContext<EstudoContext>(options =>
