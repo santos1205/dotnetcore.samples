@@ -14,6 +14,7 @@ services.AddDbContext<EstudoContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("<NAME OF CONTEXT>")));
 
 3 - Update appsettings.json file:
+
 below "AllowedHosts":
 
 "ConnectionStrings": {    
@@ -32,4 +33,5 @@ shift + alt + f - format document
 
 
 4 - publish command
+
 dotnet publish XXXXXXXXXXX.csproj -c debug --self-contained -r win10-x64
