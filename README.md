@@ -13,14 +13,14 @@ dotnet aspnet-codegenerator controller -name \<NAME CONTROLLER\>Controller -m \<
 in ConfigureService:
 
 services.AddDbContext<EstudoContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("<NAME OF CONTEXT>")));
+                    options.UseSqlServer(Configuration.GetConnectionString("\<NAME OF CONTEXT\>")));
 
 4 - Update appsettings.json file:
 
 below "AllowedHosts":
 
 "ConnectionStrings": {    
-    "<NAME OF CONTEXT>": "data source=sqldesenv.proseg.com.br;initial catalog=<NAME OF BASE>Estudo;user id=proseg;password=b123;MultipleActiveResultSets=True;App=EntityFramework"
+    "\<NAME OF CONTEXT\>": "data source=sqldesenv.proseg.com.br;initial catalog=<NAME OF BASE>Estudo;user id=proseg;password=b123;MultipleActiveResultSets=True;App=EntityFramework"
   }
 
 ----------------------------------------------------------------------------------------------------------------
