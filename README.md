@@ -6,7 +6,7 @@ dotnet ef dbcontext scaffold "data source=sqldesenv.proseg.com.br;initial catalo
   
 2 - scaffold controller / views
   
-dotnet aspnet-codegenerator controller -name <NAME CONTROLLER>Controller -m <NAME MODEL> -dc <NAME OF CREATED CONTEXT> --relativeFolderPath Controllers --useDefaultLayout
+dotnet aspnet-codegenerator controller -name "NAME CONTROLLER"Controller -m "NAME MODEL" -dc \<NAME OF CREATED CONTEXT\> --relativeFolderPath Controllers --useDefaultLayout
 
 3 - Update startup.cs file:
 
