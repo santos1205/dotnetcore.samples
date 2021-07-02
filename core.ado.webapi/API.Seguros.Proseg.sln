@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Seguros.Proseg.Web", "API.Seguros.Proseg.Web\API.Seguros.Proseg.Web.csproj", "{FF118571-96FD-47ED-A778-095F2670BBB4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AAC33400-F28E-4738-B667-DF5A1DD8A747} = {AAC33400-F28E-4738-B667-DF5A1DD8A747}
+		{66BF1826-A037-41D2-A5CF-6B7B59351491} = {66BF1826-A037-41D2-A5CF-6B7B59351491}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Seguros.Proseg.Infrastructure", "API.Seguros.Proseg.Infrastructure\API.Seguros.Proseg.Infrastructure.csproj", "{66BF1826-A037-41D2-A5CF-6B7B59351491}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AAC33400-F28E-4738-B667-DF5A1DD8A747} = {AAC33400-F28E-4738-B667-DF5A1DD8A747}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Seguros.Proseg.Domain", "API.Seguros.Proseg.Domain\API.Seguros.Proseg.Domain.csproj", "{AAC33400-F28E-4738-B667-DF5A1DD8A747}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF118571-96FD-47ED-A778-095F2670BBB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF118571-96FD-47ED-A778-095F2670BBB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF118571-96FD-47ED-A778-095F2670BBB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF118571-96FD-47ED-A778-095F2670BBB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66BF1826-A037-41D2-A5CF-6B7B59351491}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66BF1826-A037-41D2-A5CF-6B7B59351491}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66BF1826-A037-41D2-A5CF-6B7B59351491}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66BF1826-A037-41D2-A5CF-6B7B59351491}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAC33400-F28E-4738-B667-DF5A1DD8A747}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAC33400-F28E-4738-B667-DF5A1DD8A747}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAC33400-F28E-4738-B667-DF5A1DD8A747}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAC33400-F28E-4738-B667-DF5A1DD8A747}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3A9C6B45-E78A-4D20-8833-57E1B6F1949D}
+	EndGlobalSection
+EndGlobal

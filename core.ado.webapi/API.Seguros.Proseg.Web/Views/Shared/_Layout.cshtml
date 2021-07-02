@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<script src="~/js/Js.js"></script>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" type="image/png" href="~/images/icons/favicon.ico" />
+
+    <link rel="stylesheet" href="~/vendor/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="~/fonts/iconic/css/material-design-iconic-font.min.css">
+
+    <link rel="stylesheet" href="~/vendor/animate/animate.css">
+
+    <link rel="stylesheet" href="~/vendor/css-hamburgers/hamburgers.min.css">
+
+    <link rel="stylesheet" href="~/vendor/animsition/css/animsition.min.css">
+
+    <link rel="stylesheet" href="~/vendor/select2/select2.min.css">
+
+    <link rel="stylesheet" href="~/vendor/daterangepicker/daterangepicker.css">
+
+    <link rel="stylesheet" href="~/vendor/noui/nouislider.min.css">
+
+    <link rel="stylesheet" href="~/css/util.css">
+
+    <link rel="stylesheet" href="~/css/main.css">
+</head>
+<body>
+
+    <header></header>
+    <nav class="navbar navbar-light bg-warning">
+        <img src="~/images/logoPROSEG-Preta-grande.png" style="width:200px;" />
+        <img src="~/images/C6BANK-Positivo-1.png" style="width:118px;" />
+        <form class="form-inline">
+            @*<a class="nav-link label-input70" href="#">Home <span class="sr-only">(current)</span></a>*@
+            @Html.ActionLink("Cálculo Placa", "Index", "Orcamento", null, new { @class = "nav-link label-input70" })
+            @Html.ActionLink("Valores Padrão", "Index", "OrcamentoValorPadrao", null, new { @class = "nav-link label-input70" })
+        </form>
+    </nav>
+
+
+    @RenderSection("Scripts", required: false)
+    <div class="container" style="max-width:1288px;">
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+</body>
+</html>

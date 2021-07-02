@@ -1,0 +1,137 @@
+{
+  "CodigoOrcamento": null,
+  "CodigoProduto": null,
+  "FaixaSalarial": null,
+  "NumeroDoc": null,
+  "OrgaoExpedidor": null,
+  "UFExpedidor": null,
+  "DataExpedicaoDocumento": null,
+  "CnhPrincipalConduntor": null,
+  "PessoaExpostaPoliticamente": null, // Sompo - Porto - Azul - Itau - Liberty
+  "EnderecoVistoriaMesmoRisco": null,
+  "EnderecoCorrespondenciaMesmoRisco": null,
+  "Renavam": null,
+  "DataEmissaoNotaFiscal": null, // Sompo - Porto - Azul - Itau - Liberty
+  "EstrangeiroMoradiaBrasil": null,
+  "TipoEndCorrespondencia": null,
+  "NumRGPrincipalCondutor": null,
+  "FoneRastreadorComodato": null, //Fazer validação desse campo antes de transmitir
+  "NomeRastreadorComodato": null, //Fazer validação desse campo antes de transmitir
+
+  "EnderecoRisco": {
+    "TipoEndereco": null,
+    "Cep": null,
+    "TipoLogradouroDesc": null,
+    "TipoEnderecoDesc": null,
+    "Logradouro": null,
+    "Numero": null,
+    "Complemento": null,
+    "Bairro": null,
+    "Cidade": null,
+    "UF": null
+  },
+  "EnderecoCorrepondencia": {
+    "TipoEndereco": null,
+    "Cep": null,
+    "TipoLogradouroDesc": null,
+    "TipoEnderecoDesc": null,
+    "Logradouro": null,
+    "Numero": null,
+    "Complemento": null,
+    "Bairro": null,
+    "Cidade": null,
+    "UF": null
+  },
+  "EnderecoVistoria": {
+    "TipoEndereco": null,
+    "Cep": null,
+    "TipoLogradouroDesc": null,
+    "TipoEnderecoDesc": null,
+    "Logradouro": null,
+    "Numero": null,
+    "Complemento": null,
+    "Bairro": null,
+    "Cidade": null,
+    "UF": null
+  },
+  "EnderecoPagador": {
+    "Cep": null,
+    "Logradouro": null,
+    "Complemento": null,
+    "Bairro": null,
+    "Numero": null,
+    "Cidade": null,
+    "UF": null
+  },
+  "TelefonePagador": {
+    "Tipo": null,
+    "DDD": null,
+    "Numero": null
+  },
+  "FormaPagamento": {
+    "BancoConveniado": null,
+    "ContaCorrente": {
+      "Banco": {
+        "Codigo": null,
+        "Descricao": null
+      },
+      "Agencia": null,
+      "DigitoAgencia": null,
+      "Conta": null,
+      "DigitoConta": null,
+      "DiaDebito": null,
+      "Operacao": null
+    },
+    "DataPrimeiraParcela": null,
+    "DiaPagamento": null,
+    "Quantidade": null,
+    "ValorIOF": null,
+    "AdicionalFracionamento": null,
+    "CartaoCredito": {
+      "Administradora": null,
+      "NomeExpressoCartao": null,
+      "NumeroCartao": null,
+      "ValidadeCartao": null,
+      "CodigoSeguranca": null,
+      "VerificadorCartao": null,
+      "CpfTitular": null,
+      "TipoTitularidadeCpf": null,
+      "DiaFatura": null
+    },
+    "ValorDemais": null,
+    "TipoDemais": null,
+    "TipoPrimeira": null,
+    "Tipo": null,
+    "Abreviacao": null,
+    "Descricao": null,
+    "Externo": null,
+    "Codigo": null,
+    "ValorPrimeira": null,
+    "IndicacaoPrimeiraDebitoAutomatico": null
+  },
+  "Pagador": {
+    "Cpf": null,
+    "Nome": null,
+    "NumeroDoc": null,
+    "DataNascimento": null,
+    "Sexo": null,
+    "Email": null,
+    "DataExpedicao": null,
+    "UFExpedidor": null,
+    "EstadoCivil": null
+  },
+  "Renovacao": {
+    "SeguradoraAnterior": null,
+    "RenovacaoProprioCorretor": null,
+    "ApoliceAnterior": null,
+    "CodigoIdentificadorApoliceAnterior": null,
+    "DataFinalApoliceAnterior": null,
+    "ItemAnterior": null,
+    "TipoSeguro": null,
+    "Empresa": null,
+    "Sucursal": null,
+    "Carteira": null,
+    "Apolice": null,
+    "CIApoliceAnterior": null
+  }
+}

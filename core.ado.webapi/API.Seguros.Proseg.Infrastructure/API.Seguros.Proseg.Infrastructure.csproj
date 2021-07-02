@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="EntidadeConfig\" />
+    <Folder Include="Dlls\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.ServiceModel.Duplex" Version="4.4.*" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.4.*" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.4.*" />
+    <PackageReference Include="System.ServiceModel.Security" Version="4.4.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\API.Seguros.Proseg.Domain\API.Seguros.Proseg.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Vayon.MultiCalculo.Componentes">
+      <HintPath>..\..\..\..\..\..\Projetos\MultiCalculo Responsivo\Desenvolvimento\Plugins\Vayon.MultiCalculo\Vayon.MultiCalculo.Impressao\bin\Debug\Vayon.MultiCalculo.Componentes.dll</HintPath>
+    </Reference>
+    <Reference Include="Vayon.MultiCalculo.Container">
+      <HintPath>..\..\MultiCalculo Responsivo\Desenvolvimento\Plugins\Vayon.MultiCalculo\Vayon.MultiCalculo.Container\bin\Debug\Vayon.MultiCalculo.Container.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,139 @@
+{
+  "CodigoOrcamento": null,
+  "CodigoProduto": null,
+  "FaixaSalarial": null,
+  "Nacionalidade": null, // Zurich
+  "NumeroDoc": null,
+  "OrgaoExpedidor": null,
+  "UFExpedidor": null,
+  "DataExpedicaoDocumento": null,
+  "CnhPrincipalConduntor": null,
+  "ModeloCNH": null, // Liberty
+  "PessoaExpostaPoliticamente": null, // Sompo - Porto - Azul - Itau - Liberty
+  "SeguradoEstrangeiro": null, // Liberty
+  "PaisPassaporte": null, // Liberty
+  "NumeroPassaporte": null, // Liberty
+  "EnderecoVistoriaMesmoRisco": null,
+  "EnderecoCorrespondenciaMesmoRisco": null,
+  "Renavam": null,
+  "DataEmissaoNotaFiscal": null, // Sompo - Porto - Azul - Itau - Liberty
+  "NumeroNotaFiscal": null, //Porto/Itau/Azul
+  "EstrangeiroMoradiaBrasil": null,
+  "TipoEndCorrespondencia": null,
+  "NumRGPrincipalCondutor": null,
+  "FoneRastreadorComodato": null, //Fazer validação desse campo antes de transmitir
+  "NomeRastreadorComodato": null, //Fazer validação desse campo antes de transmitir
+
+  "UfPlaca": null, //Porto/Itau/Azul
+  "TemAvaria": null, //Porto/Itau/Azul
+  "InfoCelSegurado": null, //Tokio
+  "InfoEmailSegurado": null, //Tokio // Zurich
+  "EnvioApoliceDigital": null, //Tokio //Liberty
+
+
+  "EnderecoRisco": {
+    "TipoEndereco": null,
+    "Cep": null,
+    "TipoLogradouroDesc": null,
+    "TipoEnderecoDesc": null,
+    "Logradouro": null,
+    "Numero": null,
+    "Complemento": null,
+    "Bairro": null,
+    "Cidade": null,
+    "UF": null
+  },
+  "EnderecoCorrepondencia": {
+    "TipoEndereco": null,
+    "Cep": null,
+    "TipoLogradouroDesc": null,
+    "TipoEnderecoDesc": null,
+    "Logradouro": null,
+    "Numero": null,
+    "Complemento": null,
+    "Bairro": null,
+    "Cidade": null,
+    "UF": null
+  },
+  "EnderecoVistoria": {
+    "TipoEndereco": null,
+    "Cep": null,
+    "TipoLogradouroDesc": null,
+    "TipoEnderecoDesc": null,
+    "Logradouro": null,
+    "Numero": null,
+    "Complemento": null,
+    "Bairro": null,
+    "Cidade": null,
+    "UF": null
+  },
+  "EnderecoPagador": {
+    "TipoEndereco": null,
+    "Cep": null,
+    "TipoLogradouroDesc": null,
+    "TipoEnderecoDesc": null,
+    "Logradouro": null,
+    "Numero": null,
+    "Complemento": null,
+    "Bairro": null,
+    "Cidade": null,
+    "UF": null
+  },
+  "TelefonePagador": {
+    "Telefone": null,
+    "Codigo": null,
+    "DDD": null,
+    "Numero": null,
+    "Tipo": null
+  },
+  "FormaPagamento": {
+
+    "ContaCorrente": null,
+    "BancoConveniado": null,
+    "DataPrimeiraParcela": null,
+    "DiaPagamento": null,
+    "Quantidade": null,
+    "ValorEncargosFinanceiro": null,
+    "JurosFormaPagamento": null,
+    "ValorIOF": null,
+    "AdicionalFracionamento": null,
+    "CartaoCredito": null,
+    "ValorDemais": null,
+    "TipoDemais": null,
+    "TipoPrimeira": null,
+    "TipoModalidade": null,
+    "Tipo": null,
+    "CodCobranca": null,
+    "Abreviacao": null,
+    "Descricao": null,
+    "Externo": null,
+    "Codigo": null,
+    "ValorPrimeira": null,
+    "IndicacaoPrimeiraDebitoAutomatico": null
+  },
+  "Pagador": {
+    "Cpf": null,
+    "Nome": null,
+    "NumeroDoc": null,
+    "DataNascimento": null,
+    "Sexo": null,
+    "Email": null,
+    "DataExpedicao": null,
+    "UFExpedidor": null,
+    "EstadoCivil": null
+  },
+  "Renovacao": {
+    "SeguradoraAnterior": null,
+    "RenovacaoProprioCorretor": null,
+    "ApoliceAnterior": null,
+    "CodigoIdentificadorApoliceAnterior": null,
+    "DataFinalApoliceAnterior": null,
+    "ItemAnterior": null,
+    "TipoSeguro": null,
+    "Empresa": null,
+    "Sucursal": null,
+    "Carteira": null,
+    "Apolice": null,
+    "CIApoliceAnterior": null
+  }
+}
